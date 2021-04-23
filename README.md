@@ -1,5 +1,11 @@
 # README
 
+
+Student Names:
+Clinton Pham (s3605044)
+Sean Tan (s3806690)
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
