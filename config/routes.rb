@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'users/list'
   resources :users
   
+  get 'login' => 'sessions#index'
+  get 'register' => 'users#register'
+  resources :sessions
   
   # get 'home/index'
   
