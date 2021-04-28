@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'users/list'
+  resources :users
+  
+  
   # get 'home/index'
   
   # get 'home/about'
