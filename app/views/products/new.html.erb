@@ -1,0 +1,22 @@
+<h1>Add Product</h1>
+<%= form_for @product do |f| %>
+ <%= f.label :name %>
+ <%= f.text_field :name %><br/>
+ <%= f.label :image %>
+ <%= f.text_field :image %><br/>
+ <%= f.label :price %>
+ <%= f.number_field :price, step:0.01 %><br/>
+ <%= f.label :category %>
+ <%= f.text_field :category %><br/>
+ <%= f.label :popularity %>
+ <%= f.number_field :popularity %><br/>
+ <%= f.label :size %>
+ <%= f.text_field :size %><br/>
+ <%= f.label :color %>
+ <%= f.text_field :color %><br/>
+ <%= f.label :stockcount %>
+ <%= f.number_field :stockcount %><br/>
+ <%= f.label :arrival %>
+ <%= f.datetime_local_field :arrival %><br/>
+ <%=f.submit "Add"%>
+<% end %>
