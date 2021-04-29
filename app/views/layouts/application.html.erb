@@ -16,13 +16,15 @@
   </head>
 
   <body>
-    
+    <div class="container-flex"> 
     <%= render 'home/header' =%>
+    
       <% if notice %>
         <br/>
         <%= render 'layouts/alerts' %>
       <% end %>
       <!--<br/><br/>-->
         <%= yield %>
+        </div>
     </body>
 </html>
