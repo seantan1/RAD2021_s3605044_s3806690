@@ -13,6 +13,7 @@ class UsersController < ApplicationController
       @user = User.create(signup_params) 
       session[:user_id] = @user.id
       if @user.save 
+       UserMailer.newsletter_confirmation(user).deliver_now  
        format.html{ redirect_to request.referrer, notice: "Account created!" }
        format.json { head :no_content }
       else 

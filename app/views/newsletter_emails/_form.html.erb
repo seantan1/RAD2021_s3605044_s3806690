@@ -1,0 +1,49 @@
+<%= form_for(newsletter_email) do |f| %>
+  <% if newsletter_email.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(newsletter_email.errors.count, "error") %> prohibited this newsletter_email from being saved:</h2>
+
+      <ul>
+      <% newsletter_email.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!--Start of footer-->
+  <footer class=" bg-light shadow-sm mx-auto" >
+   <section class="home-newsletter">
+<div class="field container">
+<div class="row">
+<div class="col-sm-12">
+	<div class="single">
+	  <BR></BR>
+		<h2>Newsletter</h2>
+		 
+		<small class="text-muted"><p><h6>signup with our newsletter....</h6><br></p></small>
+
+	<div class="input-group">
+         <!--<input type="email" class="form-control" placeholder="Enter your email">-->  
+         <%= f.label :email %>      <%= f.text_field :email %>
+         <!--<span class="input-group-btn">-->
+    
+         <!--<button class="btn btn-dark" type="submit">Subscribe</button>-->
+         
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+         </span>
+           </div>
+	</div>
+</div>
+</div>
+</div>
+         <br><br><br><br>
+
+</section>
+</footer>
+  
+  <!--end of footer-->
+ 
+<% end %>
