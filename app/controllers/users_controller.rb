@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       @user = User.create(signup_params) 
       session[:user_id] = @user.id
       if @user.save 
-       UserMailer.newsletter_confirmation(user).deliver_now  
+       UserMailer.newsletter_confirmation(@user).deliver_now  
        format.html{ redirect_to request.referrer, notice: "Account created!" }
        format.json { head :no_content }
       else 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
  private
   #allowed list of params for user model 
   def signup_params
-  params.require(:user).permit(:email, 
+  params.require(:user).permit(:name,:email, 
   :password, :password_confirmation)
   end
 end
