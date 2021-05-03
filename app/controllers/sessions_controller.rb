@@ -8,4 +8,9 @@ class SessionsController < ApplicationController
       redirect_to login_path, :notice => "Email or password is incorrect" 
     end
   end
+  
+  def destroy
+    session[:user_id] = nil
+    redirect_to login_path, :notice => "Successfully logged out"
+  end
 end

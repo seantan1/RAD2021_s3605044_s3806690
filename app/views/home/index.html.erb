@@ -4,6 +4,13 @@
   
 
 <!--<main>-->
+<h1>Popularity > 5</h1>
+<% @all_products.each do |product| %>
+  <% if product.popularity > 5 %>
+    <h3><%= product.name %></h3>
+    <img src=<%= product.image %> width="200">
+  <% end %>
+<% end %>
   
   <!--Top Banner-->
   <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
@@ -148,8 +155,7 @@
   <!--END COLLECTIONS-->
  
  <!--FOOTER-->
- <!--TO DO: NEED TO FIGURE OUT HOW TO DISPLAY PAGE BELOW  INTO FOOTER-->
-<div class="fs-1 text-center bg-light shadow-sm mx-auto" style=" width: 100%; height: 300px; border-radius: 21px 21px 0 0;"><%= link_to 'Click Here Subscribe To Our Newsletter', new_newsletter_email_path %>
+<%= render template: "newsletter_emails/new", newsletter_email: @newsletter_email %>
 </div>
 
   

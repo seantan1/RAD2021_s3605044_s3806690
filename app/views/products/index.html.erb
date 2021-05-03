@@ -20,7 +20,7 @@
     <% @all_products.each do |product| %>
         <tr>
             <td><%= product.name %></td>
-            <td><img src=<%= product.image %>></td>
+            <td><img src=<%= product.image %> width="200"></td>
             <td><%= number_with_precision(product.price, :precision => 2) %></td>
             <td><%= product.category %></td>
             <td><%= product.popularity %></td>

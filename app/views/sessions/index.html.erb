@@ -1,8 +1,23 @@
 <%= form_tag sessions_path do %>
-<%= label_tag :email %>
-<%= text_field_tag :log_in_email, params[:email] %>
-<%= label_tag :password %>
-<%= password_field_tag :log_in_password %>
-<br/>
-<%= submit_tag "Log In" %>
-<% end %>
+ <form>
+     
+     <div class="container text-center mt-5"> 
+   <h1 class="display-5">Log in to enter the wonderland of fashion...</h1>
+     </div>
+    
+   <div class="container position-absolute top-50 start-50 translate-middle"> 
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"><%= label_tag :email %></label>
+      <%= text_field_tag :log_in_email, params[:email], :class => "form-control"%>
+    <!--<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">-->
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label"><%= label_tag :password %></label>
+    <!--<input type="password" class="form-control" id="exampleInputPassword1">-->
+       <%= password_field_tag :log_in_password, nil, :class => "form-control" %>
+  </div>
+  <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+     <%= submit_tag "Log In", :class => "btn btn-secondary" %>
+     </div>
+      <% end %>
+</form>
