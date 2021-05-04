@@ -14,12 +14,12 @@ class CartController < ApplicationController
     else
       session[:cart] << params[:id]
     end
-    redirect_to cart_index_path
+    redirect_to request.referrer
   end
   
   def destroy
     session[:cart] ||= []
     session[:cart].delete(params[:id])
-    redirect_to cart_index_path
+    redirect_to request.referrer
   end
 end

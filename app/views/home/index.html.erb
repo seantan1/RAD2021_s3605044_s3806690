@@ -16,57 +16,26 @@
   
   <!--START POPULAR--> 
   
-     
   <div class="container-fluid bg-light shadow-sm ">
     <p class="h1">Popular</p> 
     
-     
+<% @all_products.each do |product| %>
+  <% if product.popularity > 5 %>
 <div class="row">
-   
-  <div class="col-sm-6">
+  <div class="col-sm-3">
     <div class="card">
+      <img src=<%= product.image %>  alt="..." class="card-img-top" >
       <div class="card-body">
-        <h5 class="card-title"> </h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title"><%= product.name %></h5>
+        <p class="card-text"> <% product.price %></p>
       </div>
     </div>
   </div>
-  
-  <!--<div class="col-sm-6">-->
-  <!--  <div class="card">-->
-  <!--    <div class="card-body">-->
-  <!--      <h5 class="card-title">Special title treatment</h5>-->
-  <!--      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
-  <!--      <a href="#" class="btn btn-primary">Go somewhere</a>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</div>-->
 </div>
-     
-<!--    <div class="row col-sm-3 ">-->
-
-    
-<!--    <div class="row">-->
-<!--  <div class="col-sm">col-sm</div>-->
-<!--  <div class="col-sm">col-sm</div>-->
-<!--  <div class="col-sm">col-sm</div>-->
-<!--</div>-->
-<!--    <div class="card-deck"> -->
-    
-<!--    <div class="card">-->
-<!--      <img src=<%= product.image %>  alt="..." class="card-img-top" >-->
-<!--      <div class="card-body">-->
-<!--        <h5 class="card-title "><h3><center> <%= product.name %></center></h3></h5>-->
-<!--        		<small class="text-muted card-text text-center"><p><h6><% product.price %></h6><br></p></small>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
 <br>
     <% end %>
 <% end %>
-  </div>
+  </div><br>
    
   
   <!--END POPULAR-->
