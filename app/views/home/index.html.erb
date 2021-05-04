@@ -7,8 +7,8 @@
   <!--Top Banner-->
   <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
     <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 fw-normal">Sample Product</h1>
-      <p class="lead fw-normal">Product Description goes here</p>
+      <h1 class="display-4 fw-normal">Product Name</h1>
+      <p class="lead fw-normal"> Product Description</p>
      <!--button to save to list-->
        <button class="btn btn-dark"><i class="bi bi-plus"></i></button>
     </div>
@@ -16,26 +16,28 @@
   
   <!--START POPULAR--> 
   
+  
   <div class="container-fluid bg-light shadow-sm ">
-    <p class="h1">Popular</p> 
-    
-<% @all_products.each do |product| %>
-  <% if product.popularity > 5 %>
+    <p class="h1">Popular</p> <br> 
 <div class="row">
+  <% @all_products.each do |product| %>
+   <% if product.popularity > 5 %>
   <div class="col-sm-3">
     <div class="card">
+       
       <img src=<%= product.image %>  alt="..." class="card-img-top" >
       <div class="card-body">
-        <h5 class="card-title"><%= product.name %></h5>
-        <p class="card-text"> <% product.price %></p>
+        <h5 class="card-title text-center"><%= product.name %></h5>
+        <p class="card-text text-center"> <% product.price %> Need to add price</p>
+        <center> <a href="#" class="btn btn-primary text-center text-white">Save</a> </center>
       </div>
     </div>
   </div>
+      <% end %>
+      <% end %>
 </div>
 <br>
-    <% end %>
-<% end %>
-  </div><br>
+   </div><br>
    
   
   <!--END POPULAR-->
@@ -54,7 +56,7 @@
         <h2 class="display-5">Women</h2>
         <!--<p class="lead">Code to retrieve total product count</p>-->
           <small class="text-muted"><p> Code to retrieve total product count</p></small>
-        <%= link_to "Explore", root_path, class:"btn btn-primary" %>
+        <%= link_to "Explore", root_path, class:"btn btn-primary text-white" %>
       </div>    
       <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
@@ -66,7 +68,7 @@
       <div class="my-3 p-3">
         <h2 class="display-5">Men</h2>
           <small class="text-muted"><p> Code to retrieve total product count</p></small>
-        <%= link_to "Explore", root_path, class:"btn btn-primary" %>
+        <%= link_to "Explore", root_path, class:"btn btn-primary text-dark" %>
       </div>
       <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
@@ -79,7 +81,7 @@
       <div class="my-3 py-3">
           <h2 class="display-5">Kids</h2>
           <small class="text-muted"><p> Code to retrieve total product count</p></small>
-        <%= link_to "Explore", root_path, class:"btn btn-primary" %>
+        <%= link_to "Explore", root_path, class:"btn btn-primary text-white" %>
       </div>    
       <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
@@ -90,7 +92,7 @@
       <div class="my-3 p-3">
         <h2 class="display-5">New-Ins</h2>
           <small class="text-muted"><p> Code to retrieve total product count</p></small>
-        <%= link_to "Explore", root_path, class:"btn btn-primary" %>
+        <%= link_to "Explore", root_path, class:"btn btn-primary text-white" %>
       </div>
       <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
