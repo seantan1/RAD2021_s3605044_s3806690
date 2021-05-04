@@ -10,15 +10,28 @@ class UsersController < ApplicationController
   
   def create
     respond_to do |format|
-      @user = User.create(signup_params) 
-      session[:user_id] = @user.id
-      if @user.save 
-       UserMailer.newsletter_confirmation(@user).deliver_now  
-       format.html{ redirect_to request.referrer, notice: "Account created!" }
-       format.json { head :no_content }
-      else 
-        format.html{ redirect_to request.referrer, notice: "Password not the same!" }
+      if username_exist(signup_params[:name])
+        format.html{ redirect_to request.referrer, notice: "Username already taken." }
         format.json { head :no_content }
+      elsif email_exist(signup_params[:email])
+        format.html{ redirect_to request.referrer, notice: "Email already taken." }
+        format.json { head :no_content }
+      else
+        if email_valid(signup_params[:email])
+          @user = User.create(signup_params) 
+          session[:user_id] = @user.id
+          if @user.save
+           UserMailer.newsletter_confirmation(@user).deliver_now
+           format.html{ redirect_to request.referrer, notice: "Account created!" }
+           format.json { head :no_content }
+          else
+            format.html{ redirect_to request.referrer, notice: "Password not the same!" }
+            format.json { head :no_content }
+          end
+        else 
+          format.html{ redirect_to request.referrer, notice: "Email is invalid." }
+          format.json { head :no_content }
+        end
       end
     end
   end
@@ -36,5 +49,30 @@ class UsersController < ApplicationController
   def signup_params
   params.require(:user).permit(:name,:email, 
   :password, :password_confirmation)
+  end
+  
+  def username_exist(username)
+    @users = User.all
+    @users.each do |user|
+      if user.name == username
+        return true
+      end
+    end
+    return false
+  end
+  
+  def email_exist(user_email)
+    @users = User.all
+    @users.each do |user|
+      if user.email == user_email
+        
+        return true
+      end
+    end
+    return false
+  end
+  
+  def email_valid(user_email)
+    return user_email.include? '@'
   end
 end

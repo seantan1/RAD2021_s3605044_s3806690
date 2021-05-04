@@ -3,6 +3,7 @@
 <table class="table table-hover">
 <thead>
     <tr>
+    <th>ID</th>
     <th>Name</th>
     <th>Image</th>
     <th>Price</th>
@@ -12,13 +13,14 @@
     <th>Color</th>
     <th>Stock count</th>
     <th>Arrival date</th>
-    <th colspan="2"></th>
+    <th colspan="4"></th>
     </tr>
 </thead>
 
 <tbody>
     <% @all_products.each do |product| %>
         <tr>
+            <td><%= product.id %></td>
             <td><%= product.name %></td>
             <td><img src=<%= product.image %> width="200"></td>
             <td><%= number_with_precision(product.price, :precision => 2) %></td>
@@ -28,6 +30,13 @@
             <td><%= product.color %></td>
             <td><%= product.stockcount %></td>
             <td><%= product.arrival %></td>
+            <% if session[:cart].include? product.id %>
+                <td><%= session[:cart] %></td>
+                <td><%= link_to 'Remove from Cart', edit_cart_path(product), class:"btn btn-primary btn-sm" %></td>
+            <% else %>
+                <td><%= session[:cart] %></td>
+                <td><%= link_to 'Add to Cart', edit_cart_path(product), class:"btn btn-primary btn-sm" %></td>
+            <% end %>
             <td><%= link_to 'Edit', edit_product_path(product), class:"btn btn-primary btn-sm" %></td>
             <td><%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-sm" %></td>
         </tr>
