@@ -8,10 +8,12 @@
     
     <!--Search Button-->
   <form class="d-flex ">
+    
     <nav class="navbar navbar-light bg-dark">
       <div class="container  ">
         <!--shopping bag icon-->
-        <button class="btn btn-dark"style="font-size:30px"> <i class="bi bi-bag"></i></button>
+        <!--<button class="btn btn-dark" style="font-size:30px"> <i class="bi bi-bag"></i></button>-->
+        <%= link_to "", cart_index_path, class: "bi bi-bag btn btn-dark btn-lg text-white" %>
       </div>
     </nav>
     
@@ -49,13 +51,16 @@
             <%= link_to "Logout", logout_path, class:"nav-link" %>
           </li>
         <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", login_path, class:"nav-link" %>
-          </li>
-        <% end %>
         <li class="nav-item">
-          <%= link_to "Register", register_path, class:"nav-link" %>
+          <%= link_to "Login", login_main_path, class:"nav-link" %>
         </li>
+        <!--  <li class="nav-item">-->
+        <!--    <%= link_to "Login", login_path, class:"nav-link" %>-->
+        <!--  </li>-->
+        <!--<% end %>-->
+        <!--<li class="nav-item">-->
+        <!--  <%= link_to "Register", register_path, class:"nav-link" %>-->
+        <!--</li>-->
         <li class="nav-item">
           <%= link_to "Users (for testing purposes)", users_path, class:"nav-link" %>
         </li>
@@ -66,5 +71,4 @@
           <%= link_to "Cart (for testing purposes)", cart_index_path, class:"nav-link" %>
         </li>
     </div>
-  </div>
 </nav>

@@ -1,6 +1,102 @@
+<br>
+<!--Total number of items in cart goes here-->
+<center><h3> bag (2) </h3></center>
+<br> 
+ <div class="container-flex px-6 py-6 mx-auto bg-light">
+    <div class="row d-flex justify-content-center">
+        <div class="col-5">
+            <h4 class="heading">Shopping Bag</h4>
+        </div>
+        <div class="col-7">
+            <div class="row text-right">
+                <div class="col-3">
+                    <h6 class="mt-2">Color</h6>
+                </div>
+                
+                <div class="col-3">
+                    <h6 class="mt-2">Size</h6>
+                </div>
+                
+                <div class="col-3">
+                    <h6 class="mt-2">Quantity</h6>
+                </div>
+                
+                <div class="col-3">
+                    <h6 class="mt-2">Price</h6>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="row d-flex justify-content-center border-top">
+        <div class="col-5 " >
+            <div class="row d-flex ">
+                <div class="book margin-left"> <img src="https://i.imgur.com/2DsA49b.jpg" class="book-img"> </div>
+                <div class="my-auto flex-column d-flex pad-left">
+                    <h6 class="mob-text margin-left">Product Name</h6>
+                </div>
+            </div>
+        </div>
+        <div class="my-auto col-7">
+            <div class="row text-right">
+                <div class="col-3">
+                    <h6 class="mob-text">Colour</h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="mob-text">Size</h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="mob-text">Quantity</h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="mob-text">Price</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row d-flex justify-content-center border-top">
+        <div class="col-5">
+            <div class="row d-flex margin-left">
+                <div class="book margin-left"> <img src="https://i.imgur.com/Oj1iQUX.jpg" class="book-img"> </div>
+                <div class="my-auto flex-column d-flex pad-left">
+                    <h6 class="mob-text margin-left">Product Name</h6>
+                 </div>
+            </div>
+        </div>
+        <div class="my-auto col-7">
+            <div class="row text-right">
+                <div class="col-3">
+                    <h6 class="mob-text">Colour</h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="mob-text">Size</h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="mob-text">Quantity</h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="mob-text">Price</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="col-lg-12">
+            <div class="card ">
+                        <h3 class="text-start">Subtotal<h6 class="text-end">$23.49</h6></h3> 
+                            <h3 class="text-start">Taxes</h3>
+                            <h6 class="text-end">$2.99</h6>
+                        <div class="row d-flex " id="tax">
+                            <h3 class="mb-1 text-start">Total (tax included)</h3>
+                            <h6 class="mb-1 text-end">$26.48</h6>
+                        </div> <button class="btn-block btn-blue"> <span> <span id="checkout">Checkout</span> <span id="check-amt">$26.48</span> </span> </button>
+            </div>
+    </div>
+</div>
+<%= @cart_products %>
+
 <h1>Cart#index</h1>
 <p>Find me in app/views/cart/index.html.erb</p>
-
-<h1>Cart</h1>
-
-<%= @cart_products %>
