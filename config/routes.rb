@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'users/list'
   resources :users
   
+  get 'seeAllProducts' => 'home#seeAllProducts'
+  
   get 'login_main' => 'sessions#login'
   get 'login' => 'sessions#index'
   get 'logout' => 'sessions#destroy'

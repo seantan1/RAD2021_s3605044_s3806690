@@ -22,20 +22,20 @@
   
   <div class="container-fluid bg-light shadow-sm ">
     <p class="h1">Popular</p> <br> 
-<div class="row">
+<div class="row row-cols-2 row-cols-md-4 g-4">
   <% @all_products.each do |product| %>
    <% if product.popularity > 5 %>
-  <div class="col-sm-3">
-    <div class="card">
-      <img src=<%= product.image %>  alt="..." class="card-img-top" >
+  <div class="col col-md-4">
+    <div class="card bg-light h-75">
+       <img src=<%= product.image %>  alt="..." class="book-img rounded mx-auto d-block" > 
       <div class="card-body">
         <h5 class="card-title text-center"><%= product.name %></h5>
         <p class="card-text text-center"> $<%= number_with_precision(product.price, :precision => 2) %></p>
         <!--<center> <a href="#" class="btn btn-primary text-center text-white">Save</a> </center>-->
         <% if session[:cart].include? product.id.to_s %>
-        <center> <%= link_to 'Remove from Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white" %></center>
+        <%= link_to 'Remove from Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
         <% else %>
-        <center><%= link_to 'Add to Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white" %></center>
+        <%= link_to 'Add to Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
         <% end %>
       </div>
     </div>
@@ -52,7 +52,8 @@
 
 <!--START COLLECTIONS-->
    <div class="container-fluid bg-light shadow-sm mx-auto">
-    <p class="h1">Collections</p>
+    <h1 class="text-start">Collections</h1> 
+    <h6 class="text-end"><%= link_to "see all +", seeAllProducts_path %></h6>
 
 <!--WOMEN-->
 <div class="container-flex">
