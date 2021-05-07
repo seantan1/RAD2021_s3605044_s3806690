@@ -1,11 +1,14 @@
 class CartController < ApplicationController
+  
   def index
     session[:cart] ||= []
     @cart_products = session[:cart]
-    puts '=====CART PRODUCTS======'
-    puts @cart_products
   end
   
+  def savedlist
+  session[:cart] ||= []
+  @cart_products = session[:cart]
+  end
   
   def edit
     session[:cart] ||= []

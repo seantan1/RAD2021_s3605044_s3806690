@@ -28,3 +28,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+TODO:
+Sean:
+- some getters for the cart page to retrieve the product info and calculate total price
+- header display random popular product, and switch it if its added to cart

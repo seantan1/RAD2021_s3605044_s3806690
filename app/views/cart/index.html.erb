@@ -29,59 +29,36 @@
         </div>
     </div>
     
+<% @cart_products.each do |product_id| %>
+ <% product = get_product_by_id(product_id) %>
     <div class="row d-flex justify-content-center border-top">
         <div class="col-5 " >
             <div class="row d-flex ">
-                <div class="book margin-left"> <img src="https://i.imgur.com/2DsA49b.jpg" class="book-img"> </div>
+                 
+                <div class="book margin-left"> <img src=<%= product.image %> class="book-img"> </div>
                 <div class="my-auto flex-column d-flex pad-left">
-                    <h6 class="mob-text margin-left">Product Name</h6>
+                    <h6 class="mob-text margin-left"> <%= product.name %> </h6>
                 </div>
             </div>
         </div>
         <div class="my-auto col-7">
             <div class="row text-right">
                 <div class="col-3">
-                    <h6 class="mob-text">Colour</h6>
+                    <h6 class="mob-text"><%= product.color %></h6>
                 </div>
                 <div class="col-3">
-                    <h6 class="mob-text">Size</h6>
+                    <h6 class="mob-text"><%= product.size %></h6>
                 </div>
                 <div class="col-3">
-                    <h6 class="mob-text">Quantity</h6>
+                    <h6 class="mob-text">10.00</h6>
                 </div>
                 <div class="col-3">
-                    <h6 class="mob-text">Price</h6>
+                    <h6 class="mob-text"> $<%= product.price %></h6>
                 </div>
-            </div>
+             </div>
         </div>
     </div>
-    
-    <div class="row d-flex justify-content-center border-top">
-        <div class="col-5">
-            <div class="row d-flex margin-left">
-                <div class="book margin-left"> <img src="https://i.imgur.com/Oj1iQUX.jpg" class="book-img"> </div>
-                <div class="my-auto flex-column d-flex pad-left">
-                    <h6 class="mob-text margin-left">Product Name</h6>
-                 </div>
-            </div>
-        </div>
-        <div class="my-auto col-7">
-            <div class="row text-right">
-                <div class="col-3">
-                    <h6 class="mob-text">Colour</h6>
-                </div>
-                <div class="col-3">
-                    <h6 class="mob-text">Size</h6>
-                </div>
-                <div class="col-3">
-                    <h6 class="mob-text">Quantity</h6>
-                </div>
-                <div class="col-3">
-                    <h6 class="mob-text">Price</h6>
-                </div>
-            </div>
-        </div>
-    </div>
+<% end %>
 
 
         <div class="col-lg-12">
@@ -96,7 +73,9 @@
             </div>
     </div>
 </div>
-<%= @cart_products %>
+<%= @cart_products %><br />
+ 
+
 
 <h1>Cart#index</h1>
 <p>Find me in app/views/cart/index.html.erb</p>

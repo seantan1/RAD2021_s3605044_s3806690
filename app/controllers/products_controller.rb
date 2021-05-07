@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  
   def index
     @all_products = Product.all
   end
@@ -7,8 +8,35 @@ class ProductsController < ApplicationController
     @product = Product.new
   end
   
+  def show
+    men_category = "men"
+    women_category = "women"
+    kids_category = "kids"
+    new_ins_category = "new-ins"
+    
+    if params[:id] == men_category
+      @category_products = filter_products(Product.all, men_category)
+    end
+    if params[:id] == women_category
+      @category_products = filter_products(Product.all, women_category)
+    end
+    if params[:id] == kids_category
+      @category_products = filter_products(Product.all, kids_category)
+    end
+    if params[:id] == new_ins_category
+      @category_products = filter_products(Product.all, new_ins_category)
+    end
+    
+  end
+  
+
+  
   def edit
     @product = Product.find(params[:id])
+  end
+  
+  def seeAllProducts
+    @all_products = Product.all
   end
   
   def create
@@ -47,9 +75,24 @@ class ProductsController < ApplicationController
   end
   
   
+  
+  
+  
  private
   #allowed list of params for user model 
   def product_params
     params.require(:product).permit(:name, :image, :price, :category, :popularity, :size, :color, :stockcount, :arrival)
   end
+
+  def filter_products(products, target_category)
+    filtered_products = []
+    
+    products.each do |product|
+      if product.category.to_s == target_category
+        filtered_products.push(product)
+      end
+    end
+    return filtered_products
+  end
+  
 end

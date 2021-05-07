@@ -5,48 +5,50 @@
 
 <!--<main>-->
   <!--Top Banner-->
-  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-       <h1 class="display-4 fw-normal">Product Name</h1>
-      <p class="lead fw-normal"> Product Description</p>
-      <p class="lead fw-normal"> Product Price</p>
-
-     <!--button to save to list-->
-       <!--<button class="btn btn-dark"><i class="bi bi-plus"></i></button>-->
-       <%= link_to '', nil , class:"bi bi-plus btn btn-dark text-white btn-lg " %>
-    </div>
-  </div>
-  
-  <!--START POPULAR--> 
-  
-  
-  <div class="container-fluid bg-light shadow-sm ">
-    <p class="h1">Popular</p> <br> 
-<div class="row row-cols-2 row-cols-md-4 g-4">
-  <% @all_products.each do |product| %>
-   <% if product.popularity > 5 %>
-  <div class="col col-md-4">
-    <div class="card bg-light h-75">
-       <img src=<%= product.image %>  alt="..." class="book-img rounded mx-auto d-block" > 
-      <div class="card-body">
-        <h5 class="card-title text-center"><%= product.name %></h5>
-        <p class="card-text text-center"> $<%= number_with_precision(product.price, :precision => 2) %></p>
-        <!--<center> <a href="#" class="btn btn-primary text-center text-white">Save</a> </center>-->
+  <div id="carouselExampleCaptions" class="carousel slide bg-light" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <% filter_products_in_cart(@all_products).each_with_index do |product, index| %>
+    <div class="carousel-item <%= "active" if index.zero? %>">
+      <img src="<%= product.image %>" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block ">
+        <h5><%= product.name %></h5>
+        <p>$<%= product.price %></p>
         <% if session[:cart].include? product.id.to_s %>
-        <%= link_to 'Remove from Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
+        <%= link_to 'Remove from Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto  " %>
         <% else %>
-        <%= link_to 'Add to Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
+        <%= link_to 'Add to Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto " %>
         <% end %>
       </div>
-    </div>
+    </div>       
+        <% end %>
   </div>
-      <% end %>
-      <% end %>
 </div>
-<br>
-   </div><br>
-   
-  
+
+
+  <!--START POPULAR--> 
+  <div class="container-fluid bg-light shadow-sm ">
+    <p class="h1">Popular</p> <br>
+    <div class="row row-cols-2 row-cols-md-4 g-4">
+      <% @all_products.each do |product| %>
+      <% if product.popularity > 5 %>
+      <div class="col col-md-4">
+        <div class="card bg-light h-75">
+          <img src=<%= product.image %>  alt="..." class="book-img rounded mx-auto d-block" > 
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= product.name %></h5>
+            <p class="card-text text-center"> $<%= number_with_precision(product.price, :precision => 2) %></p>
+            <% if session[:cart].include? product.id.to_s %>
+            <%= link_to 'Remove from Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
+            <% else %>
+            <%= link_to 'Add to Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <% end %>
+      </div><br>
+  </div><br>
   <!--END POPULAR-->
 
 
@@ -63,8 +65,8 @@
       <div class="my-3 py-3">
         <h2 class="display-5">Women</h2>
         <!--<p class="lead">Code to retrieve total product count</p>-->
-          <small class="text-muted"><p> Code to retrieve total product count</p></small>
-        <%= link_to "Explore", root_path, class:"btn btn-primary text-white" %>
+          <small class="text-muted"><p> <%= get_product_category_count("women") %> ITEMS</p></small>
+        <a class="btn btn-primary text-white" aria-current="page" href="/products/women">Explore</a>
       </div>    
       <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
@@ -75,8 +77,8 @@
       <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
       <div class="my-3 p-3">
         <h2 class="display-5">Men</h2>
-          <small class="text-muted"><p> Code to retrieve total product count</p></small>
-        <%= link_to "Explore", root_path, class:"btn btn-primary text-white" %>
+          <small class="text-muted"><p> <%= get_product_category_count("Men") %> ITEMS</p></small>
+        <a class="btn btn-primary text-white" aria-current="page" href="/products/men">Explore</a>
       </div>
       <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
@@ -88,8 +90,8 @@
     <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center  overflow-hidden">
       <div class="my-3 py-3">
           <h2 class="display-5">Kids</h2>
-          <small class="text-muted"><p> Code to retrieve total product count</p></small>
-        <%= link_to "Explore", root_path, class:"btn btn-primary text-white" %>
+          <small class="text-muted"><p><%= get_product_category_count("kids") %> ITEMS </p></small>
+        <a class="btn btn-primary text-white" aria-current="page" href="/products/kids">Explore</a>
       </div>    
       <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
@@ -99,8 +101,8 @@
       <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
       <div class="my-3 p-3">
         <h2 class="display-5">New-Ins</h2>
-          <small class="text-muted"><p> Code to retrieve total product count</p></small>
-        <%= link_to "Explore", root_path, class:"btn btn-primary text-white" %>
+          <small class="text-muted"><p> <%= get_product_category_count("new-ins") %> ITEMS</p></small>
+        <a class="btn btn-primary text-white" aria-current="page" href="/products/new-ins">Explore</a>
       </div>
       <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>

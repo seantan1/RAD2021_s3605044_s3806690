@@ -3,10 +3,15 @@ Rails.application.routes.draw do
 
   resources :newsletter_emails
   resources :products
+  # get 'products/men'
+  # get 'products/women'
+  # get 'products/kids'
   get 'users/list'
   resources :users
   
-  get 'seeAllProducts' => 'home#seeAllProducts'
+  get 'savedlist' => 'cart#savedlist'
+  
+  get 'seeAllProducts' => 'products#seeAllProducts'
   
   get 'login_main' => 'sessions#login'
   get 'login' => 'sessions#index'
