@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :cart
+
+  get 'support' => 'supports#new'
+  resources :supports
+  resources :savedlist
 
   resources :newsletter_emails
   resources :products

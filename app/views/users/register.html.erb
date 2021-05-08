@@ -13,11 +13,14 @@
    <div class="row mb-5">
     <div class="col-sm-10 offset-sm-5">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck1">
-        <label class="form-check-label" for="gridCheck1">
-          Terms And Conditions
-        </label>
+        <!--<input class="form-check-input" type="checkbox" id="terms_checkbox">-->
+        <!--<label class="form-check-label" for="terms_checkbox">-->
+        <!--  Terms And Conditions-->
+        <!--</label>-->
+        <%= check_box :terms_checkbox, {}, 0, 1 %>
       </div>
+      
+      
     </div>
   </div>
  <%=f.submit "Sign Up", :class => "btn btn-secondary"%>

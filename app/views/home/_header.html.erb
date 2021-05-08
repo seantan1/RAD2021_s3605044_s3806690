@@ -13,7 +13,7 @@
       <div class="container  ">
         <!--shopping bag icon-->
         <!--<button class="btn btn-dark" style="font-size:30px"> <i class="bi bi-bag"></i></button>-->
-        <%= link_to "", cart_index_path, class: "bi bi-bag btn btn-dark btn-lg text-white" %>
+        <%= link_to "Saved List", savedlist_index_path, class: "bi bi-bag btn btn-dark btn-lg text-white" %>
       </div>
     </nav>
     
@@ -42,11 +42,11 @@
         </li>
         <li class="nav-item">
           <!--<a class="nav-link" href="#">Saved</a>-->
-          <%= link_to "Saved", savedlist_path, class:"nav-link" %>
+          <%= link_to "Saved", savedlist_index_path, class:"nav-link" %>
 
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Help and Support</a>
+          <a class="nav-link" href="/support">Help and Support</a>
         </li>
         <% if session[:user_id] %>
           <li class="nav-item">
@@ -70,7 +70,7 @@
           <%= link_to "Products (for testing purposes)", products_path, class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Cart (for testing purposes)", cart_index_path, class:"nav-link" %>
+          <%= link_to "Saved List (for testing purposes)", savedlist_index_path, class:"nav-link" %>
         </li>
     </div>
 </nav>

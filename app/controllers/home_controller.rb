@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   
   def index
     @all_products = Product.all
-    session[:cart] ||= []
+    session[:savedlist] ||= []
   end
 
   def seeAllProducts
@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     
     products.each do |product|
       product_in_cart = false
-      session[:cart].each do |i|
+      session[:savedlist].each do |i|
         if product.id.to_s == i
           product_in_cart = true
         end

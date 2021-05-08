@@ -13,10 +13,10 @@
       <div class="carousel-caption d-none d-md-block ">
         <h5><%= product.name %></h5>
         <p>$<%= product.price %></p>
-        <% if session[:cart].include? product.id.to_s %>
-        <%= link_to 'Remove from Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto  " %>
+        <% if session[:savedlist].include? product.id.to_s %>
+        <%= link_to 'Remove from Saved List', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto  " %>
         <% else %>
-        <%= link_to 'Add to Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto " %>
+        <%= link_to 'Add to Saved List', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto " %>
         <% end %>
       </div>
     </div>       
@@ -37,10 +37,10 @@
           <div class="card-body">
             <h5 class="card-title text-center"><%= product.name %></h5>
             <p class="card-text text-center"> $<%= number_with_precision(product.price, :precision => 2) %></p>
-            <% if session[:cart].include? product.id.to_s %>
-            <%= link_to 'Remove from Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
+            <% if session[:savedlist].include? product.id.to_s %>
+            <%= link_to 'Remove from Saved List', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
             <% else %>
-            <%= link_to 'Add to Cart', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
+            <%= link_to 'Add to Saved List', edit_cart_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
             <% end %>
             </div>
           </div>

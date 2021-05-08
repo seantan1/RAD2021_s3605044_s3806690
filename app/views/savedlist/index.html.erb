@@ -1,6 +1,11 @@
 <br>
 <!--Total number of items in cart goes here-->
-<center><h3> bag (2) </h3></center>
+<center><h3> saved list (<%= saved_list_length %>) </h3></center>
+<% if saved_list_empty %>
+    <h2>Saved List empty!</h2>
+<% else %>
+    <h2>Saved List NOT empty!</h2>
+<% end %>
 <br> 
  <div class="container-fluid px-6 py-6 mx-auto bg-light">
     <div class="row d-flex justify-content-center">
@@ -29,7 +34,7 @@
         </div>
     </div>
     
-<% @cart_products.each do |product_id| %>
+<% @savedlist.each do |product_id| %>
  <% product = get_product_by_id(product_id) %>
     <div class="row d-flex justify-content-center border-top">
         <div class="col-5 " >

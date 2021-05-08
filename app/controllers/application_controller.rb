@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :get_product_category_count, :get_product_by_id
+  helper_method :get_product_category_count, :get_product_by_id, :edit_cart
   
   
   def index
     @newsletter_email = NewsletterEmail.new
-    session[:cart] ||= []
+    session[:savedlist] ||= []
   end
   
   def get_product_category_count(input_category)
@@ -26,4 +26,5 @@ class ApplicationController < ActionController::Base
     end
     return nil
   end
+  
 end

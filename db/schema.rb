@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210502074447) do
+ActiveRecord::Schema.define(version: 20210508031527) do
 
   create_table "newsletter_emails", force: :cascade do |t|
     t.string   "email"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20210502074447) do
     t.string   "color"
     t.integer  "stockcount"
     t.datetime "arrival"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "supports", force: :cascade do |t|
+    t.string   "email"
+    t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

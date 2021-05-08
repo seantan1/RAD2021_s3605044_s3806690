@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   
   def create
     respond_to do |format|
+      puts "CHECKBOX"
+      puts signup_params[:terms_checkbox]
+      puts "CHECKBOX"
+      # if (signup_params[:terms_checkbox])
       if username_exist(signup_params[:name])
         format.html{ redirect_to request.referrer, notice: "Username already taken." }
         format.json { head :no_content }
@@ -48,7 +52,7 @@ class UsersController < ApplicationController
   #allowed list of params for user model 
   def signup_params
   params.require(:user).permit(:name,:email, 
-  :password, :password_confirmation)
+  :password, :password_confirmation, :terms_checkbox)
   end
   
   def username_exist(username)

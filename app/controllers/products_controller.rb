@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
+  helper_method :calculate_days_ago, :is_new_in
   
   def index
     @all_products = Product.all
+    session[:savedlist] ||= []
   end
   
   def new
@@ -74,8 +76,13 @@ class ProductsController < ApplicationController
     end
   end
   
-  
-  
+  def calculate_days_ago(product)
+    return (DateTime.now - product.arrival.to_datetime).to_i
+  end
+    
+  def is_new_in(product)
+    return true unless calculate_days_ago(product) >= 30
+  end
   
   
  private
