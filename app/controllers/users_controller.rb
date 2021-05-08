@@ -10,31 +10,32 @@ class UsersController < ApplicationController
   
   def create
     respond_to do |format|
-      puts "CHECKBOX"
-      puts signup_params[:terms_checkbox]
-      puts "CHECKBOX"
-      # if (signup_params[:terms_checkbox])
-      if username_exist(signup_params[:name])
-        format.html{ redirect_to request.referrer, notice: "Username already taken." }
-        format.json { head :no_content }
-      elsif email_exist(signup_params[:email])
-        format.html{ redirect_to request.referrer, notice: "Email already taken." }
+      if (signup_params[:tos].to_i == 0)
+        format.html{ redirect_to request.referrer, notice: "You must accept the Terms & Conditions to register." }
         format.json { head :no_content }
       else
-        if email_valid(signup_params[:email])
-          @user = User.create(signup_params) 
-          session[:user_id] = @user.id
-          if @user.save
-           UserMailer.newsletter_confirmation(@user).deliver_now
-           format.html{ redirect_to request.referrer, notice: "Account created!" }
-           format.json { head :no_content }
-          else
-            format.html{ redirect_to request.referrer, notice: "Password not the same!" }
+        if username_exist(signup_params[:name])
+          format.html{ redirect_to request.referrer, notice: "Username already taken." }
+          format.json { head :no_content }
+        elsif email_exist(signup_params[:email])
+          format.html{ redirect_to request.referrer, notice: "Email already taken." }
+          format.json { head :no_content }
+        else
+          if email_valid(signup_params[:email])
+            @user = User.create(signup_params) 
+            session[:user_id] = @user.id
+            if @user.save
+             UserMailer.newsletter_confirmation(@user).deliver_now
+             format.html{ redirect_to request.referrer, notice: "Account created!" }
+             format.json { head :no_content }
+            else
+              format.html{ redirect_to request.referrer, notice: "Password not the same!" }
+              format.json { head :no_content }
+            end
+          else 
+            format.html{ redirect_to request.referrer, notice: "Email is invalid." }
             format.json { head :no_content }
           end
-        else 
-          format.html{ redirect_to request.referrer, notice: "Email is invalid." }
-          format.json { head :no_content }
         end
       end
     end
@@ -52,7 +53,7 @@ class UsersController < ApplicationController
   #allowed list of params for user model 
   def signup_params
   params.require(:user).permit(:name,:email, 
-  :password, :password_confirmation, :terms_checkbox)
+  :password, :password_confirmation, :tos)
   end
   
   def username_exist(username)
