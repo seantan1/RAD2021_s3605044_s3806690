@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'users/list'
   resources :users
   
-  get 'savedlist' => 'cart#savedlist'
+  # get 'savedlist' => 'savedlist#savedlist'
   
   get 'seeAllProducts' => 'products#seeAllProducts'
   

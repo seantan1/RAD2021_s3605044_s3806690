@@ -1,86 +1,98 @@
-<br>
-<!--Total number of items in cart goes here-->
-<center><h3> saved list (<%= saved_list_length %>) </h3></center>
+<!--TO DO LIST	-->
+
+<!--Come back to later if we have time-->
+<!--1. Need to randomise the banner - currently just shows the popular products in order after adding it to cart -->
+
+<!--PASS SECTION-->
+<!--1. Help and support email (i'll do this)-->
+
+<!--CREDIT SECTION-->
+<!--1. Add multiple images to a product-->
+<!--2. Add Description to product-->
+<!--3. When the “add to bag” button is clicked or the bag icon at the top right corner of the homepage is clicked, you app will prompt the user to login or to register.-->
+<!--4. Checkout page - just set up the folder and file for the cart (pretty much the same as savedlist/cart) and add the functions anywhere on the page and i'll sort out the rest-->
+<!--5. Twitter login -->
+
+
+
 <% if saved_list_empty %>
-    <h2>Saved List empty!</h2>
-<% else %>
-    <h2>Saved List NOT empty!</h2>
-<% end %>
-<br> 
- <div class="container-fluid px-6 py-6 mx-auto bg-light">
-    <div class="row d-flex justify-content-center">
-        <div class="col-5">
-            <h4 class="heading margin-left">Shopping Bag</h4>
-        </div>
-        <div class="col-7">
-            <div class="row text-right">
-                <div class="col-3">
-                    <h6 class="mt-2">Color</h6>
-                </div>
-                
-                <div class="col-3">
-                    <h6 class="mt-2">Size</h6>
-                </div>
-                
-                <div class="col-3">
-                    <h6 class="mt-2">Quantity</h6>
-                </div>
-                
-                <div class="col-3">
-                    <h6 class="mt-2">Price</h6>
-                </div>
-                
-            </div>
-        </div>
+    <div class="container-fluid text-center">
+        <div class="position-absolute top-50 start-50 translate-middle"> 
+        <i class="bi bi-basket" style="font-size: 10rem"></i>
+    <h1>It's lonely here</h1>
+    <h4 class="fw-lighter">Start shopping and add more items to your list, and then there will be joy here...</h4>
+    </div>
     </div>
     
-<% @savedlist.each do |product_id| %>
- <% product = get_product_by_id(product_id) %>
-    <div class="row d-flex justify-content-center border-top">
-        <div class="col-5 " >
-            <div class="row d-flex ">
-                 
-                <div class="book margin-left"> <img src=<%= product.image %> class="book-img"> </div>
-                <div class="my-auto flex-column d-flex pad-left">
-                    <h6 class="mob-text margin-left"> <%= product.name %> </h6>
-                </div>
+<% else %>
+	<% @savedlist.each do |product_id| %>
+    <% product = get_product_by_id(product_id) %>
+		<div class="container">
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row">
+					
+					<!--TEST-->
+
+
+
+					<!--Start of image-->
+					<div class="preview col-md-6">
+						<div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1"><img src=<%= product.image %> /></div>
+						  <div class=" tab-pane" id="pic-2"><img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/xbncbko2smutysktehvh/sportswear-tech-fleece-joggers-KyTww3X2.png" /></div>
+						</div>
+						<ul class="preview-thumbnail nav nav-tabs">
+						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW9ASrv-XVR4S7iSdV_4I1wd8xPuCzAiJFnG8KL9iaqVEcd3k2tRfeqhfHV3wPANJBq_U&usqp=CAU" /></a></li>
+						  <li><a data-target="#pic-2" data-toggle="tab"><img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/xbncbko2smutysktehvh/sportswear-tech-fleece-joggers-KyTww3X2.png" /></a></li>
+						  <li><a data-target="#pic-3" data-toggle="tab"><img src="https://xcdn.next.co.uk/common/Items/Default/Default/Publications/G35/shotview-315x472/102/338-850s.jpg" /></a></li>
+						  <li><a data-target="#pic-4" data-toggle="tab"><img src="https://images.asos-media.com/products/nike-tech-fleece-sweatpants-navy/11696729-1-navy?$XXL$&wid=513&fit=constrain" /></a></li>
+						</ul>
+					</div>
+					<!--End of image-->
+
+					<div class="details col-md-6">
+						<h3 class="product-title"><%= product.name %></h3>
+						<p class="product-description">Need to add product description when adding products</p>
+						<h4 class="price">current price: <span> $<%= product.price %></span></h4>
+
+						<h5 class="sizes">sizes:
+						<select class="form-select form-select-sm mb-3" aria-label=".form-select-lg example">
+                <option selected value="s">Small</option>
+                <option value="m">Medium</option>
+                <option value="l">Large</option>
+                <option value="xl">Extra Large</option>
+            </select>
+						</h5>
+						
+						<h5>Quantity:
+						<div class="form-outline">
+                <input type="quantity" id="typeNumber" class="form-control" />
             </div>
-        </div>
-        <div class="my-auto col-7">
-            <div class="row text-right">
-                <div class="col-3">
-                    <h6 class="mob-text"><%= product.color %></h6>
-                </div>
-                <div class="col-3">
-                    <h6 class="mob-text"><%= product.size %></h6>
-                </div>
-                <div class="col-3">
-                    <h6 class="mob-text">10.00</h6>
-                </div>
-                <div class="col-3">
-                    <h6 class="mob-text"> $<%= product.price %></h6>
-                </div>
-             </div>
-        </div>
-    </div>
-<% end %>
-
-
-        <div class="col-lg-12">
-            <div class="card ">
-                        <h3 class="text-start">Subtotal<h6 class="text-end">$23.49</h6></h3> 
-                            <h3 class="text-start">Taxes</h3>
-                            <h6 class="text-end">$2.99</h6>
-                        <div class="row d-flex " id="tax">
-                            <h3 class="mb-1 text-start">Total (tax included)</h3>
-                            <h6 class="mb-1 text-end">$26.48</h6>
-                        </div> <button class="btn-block btn-blue"> <span> <span id="checkout">Checkout</span> <span id="check-amt">$26.48</span> </span> </button>
+						</h5>
+						
+						<h5 class="colors">colors:
+						
+						<div class="form-check form-check-inline">
+                <input class="form-check-input btn-danger" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="red">
             </div>
-    </div>
-</div>
-<%= @cart_products %><br />
- 
+            <div class="form-check form-check-inline">
+                <input class="form-check-input btn-primary" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="blue">
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input btn-dark" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="black">
+            </div>
+			<div class="action text-center margin-top">
+			    <button class="add-to-cart btn btn-primary" type="button">Add To Cart</button>
+			</div>
+						</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% end %>
+	<% end %>
 
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
-<h1>Cart#index</h1>
-<p>Find me in app/views/cart/index.html.erb</p>

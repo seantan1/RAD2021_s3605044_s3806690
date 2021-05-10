@@ -48,3 +48,20 @@ text-align: left;
 bottom: initial;
 background-colour:black;
 }
+
+.btn-group.special {
+  display: flex;
+}
+
+.special .btn {
+  flex: 1
+}
+
+.footer-size{
+        margin: auto;
+  border: 3px solid green;
+  // padding: 10px;
+  // text-align: center
+  // height:10rem;
+
+}
