@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'support' => 'supports#new'
   resources :supports
   resources :savedlist
+  resources :profile
 
   resources :newsletter_emails
   resources :products
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
   resources :users
   
   # get 'savedlist' => 'savedlist#savedlist'
+  
+  # get 'profile' => 'profile#index'
   
   get 'seeAllProducts' => 'products#seeAllProducts'
   
