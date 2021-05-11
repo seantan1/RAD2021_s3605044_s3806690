@@ -94,15 +94,17 @@
             </div>
         </div>
     </div>
-
+    
+    <% @cart_products.each do |cart_product| %>
+    <% if cart_product.user_id == logged_in %>
+    <% if product = get_product_by_id(cart_product.product_id) %>
     <div class="row d-flex justify-content-center border-top">
         <div class="col-5 " >
             <div class="row d-flex ">
-                 
                  <!--Product Image goes here-->
-                <div class="book margin-left"> <img src="" class="book-img"> </div>
+                <div class="book margin-left"> <img src=<%= product.image %> class="book-img"> </div>
                 <div class="my-auto flex-column d-flex pad-left">
-                    <h6 class="mob-text margin-left"> Product Name </h6>
+                    <h6 class="mob-text margin-left"> <%= product.name %> </h6>
                 </div>
             </div>
         </div>
@@ -115,25 +117,29 @@
                     <h6 class="mob-text">Product Size</h6>
                 </div>
                 <div class="col-3">
-                    <h6 class="mob-text">10.00</h6>
+                    <h6 class="mob-text"><%= cart_product.quantity %></h6>
                 </div>
                 <div class="col-3">
-                    <h6 class="mob-text"> Product Price</h6>
+                    <h6 class="mob-text">$<%= product.price %></h6>
                 </div>
              </div>
         </div>
     </div>
- 
+  <% end %>
+  <% end %>
+  <% end %>
+    
+
 
         <div class="col-lg-12">
             <div class="card ">
-                        <h3 class="text-start">Subtotal<h6 class="text-end">$23.49</h6></h3> 
+                        <h3 class="text-start">Subtotal<h6 class="text-end">$<%= cart_price_total %></h6></h3> 
                             <h3 class="text-start">Taxes</h3>
                             <h6 class="text-end">$2.99</h6>
                         <div class="row d-flex " id="tax">
                             <h3 class="mb-1 text-start">Total (tax included)</h3>
-                            <h6 class="mb-1 text-end">$26.48</h6>
-                        </div> <button class="btn-block btn-blue"> <span> <span id="checkout">Checkout</span> <span id="check-amt">$26.48</span> </span> </button>
+                            <h6 class="mb-1 text-end">$<%= cart_price_total_wtax %></h6>
+                        </div> <button class="btn-block btn-blue"> <span> <span id="checkout">Checkout</span> <span id="check-amt">$<%= cart_price_total_wtax %></span> </span> </button>
             </div>
     </div>
 </div>

@@ -21,16 +21,19 @@
     <!--Header-->
     
     <!--Need code to check if user is signed in, if they're not, it won't display the header-->
-    <%= render 'home/header' =%>
     
-      <% if notice %>
-        <br/>
-        <%= render 'layouts/alerts' %>
-      <% end %>
-      <!--<br/><br/>-->
-      <%= yield %>
-            <%= render 'home/footer' =%>
-        </div>
+    <div id="header"><%= render 'home/header' =%></div>
+    <div id="body"> 
+        <% if notice %>
+            <br/>
+            <%= render 'layouts/alerts' %>
+          <% end %>
+          <!--<br/><br/>-->
+        <%= yield %>
+    </div>
+    </div>
+        <div id="footer"><%= render 'home/footer' =%></div>
+
         
     </body>
 </html>

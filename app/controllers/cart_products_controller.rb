@@ -3,6 +3,7 @@ class CartProductsController < ApplicationController
   # before_action :session[:user_id]!, except: [:index]
   
   helper_method :cart_price_total
+  helper_method :cart_price_total_wtax
 
   # GET /cart_products or /cart_products.json
   def index
@@ -72,13 +73,27 @@ class CartProductsController < ApplicationController
     CartProduct.all.each do |cart_product|
       if cart_product.user_id == logged_in
         if product = get_product_by_id(cart_product.product_id)
-          price += product.price * cart_product.quantity
+          price += (product.price * cart_product.quantity) 
         end
       end
     end
     return price
   end
 
+
+  def cart_price_total_wtax
+    price = 0
+    tax = 2.99
+    CartProduct.all.each do |cart_product|
+      if cart_product.user_id == logged_in
+        if product = get_product_by_id(cart_product.product_id)
+          price += (product.price * cart_product.quantity)  
+        end
+      end
+    end
+    return price + tax
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart_product
