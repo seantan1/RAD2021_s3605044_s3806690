@@ -2,7 +2,7 @@ class CartProductsController < ApplicationController
   before_action :set_cart_product, only: %i[ show edit update destroy ]
   # before_action :session[:user_id]!, except: [:index]
   
-  # helper_method :total_price
+  helper_method :cart_price_total
 
   # GET /cart_products or /cart_products.json
   def index
@@ -65,6 +65,18 @@ class CartProductsController < ApplicationController
       format.html { redirect_to cart_products_url, notice: "Cart product was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+  
+  def cart_price_total
+    price = 0
+    CartProduct.all.each do |cart_product|
+      if cart_product.user_id == logged_in
+        if product = get_product_by_id(cart_product.product_id)
+          price += product.price * cart_product.quantity
+        end
+      end
+    end
+    return price
   end
 
   private
