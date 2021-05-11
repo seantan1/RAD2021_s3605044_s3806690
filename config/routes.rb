@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :cart_products
   get 'support' => 'supports#new'
   resources :supports
   resources :savedlist

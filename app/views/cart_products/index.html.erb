@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cart Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>User ID</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cart_products.each do |cart_product| %>
+      <% if cart_product.user_id == session[:user_id] %>
+        <tr>
+          <td><%= cart_product.product_id %></td>
+          <td><%= cart_product.quantity %></td>
+          <td><%= cart_product.user_id %></td>
+          <td><%= link_to 'Show', cart_product %></td>
+          <td><%= link_to 'Edit', edit_cart_product_path(cart_product) %></td>
+          <td><%= link_to 'Destroy', cart_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cart Product', new_cart_product_path %>
