@@ -1,7 +1,41 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Cart Products</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Image</th>
+      <th>Quantity</th>
+      <th>User ID (keep for test)</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
+  <tbody>
+    <% @cart_products.each do |cart_product| %>
+      <% if cart_product.user_id == session[:user_id] %>
+        <% if product = get_product_by_id(cart_product.product_id) %>
+          <tr>
+            <td><%= link_to product.name, product %></td>
+            <td><img src=<%= product.image %> width="200"></td>
+            <td><%= cart_product.quantity %></td>
+            <td><%= cart_product.user_id %></td>
+            <td><%= link_to 'Show', cart_product %></td>
+            <td><%= link_to 'Edit', edit_cart_product_path(cart_product) %></td>
+            <td><%= link_to 'Destroy', cart_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+
+
+
+<br/>
+<h1>Full cart table (dev)</h1>
 <table>
   <thead>
     <tr>
@@ -14,20 +48,89 @@
 
   <tbody>
     <% @cart_products.each do |cart_product| %>
-      <% if cart_product.user_id == session[:user_id] %>
-        <tr>
-          <td><%= cart_product.product_id %></td>
-          <td><%= cart_product.quantity %></td>
-          <td><%= cart_product.user_id %></td>
-          <td><%= link_to 'Show', cart_product %></td>
-          <td><%= link_to 'Edit', edit_cart_product_path(cart_product) %></td>
-          <td><%= link_to 'Destroy', cart_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
+          <tr>
+            <td><%= cart_product.product_id %></td>
+            <td><%= cart_product.quantity %></td>
+            <td><%= cart_product.user_id %></td>
+            <td><%= link_to 'Show', cart_product %></td>
+            <td><%= link_to 'Edit', edit_cart_product_path(cart_product) %></td>
+            <td><%= link_to 'Destroy', cart_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        
     <% end %>
   </tbody>
 </table>
 
-<br>
-
 <%= link_to 'New Cart Product', new_cart_product_path %>
+
+
+<!--Start Cart -->
+<div class="container-fluid px-6 py-6 mx-auto bg-light">
+    <div class="row d-flex justify-content-center">
+        <div class="col-5">
+            <h4 class="heading margin-left">Shopping Bag</h4>
+        </div>
+        <div class="col-7">
+            <div class="row text-right">
+                <div class="col-3">
+                    <h6 class="mt-2">Color</h6>
+                </div>
+                
+                <div class="col-3">
+                    <h6 class="mt-2">Size</h6>
+                </div>
+                
+                <div class="col-3">
+                    <h6 class="mt-2">Quantity</h6>
+                </div>
+                
+                <div class="col-3">
+                    <h6 class="mt-2">Price</h6>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center border-top">
+        <div class="col-5 " >
+            <div class="row d-flex ">
+                 
+                 <!--Product Image goes here-->
+                <div class="book margin-left"> <img src="" class="book-img"> </div>
+                <div class="my-auto flex-column d-flex pad-left">
+                    <h6 class="mob-text margin-left"> Product Name </h6>
+                </div>
+            </div>
+        </div>
+        <div class="my-auto col-7">
+            <div class="row text-right">
+                <div class="col-3">
+                    <h6 class="mob-text">Product Colour</h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="mob-text">Product Size</h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="mob-text">10.00</h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="mob-text"> Product Price</h6>
+                </div>
+             </div>
+        </div>
+    </div>
+ 
+
+        <div class="col-lg-12">
+            <div class="card ">
+                        <h3 class="text-start">Subtotal<h6 class="text-end">$23.49</h6></h3> 
+                            <h3 class="text-start">Taxes</h3>
+                            <h6 class="text-end">$2.99</h6>
+                        <div class="row d-flex " id="tax">
+                            <h3 class="mb-1 text-start">Total (tax included)</h3>
+                            <h6 class="mb-1 text-end">$26.48</h6>
+                        </div> <button class="btn-block btn-blue"> <span> <span id="checkout">Checkout</span> <span id="check-amt">$26.48</span> </span> </button>
+            </div>
+    </div>
+</div>

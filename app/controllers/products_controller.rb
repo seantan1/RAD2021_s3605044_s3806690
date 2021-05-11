@@ -11,6 +11,10 @@ class ProductsController < ApplicationController
   end
   
   def show
+    @product = Product.find(params[:id])
+  end
+  
+  def category
     men_category = "men"
     women_category = "women"
     kids_category = "kids"
@@ -28,7 +32,6 @@ class ProductsController < ApplicationController
     if params[:id] == new_ins_category
       @category_products = filter_products(Product.all, new_ins_category)
     end
-    
   end
   
 

@@ -27,12 +27,16 @@ class CartProductsController < ApplicationController
     @cart_product = CartProduct.new(cart_product_params)
 
     respond_to do |format|
-      if @cart_product.save
-        format.html { redirect_to @cart_product, notice: "Cart product was successfully created." }
-        format.json { render :show, status: :created, location: @cart_product }
+      if cart_product_params[:quantity].to_i > 0
+        if @cart_product.save
+          format.html { redirect_to request.referrer, notice: "Cart product was successfully created." }
+          format.json { render :show, status: :created, location: @cart_product }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @cart_product.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @cart_product.errors, status: :unprocessable_entity }
+        format.html { redirect_to request.referrer, notice: "Quantity cannot be 0 or less!." }
       end
     end
   end
@@ -40,12 +44,16 @@ class CartProductsController < ApplicationController
   # PATCH/PUT /cart_products/1 or /cart_products/1.json
   def update
     respond_to do |format|
-      if @cart_product.update(cart_product_params)
-        format.html { redirect_to @cart_product, notice: "Cart product was successfully updated." }
-        format.json { render :show, status: :ok, location: @cart_product }
+      if cart_product_params[:quantity].to_i > 0
+        if @cart_product.update(cart_product_params)
+          format.html { redirect_to request.referrer, notice: "Cart product was successfully updated." }
+          format.json { render :show, status: :ok, location: @cart_product }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @cart_product.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @cart_product.errors, status: :unprocessable_entity }
+        format.html { redirect_to request.referrer, notice: "Quantity cannot be 0 or less!." }
       end
     end
   end

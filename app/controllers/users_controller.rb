@@ -80,4 +80,8 @@ class UsersController < ApplicationController
   def email_valid(user_email)
     return user_email.include? '@'
   end
+  
+  # def show
+  #   @user = User.find(params[:id])
+  # end
 end

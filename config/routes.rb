@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :profile
 
   resources :newsletter_emails
+  get '/products/category/:id', to: 'products#category'
   resources :products
   # get 'products/men'
   # get 'products/women'

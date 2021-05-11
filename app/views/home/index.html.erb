@@ -11,7 +11,7 @@
     <div class="carousel-item <%= "active" if index.zero? %>">
       <img src="<%= product.image %>" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block ">
-        <h5><%= product.name %></h5>
+        <h5><%= link_to product.name, product %></h5>
         <p>$<%= product.price %></p>
         <% if session[:savedlist].include? product.id.to_s %>
         <%= link_to 'Remove', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto  " %>
@@ -35,7 +35,7 @@
         <div class="card bg-light h-75">
           <img src=<%= product.image %>  alt="..." class="book-img rounded mx-auto d-block" > 
           <div class="card-body">
-            <h5 class="card-title text-center"><%= product.name %></h5>
+            <h5 class="card-title text-center"><%= link_to product.name, product %></h5>
             <p class="card-text text-center"> $<%= number_with_precision(product.price, :precision => 2) %></p>
             <% if session[:savedlist].include? product.id.to_s %>
             <%= link_to 'Remove', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>

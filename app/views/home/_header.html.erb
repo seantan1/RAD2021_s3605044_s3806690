@@ -29,16 +29,16 @@
           <!--<a class="nav-link" aria-current="page" href="#">Home</a>-->
         <!--</li>-->
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/products/men">Men</a>
+          <a class="nav-link" aria-current="page" href="/products/category/men">Men</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/products/women">Women</a>
+          <a class="nav-link" href="/products/category/women">Women</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/products/kids">Kids</a>
+          <a class="nav-link" href="/products/category/kids">Kids</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/products/new-ins">New-ins</a>
+          <a class="nav-link" href="/products/category/new-ins">New-ins</a>
         </li>
         <li class="nav-item">
           <!--<a class="nav-link" href="#">Saved</a>-->
@@ -48,7 +48,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/support">Help and Support</a>
         </li>
-        <% if session[:user_id] %>
+        <% if logged_in %>
           <li class="nav-item">
             <%= link_to "Logout", logout_path, class:"nav-link" %>
           </li>
