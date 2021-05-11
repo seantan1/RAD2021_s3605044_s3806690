@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id
+  helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :cart_price_total
   
   
   def index
@@ -38,6 +38,18 @@ class ApplicationController < ActionController::Base
   
   def logged_in
     return session[:user_id]
+  end
+  
+  def cart_price_total
+    price = 0
+    CartProduct.all.each do |cart_product|
+      if cart_product.user_id == logged_in
+        if product = get_product_by_id(cart_product.product_id)
+          price += product.price * cart_product.quantity
+        end
+      end
+    end
+    return price
   end
   
 end
