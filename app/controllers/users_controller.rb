@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  
+  helper_method :get_user
+  
   def index 
     @user = User.new #creates a user object for our form
     @users = User.all
@@ -6,6 +9,14 @@ class UsersController < ApplicationController
   
   def register
     @user = User.new
+  end
+  
+  def show
+    @user = get_user
+  end
+  
+  def edit
+    @user = User.find(params[:id])
   end
   
   def create
@@ -49,6 +60,10 @@ class UsersController < ApplicationController
     end
   end
   
+  def get_user
+    return User.find(session[:user_id])
+  end
+  
  private
   #allowed list of params for user model 
   def signup_params
@@ -81,7 +96,7 @@ class UsersController < ApplicationController
     return user_email.include? '@'
   end
   
-  # def show
-  #   @user = User.find(params[:id])
-  # end
+  def show
+    @user = User.find(params[:id])
+  end
 end
