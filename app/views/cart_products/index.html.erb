@@ -19,7 +19,7 @@
         <% if product = get_product_by_id(cart_product.product_id) %>
           <tr>
             <td><%= link_to product.name, product %></td>
-            <td><img src=<%= product.image %> width="200"></td>
+            <td><img src=<%= product_first_image(@product) %> width="200"></td>
             <td><%= cart_product.quantity %></td>
             <td><%= cart_product.user_id %></td>
             <td><%= product.price %></td>
@@ -44,6 +44,8 @@
     <tr>
       <th>Product</th>
       <th>Quantity</th>
+      <th>Size</th>
+      <th>Color</th>
       <th>User ID</th>
       <th colspan="3"></th>
     </tr>
@@ -54,6 +56,8 @@
           <tr>
             <td><%= cart_product.product_id %></td>
             <td><%= cart_product.quantity %></td>
+            <td><%= cart_product.size %></td>
+            <td><%= cart_product.color %></td>
             <td><%= cart_product.user_id %></td>
             <td><%= link_to 'Show', cart_product %></td>
             <td><%= link_to 'Edit', edit_cart_product_path(cart_product) %></td>
@@ -102,7 +106,7 @@
         <div class="col-5 " >
             <div class="row d-flex ">
                  <!--Product Image goes here-->
-                <div class="book margin-left"> <img src=<%= product.image %> class="book-img"> </div>
+                <div class="book margin-left"> <img src=<%= product_first_image(@product) %> class="book-img"> </div>
                 <div class="my-auto flex-column d-flex pad-left">
                     <h6 class="mob-text margin-left"> <%= product.name %> </h6>
                 </div>
@@ -111,10 +115,10 @@
         <div class="my-auto col-7">
             <div class="row text-right">
                 <div class="col-3">
-                    <h6 class="mob-text">Product Colour</h6>
+                    <h6 class="mob-text"><%= cart_product.color %></h6>
                 </div>
                 <div class="col-3">
-                    <h6 class="mob-text">Product Size</h6>
+                    <h6 class="mob-text"><%= cart_product.size %></h6>
                 </div>
                 <div class="col-3">
                     <h6 class="mob-text"><%= cart_product.quantity %></h6>

@@ -6,10 +6,17 @@
         <strong>Product name:</strong>
         <%= @product.name %>
         </p>
+        
+        <p>
+        <strong>First Image only:</strong>
+            <img src=<%= product_first_image(@product) %> />
+        </p>
     
         <p>
-        <strong>image:</strong>
-        <img src=<%= @product.image %> />
+        <strong>All images:</strong>
+        <% product_images(@product).each do |image| %>
+            <img src=<%= image %> />
+        <% end %>
         </p>
     
     
@@ -19,9 +26,4 @@
     <h1>Product does not exist</h1>
 <% end %>
 
-<h1>Add to cart</h1>
-<%= render 'addcart', cart_product: get_cart_product_by_product_id(@product.id) %>
-
-
 <%= link_to 'Back', products_path, class:"btn btn-secondary" %>
-<br/><br/><br/><br/><br/><br/><br/><br/>

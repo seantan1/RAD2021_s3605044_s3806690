@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id
+  helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, :product_first_image
   
   
   def index
@@ -40,6 +40,12 @@ class ApplicationController < ActionController::Base
     return session[:user_id]
   end
   
+  def product_images(product)
+    return product.image.split(',').map(&:to_s)
+  end
   
+  def product_first_image(product)
+    return product.image.split(',').map(&:to_s).first
+  end
   
 end

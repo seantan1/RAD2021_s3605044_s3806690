@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+
   
   def create
     respond_to do |format|
@@ -48,6 +49,20 @@ class UsersController < ApplicationController
             format.json { head :no_content }
           end
         end
+      end
+    end
+  end
+  
+  def update
+    respond_to do |format|
+      @user = User.find(params[:id])
+      @user = @user.update(signup_params)
+      if @user
+        format.html{ redirect_to profile_path, notice: "User details successfully updated!" }
+        format.json { head :no_content }
+      else
+        format.html{ redirect_to request.referrer, notice: "Password is not the same!" }
+        format.json { head :no_content }
       end
     end
   end
@@ -85,7 +100,6 @@ class UsersController < ApplicationController
     @users = User.all
     @users.each do |user|
       if user.email == user_email
-        
         return true
       end
     end

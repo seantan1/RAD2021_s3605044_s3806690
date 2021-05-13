@@ -1,5 +1,5 @@
 class SavedlistController < ApplicationController
-  helper_method :saved_list_empty, :saved_list_length
+  helper_method :saved_list_empty, :saved_list_length, :product_colors, :product_sizes
   
   def index
     session[:savedlist] ||= []
@@ -33,5 +33,13 @@ class SavedlistController < ApplicationController
   
   def saved_list_length
     return session[:savedlist].length
+  end
+  
+  def product_colors(product)
+    return product.color.split(',').map(&:to_s)
+  end
+  
+  def product_sizes(product)
+    return product.size.split(',').map(&:to_s)
   end
 end

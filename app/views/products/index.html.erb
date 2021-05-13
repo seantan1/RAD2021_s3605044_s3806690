@@ -14,6 +14,7 @@
     <th>Color</th>
     <th>Stock count</th>
     <th>Arrival date</th>
+    <th>Description</th>
     <th>Days ago</th>
     <th>Is New Ins</th>
     <th colspan="4"></th>
@@ -25,7 +26,7 @@
         <tr>
             <td><%= product.id %></td>
             <td><%= link_to product.name, product %></td>
-            <td><img src=<%= product.image %> width="200"></td>
+            <td><img src=<%= product_first_image(product) %> width="200"></td>
             <td><%= number_with_precision(product.price, :precision => 2) %></td>
             <td><%= product.category %></td>
             <td><%= product.popularity %></td>
@@ -33,6 +34,7 @@
             <td><%= product.color %></td>
             <td><%= product.stockcount %></td>
             <td><%= product.arrival %></td>
+            <td><%= product.description %></td>
             <td><%= calculate_days_ago(product) %></td>
             <td><%= is_new_in(product) %></td>
             <% if session[:savedlist].include? product.id.to_s %>

@@ -32,6 +32,10 @@ class CartProductsController < ApplicationController
         if @cart_product.save
           format.html { redirect_to request.referrer, notice: "Cart product was successfully created." }
           format.json { render :show, status: :created, location: @cart_product }
+            
+          # Then remove from savedlist
+          session[:savedlist] ||= []
+          session[:savedlist].delete(cart_product_params[:product_id])
         else
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @cart_product.errors, status: :unprocessable_entity }
@@ -102,6 +106,6 @@ class CartProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_product_params
-      params.require(:cart_product).permit(:product_id, :quantity, :user_id)
+      params.require(:cart_product).permit(:product_id, :quantity, :size, :color, :user_id)
     end
 end

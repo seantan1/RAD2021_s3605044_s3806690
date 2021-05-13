@@ -5,7 +5,8 @@
   <div class="container text-center mt-5"> 
    <h1 class="display-5">Log in to enter the <br> wonderland of <br>fashion...</h1>
      </div>
-   <div class="position-absolute top-50 start-50 translate-middle"> 
+   
+   <div class="container form-control-sm col-md-3 mx-auto"> 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label"><%= label_tag :email %></label>
       <%= text_field_tag :log_in_email, params[:email], :class => "form-control"%>
@@ -18,13 +19,16 @@
   </div>
   <!--<button type="submit" class="btn btn-primary">Submit</button>-->
      <%= submit_tag "Log In", :class => "btn btn-secondary" %><br>
-     <a href="#" class="link-primary">Forgot Password? Click Here</a>
-     
+      
      <!--<%= link_to "Register", register_path, class:"nav-link" %>-->
 
      </div></div>
       <% end %>
-      
-      
 </form>
 
+<hr></hr>
+<div class="text-center">
+      <a href="#" class="link-primary fw-bolder">Forgot Password? Click Here</a>
+
+</div>
+ 

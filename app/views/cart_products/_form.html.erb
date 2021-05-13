@@ -23,7 +23,7 @@
   
   <div class="field">
     <%= f.label :user_id %>
-    <%= f.number_field :user_id, id: :cart_product_user_id, value:session[:user_id] %>
+    <%= f.number_field :user_id, id: :cart_product_user_id, value:logged_in %>
   </div>
 
   <div class="actions">
