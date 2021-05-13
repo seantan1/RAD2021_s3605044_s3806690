@@ -7,7 +7,7 @@
  <% @all_products.each do |product| %>
   <div class="col col-md-4">
     <div class="card h-75 bg-light">
-      <img src=<%= product.image %> class="book-img rounded mx-auto d-block"  alt="">
+      <img src=<%= product_first_image(product) %>  class="book-img rounded mx-auto d-block"  alt="">
       <div class="card-body">
         <h5 class="card-title text-center"><%= product.name %></h5>
         <p class="card-text text-center">$<%= product.price %></p>

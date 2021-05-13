@@ -19,7 +19,7 @@
         <% if product = get_product_by_id(cart_product.product_id) %>
           <tr>
             <td><%= link_to product.name, product %></td>
-            <td><img src=<%= product_first_image(@product) %> width="200"></td>
+            <td><img src=<%= product_first_image(product) %> width="200"></td>
             <td><%= cart_product.quantity %></td>
             <td><%= cart_product.user_id %></td>
             <td><%= product.price %></td>
@@ -57,7 +57,7 @@
             <td><%= cart_product.product_id %></td>
             <td><%= cart_product.quantity %></td>
             <td><%= cart_product.size %></td>
-            <td><%= cart_product.color %></td>
+            <td><%= cart_product.quantity %></td>
             <td><%= cart_product.user_id %></td>
             <td><%= link_to 'Show', cart_product %></td>
             <td><%= link_to 'Edit', edit_cart_product_path(cart_product) %></td>
@@ -106,13 +106,16 @@
         <div class="col-5 " >
             <div class="row d-flex ">
                  <!--Product Image goes here-->
-                <div class="book margin-left"> <img src=<%= product_first_image(@product) %> class="book-img"> </div>
+                <div class="book margin-left"> <img src=<%= product_first_image(product) %> class="book-img"> </div>
                 <div class="my-auto flex-column d-flex pad-left">
                     <h6 class="mob-text margin-left"> <%= product.name %> </h6>
                 </div>
+                
             </div>
+        <%= link_to 'Remove', cart_product, method: :delete, data: { confirm: 'Are you sure you want to remove this product?' }, class:"mob-text margin-left" %>
+
         </div>
-        <div class="my-auto col-7">
+        <div class="my-auto col-7"> 
             <div class="row text-right">
                 <div class="col-3">
                     <h6 class="mob-text"><%= cart_product.color %></h6>
