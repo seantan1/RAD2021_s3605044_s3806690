@@ -1,7 +1,7 @@
  <div class="container-flex bg-secondary">
-     <h1>Profile Page</h1>
-     <h2><%= get_user.name %></h2>
-     <h2><%= get_user.email %></h2>
+     <h1 class="fw-normal text-center">Profile Page</h1><br><br>
+     <h2 class="fw-normal">Name: <%= get_user.name %></h2>
+     <h2 class="fw-normal">Email: <%= get_user.email %></h2>
     <br></br>
     <h3>Gravatar - look at week 7</h3>
     </div>
@@ -9,15 +9,15 @@
     
   <div class="container-flex bg-light">
 <ul class="nav flex-column fs-3">
-  <li class="nav-item margin-header ">
+  <li class="nav-item margin-header mx-auto ">
     <!--Need to save this to cart not savedlist-->
       <%= link_to "  pending orders", savedlist_index_path, class:"bi bi-clock nav-link" %>
     <!--<a class="bi bi-clock nav-link" aria-current="page" href="#">  pending orders</a>-->
   </li>
-  <li class="nav-item">
+  <li class="nav-item mx-auto">
     <%= link_to 'Update login details', edit_user_path(get_user), class:"bi bi-door-open-fill nav-link" %>
   </li>
-  <li class="nav-item">
+  <li class="nav-item mx-auto">
     <a class="bi bi-envelope nav-link" href="#">   subscription</a>
     
   </li>

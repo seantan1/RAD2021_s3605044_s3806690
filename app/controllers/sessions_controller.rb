@@ -9,6 +9,16 @@ class SessionsController < ApplicationController
     end
   end
   
+  def twitter
+    @user = User.find_or_create_from_auth_hash(auth_hash)
+    session[:user_id] = @user.id
+    redirect_to request.referrer
+  end
+  
+  def auth_hash
+    request.env['omniauth.auth']
+  end
+  
   def destroy
     session[:user_id] = nil
     redirect_to login_path, :notice => "Successfully logged out"

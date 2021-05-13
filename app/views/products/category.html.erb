@@ -22,7 +22,7 @@
         <tr>
             <th><%= product.id %></th>
             <td><%= link_to product.name, product %></td>
-            <td><img src=<%= product.image %> width="200"></td>
+            <td><img src=<%= product_first_image(product) %> width="200"></td>
             <td><%= number_with_precision(product.price, :precision => 2) %></td>
             <td><%= product.category %></td>
             <td><%= product.popularity %></td>

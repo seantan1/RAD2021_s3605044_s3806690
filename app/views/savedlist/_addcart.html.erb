@@ -23,17 +23,12 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-		<ul class="preview-thumbnail nav nav-tabs">
-		   <% product_images(product).each_with_index do |image, index| %>
-		  <li class="<%= "active" if index.zero? %>"><a data-toggle="tab"><img src=<%= image %> /></a></li>
-		  <% end %>
-		</ul>
 	</div>
 		<!--End of image-->
     
     
         
-		<div class="details col-md-6">
+		<div class="details col-md-6 mx-auto">
 			<h3 class="product-title"><%= product.name %></h3>
 			<p class="product-description"><%= product.description %></p>
 			<h4 class="price">current price: <span> $<%= product.price %></span></h4>
@@ -47,7 +42,7 @@
             
             <div class="field">
                 <h3>Sizes</h3>
-                <%= f.select :size, product_sizes(product) %>
+                <h5 class="text-uppercase"><%= f.select :size, product_sizes(product) %></h5>
             </div>
 			
 			<div class="field">

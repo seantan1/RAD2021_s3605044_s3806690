@@ -1,25 +1,35 @@
 <h1 class="text-center">Product Description</h1><br><br>
 
-<% if @product %>
+
+        
+    <div class="container mx-auto bg-dark"> 
+        <div class="preview col-md-6 mx-auto">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+             <div class="carousel-inner">
+                 <% product_images(@product).each_with_index do |image, index| %>
+            <div class="carousel-item <%= "active" if index.zero? %>">
+            <img src=<%= image %>  class="d-block w-100" alt="">
+            </div>
+            <% end %>
+            </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+    	</div>
+	</div>
+     
+    <% if @product %>
     <div class="jumbotron"> 
         <p>
         <strong>Product name:</strong>
         <%= @product.name %>
         </p>
-        
-        <p>
-        <strong>First Image only:</strong>
-            <img src=<%= product_first_image(@product) %> />
-        </p>
-    
-        <p>
-        <strong>All images:</strong>
-        <% product_images(@product).each do |image| %>
-            <img src=<%= image %> />
-        <% end %>
-        </p>
-    
-    
         
     </div>
 <% else %>
@@ -27,3 +37,17 @@
 <% end %>
 
 <%= link_to 'Back', products_path, class:"btn btn-secondary" %>
+
+
+        <!--MULTIPLE IMAGES-->
+        <!--<p>-->
+        <!--<strong>All images:</strong>-->
+        <!--<#% product_images(@product).each do |image| %>-->
+        <!--    <img src=<#%= image %> />-->
+        <!--<#% end %>-->
+        <!--</p>-->
+        
+        <!--        <p>-->
+        <!--<strong>First Image only:</strong>-->
+        <!--    <img src=<#%= product_first_image(@product) %> />-->
+        <!--</p>-->

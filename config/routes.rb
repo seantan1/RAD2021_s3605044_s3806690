@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   # get 'profile' => 'profile#index'
   
   get 'seeAllProducts' => 'products#seeAllProducts'
-  
+  get '/auth/:provider/callback', to: 'sessions#twitter'
   get 'login_main' => 'sessions#login'
   get 'login' => 'sessions#index'
   get 'logout' => 'sessions#destroy'
