@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   
   helper_method :get_user
   
@@ -84,6 +85,10 @@ class UsersController < ApplicationController
   def signup_params
   params.require(:user).permit(:name,:email, 
   :password, :password_confirmation, :tos)
+  end
+  
+  def logged_in
+    return session[:user_id]
   end
   
   def username_exist(username)

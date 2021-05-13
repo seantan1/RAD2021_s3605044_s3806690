@@ -67,11 +67,14 @@
     <% end %>
   </tbody>
 </table>
+ <%= link_to 'New Cart Product', new_cart_product_path %>
 
-<%= link_to 'New Cart Product', new_cart_product_path %>
-
+<br></br><br></br>
 
 <!--Start Cart -->
+
+<h3 class="bg-secondary text-center">Products In Bag: <%= cart_products_count %> </h3><br></br>
+
 <div class="container-fluid px-6 py-6 mx-auto bg-light">
     <div class="row d-flex justify-content-center">
         <div class="col-5">
@@ -144,9 +147,13 @@
                             <h3 class="text-start">Taxes</h3>
                             <h6 class="text-end">$2.99</h6>
                         <div class="row d-flex " id="tax">
+                            
                             <h3 class="mb-1 text-start">Total (tax included)</h3>
                             <h6 class="mb-1 text-end">$<%= cart_price_total_wtax %></h6>
-                        </div> <button class="btn-block btn-blue"> <span> <span id="checkout">Checkout</span> <span id="check-amt">$<%= cart_price_total_wtax %></span> </span> </button>
+                        </div>
+                        <!--<button class="btn-block btn-blue"> <span> <span id="checkout">Checkout</span> <span id="check-amt">$<#%= cart_price_total_wtax %></span> </span> </button>-->
+                        
+                        <div class="btn btn-primary  text-start"> <%= link_to 'Checkout', cart_products_checkout_path, class:"text-start text-white stretched-link" %> <span id="check-amt">$<%= cart_price_total_wtax %></span>  </div>
             </div>
     </div>
 </div>

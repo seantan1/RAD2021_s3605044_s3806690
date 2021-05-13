@@ -2,8 +2,7 @@ class CartProductsController < ApplicationController
   before_action :set_cart_product, only: %i[ show edit update destroy ]
   # before_action :session[:user_id]!, except: [:index]
   
-  helper_method :cart_price_total
-  helper_method :cart_price_total_wtax
+  helper_method :cart_price_total, :cart_price_total_wtax, :cart_products_count
 
   # GET /cart_products or /cart_products.json
   def index
@@ -72,6 +71,18 @@ class CartProductsController < ApplicationController
     end
   end
   
+  def checkout
+    respond_to do |format|
+      CartProduct.all.each do |cart_product|
+        if cart_product.user_id == logged_in
+          cart_product.destroy
+        end
+      end
+      format.html { redirect_to cart_products_url, notice: "Checkout successful." }
+      format.json { head :no_content }
+    end
+  end
+  
   def cart_price_total
     price = 0
     CartProduct.all.each do |cart_product|
@@ -96,6 +107,16 @@ class CartProductsController < ApplicationController
       end
     end
     return price + tax
+  end
+  
+  def cart_products_count
+    count = 0
+    CartProduct.all.each do |product|
+      if product.user_id.to_s == logged_in.to_s
+        count += 1
+      end
+    end
+    return count
   end
   
   private
