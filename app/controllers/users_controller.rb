@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-
+  skip_before_filter :require_login
   
-  helper_method :get_user
+  helper_method :get_user, :subscribed_newsletter
   
   def index 
     @user = User.new #creates a user object for our form
@@ -76,9 +76,43 @@ class UsersController < ApplicationController
     end
   end
   
+  def newsletter_subscription_switch
+    respond_to do |format|
+      if subscribed_newsletter(get_user)
+        NewsletterEmail.all.each do |newsletter|
+          if newsletter.email == get_user.email
+            newsletter.destroy
+            format.html { redirect_to request.referrer, notice: "Successfully Unsubscribed from Newsletter" }
+            format.json { head :no_content }
+          end
+        end
+      else
+        params = {"email"=>get_user.email}
+        @newsletter_email = NewsletterEmail.new(params)
+        if @newsletter_email.save
+          format.html { redirect_to request.referrer, notice: "Successfully Subscribed to Newsletter" }
+          format.json { render :show, status: :created, location: @newsletter_email }
+        end
+      end
+    end
+      
+    
+      
+  end
+  
   def get_user
     return User.find(session[:user_id])
   end
+  
+  def subscribed_newsletter(user)
+    NewsletterEmail.all.each do |newsletter|
+      if newsletter.email == user.email
+        return true
+      end
+    end
+    return false
+  end
+    
   
  private
   #allowed list of params for user model 
@@ -88,7 +122,8 @@ class UsersController < ApplicationController
   end
   
   def logged_in
-    return session[:user_id]
+    return session[:user_id] unless nil
+    return false
   end
   
   def username_exist(username)

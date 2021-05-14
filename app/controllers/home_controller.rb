@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  skip_before_filter :require_login
   helper_method :filter_products_in_cart
   
   def index

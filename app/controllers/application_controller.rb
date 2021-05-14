@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_filter :require_login
+  
   helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, :product_first_image
   
   
@@ -37,7 +39,8 @@ class ApplicationController < ActionController::Base
   end
   
   def logged_in
-    return session[:user_id]
+    return session[:user_id] unless nil
+    return false
   end
   
   def product_images(product)
@@ -48,4 +51,11 @@ class ApplicationController < ActionController::Base
     return product.image.split(',').map(&:to_s).first
   end
   
+private
+
+  def require_login
+    unless logged_in
+      redirect_to login_path
+    end
+  end
 end

@@ -4,13 +4,14 @@ Rails.application.routes.draw do
   get 'support' => 'supports#new'
   resources :supports
   resources :savedlist
-
+  
   resources :newsletter_emails
   get '/products/category/:id', to: 'products#category'
   resources :products
   # get 'products/men'
   # get 'products/women'
   # get 'products/kids'
+  get 'users/newsletter_subscription_switch', to: 'users#newsletter_subscription_switch'
   get 'users/list'
   get 'profile' => 'users#show'
   resources :users

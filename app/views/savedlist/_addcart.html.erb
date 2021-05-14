@@ -61,7 +61,12 @@
             </div>
             
             <div class="actions">
-                <%= f.submit "Add To Cart" %>
+                <% if logged_in %>
+                <%= f.submit "Add To Bag" %>
+                <% else %>
+                 <button type="button" class="btn btn-lg btn-primary" disabled>You Must Be Signed In To Add To Bag!</button>
+                <% end %>
+                
             </div>
 		<!-- END OF FORM -->
 		</div>

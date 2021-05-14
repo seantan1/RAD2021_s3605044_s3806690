@@ -1,53 +1,62 @@
-<h1 class="text-center">Product Description</h1><br><br>
+<br></br>
+<h1 class="text-center fw-bold">Product Description</h1> 
 
-
-        
-    <div class="container mx-auto bg-dark"> 
-        <div class="preview col-md-6 mx-auto">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-             <div class="carousel-inner">
-                 <% product_images(@product).each_with_index do |image, index| %>
-            <div class="carousel-item <%= "active" if index.zero? %>">
-            <img src=<%= image %>  class="d-block w-100" alt="">
-            </div>
-            <% end %>
-            </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-    	</div>
-	</div>
-     
-    <% if @product %>
-    <div class="jumbotron"> 
-        <p>
-        <strong>Product name:</strong>
-        <%= @product.name %>
-        </p>
-        
+    <div class="container">
+    <div class="card">
+	<!--<div class="container">-->
+	<div class="wrapper row">
+    <!--Start of image-->
+    <div class="preview col-md-6">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+     <div class="carousel-inner">
+         <% product_images(@product).each_with_index do |image, index| %>
+    <div class="carousel-item <%= "active" if index.zero? %>">
+    <img src=<%= image %>  class="d-block w-100" alt="">
     </div>
-<% else %>
-    <h1>Product does not exist</h1>
-<% end %>
+    <% end %>
+    </div>
+      
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+	</div>
+		<!--End of image-->
+    
+		<div class="details col-md-5 mx-auto">
+			<h3 class="product-title text-center"><%= @product.name %></h3>
+			<p class="product-description text-center"><%= @product.description %></p>
+			<hr></hr>
+			<h4 class="price text-center ">current price: <span> $<%= @product.price %></span></h4>
+    <hr></hr>
 
-<%= link_to 'Back', products_path, class:"btn btn-secondary" %>
-
-
-        <!--MULTIPLE IMAGES-->
-        <!--<p>-->
-        <!--<strong>All images:</strong>-->
-        <!--<#% product_images(@product).each do |image| %>-->
-        <!--    <img src=<#%= image %> />-->
-        <!--<#% end %>-->
-        <!--</p>-->
-        
-        <!--        <p>-->
-        <!--<strong>First Image only:</strong>-->
-        <!--    <img src=<#%= product_first_image(@product) %> />-->
-        <!--</p>-->
+        <!-- START OF FORM -->
+            <div class="field text-center">
+                <h3 class="fw-bolder">Sizes</h3>
+                <h5 class="text-uppercase"> <%= @product.size %></h5>
+            </div>
+            <hr></hr>
+			
+			<div class="field text-center">
+                <h3 class="fw-bolder text-center">Stock Count</h3> <%= @product.stockcount %>
+                <%#= f.number_field :quantity, value:1 %>
+            </div>
+            <hr></hr>
+			
+			<div class="field text-center">
+                <h3 class="fw-bolder">Colors</h3> <%= @product.color.split.map(&:capitalize).join(' ') %>
+            </div>
+            <hr></hr>
+		</div>
+		</div>
+		</div>
+		</div>
+    	</div>
+ 
+      
+ 

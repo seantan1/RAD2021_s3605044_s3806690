@@ -1,4 +1,5 @@
 class NewsletterEmailsController < ApplicationController
+  skip_before_filter :require_login
   before_action :set_newsletter_email, only: %i[ show edit update destroy ]
 
   # GET /newsletter_emails or /newsletter_emails.json
@@ -22,7 +23,6 @@ class NewsletterEmailsController < ApplicationController
   # POST /newsletter_emails or /newsletter_emails.json
   def create
     @newsletter_email = NewsletterEmail.new(newsletter_email_params)
-
     respond_to do |format|
       if @newsletter_email.save
         # UserMailer.newsletter_confirmation(newsletter_email).deliver_now  

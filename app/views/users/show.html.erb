@@ -3,7 +3,7 @@
      <h2 class="fw-normal">Name: <%= get_user.name %></h2>
      <h2 class="fw-normal">Email: <%= get_user.email %></h2>
     <br></br>
-    <h3>Gravatar - look at week 7</h3>
+    <%= gravatar_for get_user %>
     </div>
     
     
@@ -18,7 +18,11 @@
     <%= link_to 'Update login details', edit_user_path(get_user), class:"bi bi-door-open-fill nav-link" %>
   </li>
   <li class="nav-item mx-auto">
-    <a class="bi bi-envelope nav-link" href="#">   subscription</a>
+    <% if subscribed_newsletter(get_user) %>
+      <%= link_to 'Unsubscribe Newsletter', users_newsletter_subscription_switch_path, class:"bi bi-door-open-fill nav-link" %>
+    <% else %>
+      <%= link_to 'Subscribe to Newsletter', users_newsletter_subscription_switch_path, class:"bi bi-door-open-fill nav-link" %>
+    <% end %>
     
   </li>
   <li class="nav-item mx-auto">

@@ -32,7 +32,10 @@
         <%= yield %>
     </div>
     </div>
+    
+        <% if logged_in %>
         <div id="footer"><%= render 'home/footer' =%></div>
+        <% end %>
 
         
     </body>

@@ -1,4 +1,12 @@
 class SessionsController < ApplicationController
+  skip_before_filter :require_login
+  
+  def index
+    if logged_in
+      redirect_to profile_path
+    end
+  end
+  
   def create
     user = User.authenticate(params[:log_in_email], params[:log_in_password])
     if user
