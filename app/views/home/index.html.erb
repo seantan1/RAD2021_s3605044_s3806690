@@ -2,7 +2,11 @@
     <!--<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/product/">-->
     <!--<link href="index.css" rel="stylesheet">-->
   
-
+<%= form_tag( search_autocomplete_path, method: "get" ) do %>
+  <%= text_field_tag( :search, params[:search], placeholder: 'Enter a search term...', :id => 'autocomplete_search' ) %>
+  <%= submit_tag( "Go" ) %>
+  <div id="autocomplete_search_results" width:100></div>
+<% end %>
 <!--<main>-->
   <!--Top Banner-->
   <div id="carouselExampleCaptions" class="carousel slide bg-light" data-bs-ride="carousel">
@@ -65,50 +69,58 @@
 <div class="container-flex">
   <div class="row">
     <div class="col">
-    <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+    <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" style="border-radius: 21px 21px 0 0;">
       <div class="my-3 py-3">
         <h2 class="display-5">Women</h2>
         <!--<p class="lead">Code to retrieve total product count</p>-->
           <small class="text-muted"><p> <%= get_product_category_count("women") %> ITEMS</p></small>
         <a class="btn btn-primary text-white" aria-current="page" href="/products/category/women">Explore</a>
       </div>    
-      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 50%; height: 300px; border-radius: 21px 21px 0 0;">
+        <img src="https://i.pinimg.com/564x/40/65/7a/40657affcbe8ef244a4f96e0dd1bd42a.jpg" style="width: 100%; height: 100%; object-fit:cover; border-radius: 21px 21px 0 0;"></img>
+      </div>
     </div>
   </div>
 
   <!--MEN-->
      <div class="col">
-      <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="bg-light me-md-2 pt-4 px-2 pt-md-5 px-md-5 text-center overflow-hidden" style="border-radius: 21px 21px 0 0;">
       <div class="my-3 p-3">
         <h2 class="display-5">Men</h2>
           <small class="text-muted"><p> <%= get_product_category_count("men") %> ITEMS</p></small>
         <a class="btn btn-primary text-white" aria-current="page" href="/products/category/men">Explore</a>
       </div>
-      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      <div class="bg-dark shadow-sm mx-auto" style="width: 50%; height: 300px; border-radius: 21px 21px 0 0;">
+        <img src="https://i.pinimg.com/564x/1c/cc/be/1cccbe0ec79b484a367a704c8d08bfbf.jpg" style="width: 100%; height: 100%; object-fit:cover; border-radius: 21px 21px 0 0;"></img>
+      </div>
     </div>
     </div>
   </div>
   
    <div class="row">
     <div class="col">
-    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center  overflow-hidden">
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center  overflow-hidden" style="border-radius: 21px 21px 0 0;">
       <div class="my-3 py-3">
           <h2 class="display-5">Kids</h2>
           <small class="text-muted"><p><%= get_product_category_count("kids") %> ITEMS </p></small>
         <a class="btn btn-primary text-white" aria-current="page" href="/products/category/kids">Explore</a>
       </div>    
-      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      <div class="bg-dark shadow-sm mx-auto" style="width: 50%; height: 300px; border-radius: 21px 21px 0 0;">
+        <img src="https://sc02.alicdn.com/kf/Hd08f06487b5845b2ba018374b8302a56T/200559634/Hd08f06487b5845b2ba018374b8302a56T.jpg_.webp" style="width: 100%; height: 100%; object-fit:cover; border-radius: 21px 21px 0 0;"></img>
+      </div>
     </div>
   </div>
 
      <div class="col">
-      <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" style="border-radius: 21px 21px 0 0;">
       <div class="my-3 p-3">
         <h2 class="display-5">New-Ins</h2>
           <small class="text-muted"><p> <%= get_new_ins_product_category_count %> ITEMS</p></small>
         <a class="btn btn-primary text-white" aria-current="page" href="/products/category/new-ins">Explore</a>
       </div>
-      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+      <div class="bg-dark shadow-sm mx-auto" style="width: 50%; height: 300px; border-radius: 21px 21px 0 0;">
+        <img src="https://ae01.alicdn.com/kf/H882c1a5eeabd4fefbfd6ebbc3d0a667dd/RY-RELAA-sneakers-women-2020-fashion-new-luxery-shoes-women-ins-off-white-shoes-Socks-women.jpg_q50.jpg" style="width: 100%; height: 100%; object-fit:cover; border-radius: 21px 21px 0 0;"></img>
+      </div>
     </div>
     </div>
   </div>

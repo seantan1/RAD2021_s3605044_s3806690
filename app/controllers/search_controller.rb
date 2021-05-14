@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
     def autocomplete
       search_term = params[:search]
-      @results = YourModel.where( "your_field LIKE search_term" )
+      @results = Product.where("name like ?", "%" + search_term + "%").all
       respond_to do |format|
         format.json @results
       end
