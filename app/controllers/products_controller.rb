@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
       @category_products = filter_products(Product.all, kids_category)
     end
     if params[:id] == new_ins_category
-      @category_products = filter_products(Product.all, new_ins_category)
+      @category_products = filter_new_ins(Product.all)
     end
   end
   
@@ -100,6 +100,16 @@ class ProductsController < ApplicationController
     
     products.each do |product|
       if product.category.to_s == target_category
+        filtered_products.push(product)
+      end
+    end
+    return filtered_products
+  end
+  
+  def filter_new_ins(products)
+    filtered_products = []
+    products.each do |product|
+      if is_new_in(product)
         filtered_products.push(product)
       end
     end

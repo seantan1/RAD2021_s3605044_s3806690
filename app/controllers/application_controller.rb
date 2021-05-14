@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :require_login
   
-  helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, :product_first_image
+  helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, :product_first_image, :get_new_ins_product_category_count
   
   
   def index
@@ -14,6 +14,16 @@ class ApplicationController < ActionController::Base
     count = 0
     Product.all.each do |product|
       if product.category == input_category
+        count += 1
+      end
+    end
+    return count
+  end
+  
+  def get_new_ins_product_category_count
+    count = 0
+    Product.all.each do |product|
+      if calculate_days_ago(product) < 30
         count += 1
       end
     end
@@ -57,5 +67,9 @@ private
     unless logged_in
       redirect_to login_path
     end
+  end
+  
+  def calculate_days_ago(product)
+    return (DateTime.now - product.arrival.to_datetime).to_i
   end
 end

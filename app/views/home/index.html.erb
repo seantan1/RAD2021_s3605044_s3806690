@@ -66,7 +66,7 @@
         <h2 class="display-5">Women</h2>
         <!--<p class="lead">Code to retrieve total product count</p>-->
           <small class="text-muted"><p> <%= get_product_category_count("women") %> ITEMS</p></small>
-        <a class="btn btn-primary text-white" aria-current="page" href="/products/women">Explore</a>
+        <a class="btn btn-primary text-white" aria-current="page" href="/products/category/women">Explore</a>
       </div>    
       <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
@@ -77,8 +77,8 @@
       <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
       <div class="my-3 p-3">
         <h2 class="display-5">Men</h2>
-          <small class="text-muted"><p> <%= get_product_category_count("Men") %> ITEMS</p></small>
-        <a class="btn btn-primary text-white" aria-current="page" href="/products/men">Explore</a>
+          <small class="text-muted"><p> <%= get_product_category_count("men") %> ITEMS</p></small>
+        <a class="btn btn-primary text-white" aria-current="page" href="/products/category/men">Explore</a>
       </div>
       <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
@@ -91,7 +91,7 @@
       <div class="my-3 py-3">
           <h2 class="display-5">Kids</h2>
           <small class="text-muted"><p><%= get_product_category_count("kids") %> ITEMS </p></small>
-        <a class="btn btn-primary text-white" aria-current="page" href="/products/kids">Explore</a>
+        <a class="btn btn-primary text-white" aria-current="page" href="/products/category/kids">Explore</a>
       </div>    
       <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
@@ -101,8 +101,8 @@
       <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
       <div class="my-3 p-3">
         <h2 class="display-5">New-Ins</h2>
-          <small class="text-muted"><p> <%= get_product_category_count("new-ins") %> ITEMS</p></small>
-        <a class="btn btn-primary text-white" aria-current="page" href="/products/new-ins">Explore</a>
+          <small class="text-muted"><p> <%= get_new_ins_product_category_count %> ITEMS</p></small>
+        <a class="btn btn-primary text-white" aria-current="page" href="/products/category/new-ins">Explore</a>
       </div>
       <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
@@ -119,37 +119,6 @@
 <%= render template: "newsletter_emails/new", newsletter_email: @newsletter_email %>
 
 </div>
-
-  
- 
- 
- 
-<!--<footer class=" bg-light shadow-sm mx-auto" >-->
-<!--   <section class="home-newsletter">-->
-<!--<div class="container">-->
-<!--<div class="row">-->
-<!--<div class="col-sm-12">-->
-<!--	<div class="single">-->
-<!--	  <BR></BR>-->
-<!--		<h2>Newsletter</h2>-->
-		 
-<!--		<small class="text-muted"><p><h6>signup with our newsletter....</h6><br></p></small>-->
-
-<!--	<div class="input-group">-->
-<!--         <input type="email" class="form-control" placeholder="Enter your email">-->
-<!--         <span class="input-group-btn">-->
-           
-<!--         <button class="btn btn-dark" type="submit">Subscribe</button>-->
-<!--         </span>-->
-<!--           </div>-->
-<!--	</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--         <br><br><br><br>-->
-
-<!--</section>-->
-<!--</footer>-->
 <!--END FOOTER-->
 
  
