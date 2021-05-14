@@ -26,7 +26,6 @@ class CartProductsController < ApplicationController
 
   # POST /cart_products or /cart_products.json
   def create
-    
     # if user is not logged_in
     if cart_product_params[:user_id].empty?
       session[:temp_cart] = cart_product_params
@@ -42,6 +41,9 @@ class CartProductsController < ApplicationController
             # Then remove from savedlist
             session[:savedlist] ||= []
             session[:savedlist].delete(cart_product_params[:product_id])
+            
+            # Then update popularity of product
+            increase_product_popularity_by_product_id(cart_product_params[:product_id])
           else
             format.html { render :new, status: :unprocessable_entity }
             format.json { render json: @cart_product.errors, status: :unprocessable_entity }

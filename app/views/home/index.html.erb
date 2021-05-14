@@ -9,9 +9,12 @@
   <div class="carousel-inner">
     <% filter_products_in_cart(@all_products).each_with_index do |product, index| %>
     <div class="carousel-item <%= "active" if index.zero? %>">
-      <img src=<%= product_first_image(product) %> class="d-block w-100" alt="...">
+      <%#= link_to product.name, product, class:"stretched-link" %>
+      <%= link_to product do %>
+      <img src=<%= product_first_image(product)%> class="d-block w-100" alt="...">
+      <% end %>
       <div class="carousel-caption d-none d-md-block ">
-        <h5><%= link_to product.name, product %></h5>
+        <h5><%= link_to product.name, product, class:"bg-dark text-white" %></h5>
         <p>$<%= product.price %></p>
         <% if session[:savedlist].include? product.id.to_s %>
         <%= link_to 'Remove', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto  " %>
@@ -29,14 +32,16 @@
   <div class="container-fluid bg-light shadow-sm ">
     <p class="h1">Popular</p> <br>
     <div class="row row-cols-2 row-cols-md-4 g-4">
-      <% @all_products.each do |product| %>
-      <% if product.popularity > 5 %>
+      <% products_sort_by_popularity.each do |product| %>
       <div class="col col-md-4">
         <div class="card bg-light h-75">
+          <%= link_to product do %>
           <img src=<%= product_first_image(product) %> alt="..." class="book-img rounded mx-auto d-block" > 
           <div class="card-body">
-            <h5 class="card-title text-center"><%= link_to product.name, product %></h5>
+            <h5 class="card-title text-center">
+              <%= link_to product.name, product %></h5>
             <p class="card-text text-center"> $<%= number_with_precision(product.price, :precision => 2) %></p>
+            <% end %>
             <% if session[:savedlist].include? product.id.to_s %>
             <%= link_to 'Remove', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
             <% else %>
@@ -45,7 +50,6 @@
             </div>
           </div>
         </div>
-      <% end %>
       <% end %>
       </div><br>
   </div><br>

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :require_login
   
-  helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, :product_first_image, :get_new_ins_product_category_count
+  helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, :product_first_image, :get_new_ins_product_category_count, :increase_product_popularity_by_product_id
   
   
   def index
@@ -61,6 +61,12 @@ class ApplicationController < ActionController::Base
     return product.image.split(',').map(&:to_s).first
   end
   
+  def increase_product_popularity_by_product_id(input_product_id)
+    product = Product.find(input_product_id)
+    product.popularity += 1
+    product.save
+  end
+  
 private
 
   def require_login
@@ -72,4 +78,6 @@ private
   def calculate_days_ago(product)
     return (DateTime.now - product.arrival.to_datetime).to_i
   end
+  
+  
 end

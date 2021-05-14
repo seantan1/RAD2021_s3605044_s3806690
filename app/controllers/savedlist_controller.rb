@@ -8,8 +8,8 @@ class SavedlistController < ApplicationController
   end
   
   def savedlist
-  session[:savedlist] ||= []
-  @savedlist = session[:savedlist]
+    session[:savedlist] ||= []
+    @savedlist = session[:savedlist]
   end
   
   def edit
@@ -18,6 +18,8 @@ class SavedlistController < ApplicationController
       session[:savedlist].delete(params[:id])
     else
       session[:savedlist] << params[:id]
+      # Then update popularity of product
+      increase_product_popularity_by_product_id(params[:id])
     end
     redirect_to request.referrer
   end

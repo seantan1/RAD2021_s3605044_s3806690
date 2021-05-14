@@ -27,9 +27,10 @@ class NewsletterEmailsController < ApplicationController
       if @newsletter_email.save
         # UserMailer.newsletter_confirmation(newsletter_email).deliver_now  
         UserMailer.newsletter_confirmation(@newsletter_email).deliver_now
-        format.html { redirect_to @newsletter_email, notice: "Successfully Subscribed to Newsletter" }
+        format.html { redirect_to request.referrer, notice: "Successfully Subscribed to Newsletter" }
         format.json { render :show, status: :created, location: @newsletter_email }
       else
+        format.html { redirect_to request.referrer, notice: "Invalid email for newsletter. Please try again." }
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @newsletter_email.errors, status: :unprocessable_entity }
       end

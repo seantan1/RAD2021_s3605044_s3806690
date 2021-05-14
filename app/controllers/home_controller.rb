@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   skip_before_filter :require_login
-  helper_method :filter_products_in_cart
+  helper_method :filter_products_in_cart, :products_sort_by_popularity
   
   def index
     @all_products = Product.all
@@ -27,5 +27,9 @@ class HomeController < ApplicationController
       end
     end
     return filtered_products
+  end
+  
+  def products_sort_by_popularity
+    return Product.order(popularity: :desc)
   end
 end

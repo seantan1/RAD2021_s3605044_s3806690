@@ -56,11 +56,9 @@ private
       # Then remove from savedlist
       session[:savedlist] ||= []
       session[:savedlist].delete(product_params["product_id"])
-      puts "HEREEEEE"
-      puts product_params
-      puts "HEREEEEE"
-      puts product_params["product_id"]
-      puts product_params["user_id"]
+      
+      # Then update popularity of product
+      increase_product_popularity_by_product_id(product_params["product_id"])
       return true
     end
     return false

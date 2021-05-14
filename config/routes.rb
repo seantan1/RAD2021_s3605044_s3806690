@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/search' => 'search#autocomplete', as: :search_autocomplete
+  
   get 'cart_products/checkout', to: 'cart_products#checkout'
   resources :cart_products
   get 'support' => 'supports#new'
