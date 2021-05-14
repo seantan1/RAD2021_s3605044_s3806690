@@ -1,33 +1,38 @@
- <div class="container-flex bg-secondary">
-     <h1 class="fw-normal text-center">Profile Page</h1><br><br>
-     <h2 class="fw-normal">Name: <%= get_user.name %></h2>
-     <h2 class="fw-normal">Email: <%= get_user.email %></h2>
-    <br></br>
-    <%= gravatar_for get_user %>
-    </div>
-    
-    
-  <div class="container-flex bg-light">
-<ul class="nav flex-column fs-3">
-  <li class="nav-item margin-header mx-auto ">
-    <!--Need to save this to cart not savedlist-->
-      <%= link_to "  pending orders", cart_products_path, class:"bi bi-clock nav-link" %>
-    <!--<a class="bi bi-clock nav-link" aria-current="page" href="#">  pending orders</a>-->
-  </li>
-  <li class="nav-item mx-auto">
-    <%= link_to 'Update login details', edit_user_path(get_user), class:"bi bi-door-open-fill nav-link" %>
-  </li>
-  <li class="nav-item mx-auto">
-    <% if subscribed_newsletter(get_user) %>
-      <%= link_to 'Unsubscribe Newsletter', users_newsletter_subscription_switch_path, class:"bi bi-door-open-fill nav-link" %>
+ 
+ 
+  <div class="box">
+    <div id="overlay">
+      <div class="image">
+         <%= gravatar_for get_user %>
+        <div class="trick">
+
+        </div>
+      </div>
+      <ul class="text"><%= get_user.name %></ul>
+      <!--<div class="text1">HTML + CSS</div>-->
+
+
+
+<br></br>
+<div class="panel-group">
+  
+        <%= link_to "PENDING ORDERS", cart_products_path, class:"title  btn btn-danger btn-outline btn-lg bg-dark text-white" %>
+        <%= link_to 'UPDATE LOGIN DETAILS', edit_user_path(get_user), class:"title btn btn-danger btn-outline btn-lg bg-dark text-white" %>
+        
+  
+  <% if subscribed_newsletter(get_user) %>
+      <%= link_to 'UNSUBSCRIBE TO NEWSLETTER', users_newsletter_subscription_switch_path, class:" title btn btn-danger btn-outline btn-lg bg-secondary text-white " %>
     <% else %>
-      <%= link_to 'Subscribe to Newsletter', users_newsletter_subscription_switch_path, class:"bi bi-door-open-fill nav-link" %>
+      <%= link_to 'SUBSCRIBE TO NEWSLETTER', users_newsletter_subscription_switch_path, class:" title btn btn-danger btn-outline btn-lg bg-dark text-white" %>
     <% end %>
-    
-  </li>
-  <li class="nav-item mx-auto">
-    <%= link_to "Logout", logout_path, class:"nav-link" %>
-  </li>
-</ul>
-    
+       
+    <%= link_to "LOGOUT", logout_path, class:"title btn btn-danger btn-outline btn-lg bg-secondary text-white" %>
+
+  
+  
+  <!--END MAIN DIV-->
 </div>
+</div>
+ 
+ 
+  

@@ -1,4 +1,6 @@
 class CartProductsController < ApplicationController
+  skip_before_filter :require_login
+  
   before_action :set_cart_product, only: %i[ show edit update destroy ]
   # before_action :session[:user_id]!, except: [:index]
   
@@ -24,23 +26,29 @@ class CartProductsController < ApplicationController
 
   # POST /cart_products or /cart_products.json
   def create
-    @cart_product = CartProduct.new(cart_product_params)
-
-    respond_to do |format|
-      if cart_product_params[:quantity].to_i > 0
-        if @cart_product.save
-          format.html { redirect_to request.referrer, notice: "Cart product was successfully created." }
-          format.json { render :show, status: :created, location: @cart_product }
-            
-          # Then remove from savedlist
-          session[:savedlist] ||= []
-          session[:savedlist].delete(cart_product_params[:product_id])
+    
+    # if user is not logged_in
+    if cart_product_params[:user_id].empty?
+      session[:temp_cart] = cart_product_params
+      redirect_to login_path, :notice => "Please log in, the product will be placed in your cart once you've logged in."
+    else
+      @cart_product = CartProduct.new(cart_product_params)
+      respond_to do |format|
+        if cart_product_params[:quantity].to_i > 0
+          if @cart_product.save
+            format.html { redirect_to request.referrer, notice: "Cart product was successfully created." }
+            format.json { render :show, status: :created, location: @cart_product }
+              
+            # Then remove from savedlist
+            session[:savedlist] ||= []
+            session[:savedlist].delete(cart_product_params[:product_id])
+          else
+            format.html { render :new, status: :unprocessable_entity }
+            format.json { render json: @cart_product.errors, status: :unprocessable_entity }
+          end
         else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @cart_product.errors, status: :unprocessable_entity }
+          format.html { redirect_to request.referrer, notice: "Quantity cannot be 0 or less!." }
         end
-      else
-        format.html { redirect_to request.referrer, notice: "Quantity cannot be 0 or less!." }
       end
     end
   end
