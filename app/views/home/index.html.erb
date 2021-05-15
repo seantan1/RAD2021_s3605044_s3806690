@@ -50,7 +50,8 @@
             <p class="card-text text-center"> $<%= number_with_precision(product.price, :precision => 2) %></p>
             <% end %>
             <% if session[:savedlist].include? product.id.to_s %>
-            <%= link_to 'Remove', edit_savedlist_path(product), class:"bi bi-file-minus-fill btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
+            <%= link_to '', edit_savedlist_path(product), class:"btn btn-secondary btn-circle btn-xl mx-auto d-block bi bi-x-octagon-fill text-white" %>
+            <%#= link_to 'Remove', edit_savedlist_path(product), class:"bi bi-file-minus-fill btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
             <% else %>
             <%= link_to '', edit_savedlist_path(product), class:"btn btn-danger btn-circle btn-xl mx-auto d-block bi bi-heart-fill text-white" %>
             <% end %>
