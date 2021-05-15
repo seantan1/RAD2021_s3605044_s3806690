@@ -4,11 +4,17 @@ class ProductsController < ApplicationController
   
   def index
     @all_products = Product.all
+    @all_products = Product.where(["name LIKE ?", "%#{params[:search]}%"])
+    .or(Product.where(["category LIKE ?", "%#{params[:search]}%"]))
+    .or(Product.where(["size LIKE ?", "%#{params[:search]}%"]))
+    .or(Product.where(["color LIKE ?", "%#{params[:search]}%"]))
+    .or(Product.where(["description LIKE ?", "%#{params[:search]}%"]))
     session[:savedlist] ||= []
   end
   
   def new
     @product = Product.new
+    # @categories = Product.uniq.pluck(:category)
   end
   
   def show
@@ -94,6 +100,10 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :image, :price, :category, :popularity, :size, :color, :stockcount, :arrival, :description)
   end
+  
+  # def search_params
+  #   params.require(:product).permit(:keywords, :category, :size, :color, :description)
+  # end
 
   def filter_products(products, target_category)
     filtered_products = []

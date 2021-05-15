@@ -17,8 +17,12 @@
       </div>
     </nav>
     
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-light" type="submit">Search</button>
+    <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
+    <!--<button class="btn btn-outline-light" type="submit">Search</button>-->
+    <%= form_tag products_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <% submit_tag "Search" %>
+  <% end %>
   </form>
     
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
