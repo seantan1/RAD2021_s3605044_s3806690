@@ -104,7 +104,14 @@ class ProductsController < ApplicationController
   # def search_params
   #   params.require(:product).permit(:keywords, :category, :size, :color, :description)
   # end
-
+  # def autocomplete
+  #     search_term = params[:search]
+  #     @results = Product.where("name like ?", "%" + search_term + "%").all
+  #     respond_to do |format|
+  #       format.json @results
+  #     end
+  # end
+    
   def filter_products(products, target_category)
     filtered_products = []
     
