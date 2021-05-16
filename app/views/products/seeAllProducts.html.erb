@@ -3,9 +3,6 @@
 <br><h1 class="text-center">All Products</h1><br> <br>
 
 <div class="container-fluid bg-light">
-<!--FILTER-->
-<%= link_to "Filter", filter_path %>
-    
 <div class="row row-cols-2 row-cols-md-4 g-4 ">
  <% @all_products.each do |product| %>
   <div class="col col-md-4">

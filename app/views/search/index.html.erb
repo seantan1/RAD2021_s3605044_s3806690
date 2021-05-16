@@ -1,0 +1,5 @@
+<%= form_tag( search_autocomplete_path, method: "get" ) do %>
+  <%= text_field_tag( :search, params[:search], placeholder: 'Enter a search term...', :id => 'autocomplete_search' ) %>
+  <%= submit_tag( "Go" ) %>
+  <div id="autocomplete_search_results" width:100></div>
+<% end %>

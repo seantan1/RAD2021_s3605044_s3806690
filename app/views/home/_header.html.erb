@@ -19,7 +19,11 @@
     
     <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
     <!--<button class="btn btn-outline-light" type="submit">Search</button>-->
-    <%= render "products_search/search_form" %>
+     <%= form_for products_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <% submit_tag "Search" %>
+  <% end %>
+     
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <a class="navbar-brand" href="#"></a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -76,8 +80,6 @@
         </li>
         <li class="nav-item">
           <%= link_to "Newsletter (admin)", newsletter_emails_path, class:"nav-link" %>
-        </li><li class="nav-item">
-          <%= link_to "Products search", products_search_index_path, class:"nav-link" %>
         </li>
     </div>
 </nav>
