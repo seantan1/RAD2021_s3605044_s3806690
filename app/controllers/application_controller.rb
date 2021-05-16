@@ -10,6 +10,19 @@ class ApplicationController < ActionController::Base
     session[:savedlist] ||= []
   end
   
+  def search
+    if params[:search].blank?
+        
+    else
+      @search_products = Product.where(["name LIKE ?", "%#{params[:search]}%"])
+          .or(Product.where(["category LIKE ?", "%#{params[:search]}%"]))
+          .or(Product.where(["size LIKE ?", "%#{params[:search]}%"]))
+          .or(Product.where(["color LIKE ?", "%#{params[:search]}%"]))
+          .or(Product.where(["description LIKE ?", "%#{params[:search]}%"]))
+      redirect_to products_search_index_path, search_products: @search_products
+    end
+  end
+  
   def get_product_category_count(input_category)
     count = 0
     Product.all.each do |product|

@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get '/search' => 'search#autocomplete', as: :search_autocomplete
-  
   get 'cart_products/checkout', to: 'cart_products#checkout'
   resources :cart_products
   get 'support' => 'supports#new'
@@ -8,6 +6,7 @@ Rails.application.routes.draw do
   resources :savedlist
   
   resources :newsletter_emails
+  # get 'products/search', to: 'products#search'
   get '/products/category/:id', to: 'products#category'
   resources :products
   # get 'products/men'
@@ -23,6 +22,9 @@ Rails.application.routes.draw do
   # get 'profile' => 'profile#index'
   # get 'cart_login', to: 'sessions#cart_login'
   get 'seeAllProducts' => 'products#seeAllProducts'
+  get 'filter' => 'products#filter'
+  
+  
   get '/auth/:provider/callback', to: 'sessions#twitter'
   get 'login_main' => 'sessions#login'
   get 'login' => 'sessions#index'

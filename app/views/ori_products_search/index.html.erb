@@ -1,0 +1,7 @@
+<%= render "search_form" %>
+<h3>Search Result</h3>  
+<% if @search_products %>
+    <% @search_products.each do |result| %>  
+        <%= result.name %><br>  
+    <% end %>
+<% end %>
