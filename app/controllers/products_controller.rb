@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  # skip_before_filter :require_login
+  skip_before_filter :require_login
   helper_method :calculate_days_ago, :is_new_in
   
   def index

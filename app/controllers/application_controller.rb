@@ -1,13 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  # before_filter :require_login
+  before_filter :require_login
   
   helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, :product_first_image, :get_new_ins_product_category_count, :increase_product_popularity_by_product_id
   
   
   def index
     @newsletter_email = NewsletterEmail.new
-    @product_search = ProductSearch.new
     session[:savedlist] ||= []
   end
   

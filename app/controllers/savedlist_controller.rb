@@ -1,5 +1,5 @@
 class SavedlistController < ApplicationController
-  # skip_before_filter :require_login
+  skip_before_filter :require_login
   helper_method :saved_list_empty, :saved_list_length, :product_colors, :product_sizes
   
   def index
