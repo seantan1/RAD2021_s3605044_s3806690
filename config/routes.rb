@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  resources :password_resets
   resources :product_searches
-  
-  # get '/search' => 'search#autocomplete', as: :search_autocomplete
-  get 'products/search', to: 'products#search'
+  get '/search' => 'search#autocomplete', as: :search_autocomplete
   
   get 'cart_products/checkout', to: 'cart_products#checkout'
   resources :cart_products

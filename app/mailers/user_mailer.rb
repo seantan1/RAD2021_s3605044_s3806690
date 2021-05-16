@@ -10,12 +10,5 @@ class UserMailer < ApplicationMailer
     mail to: @user.email, subject: "Successfully subscribed to newsletter"
   end
   
-  def forgot_password(user)
-    @user = user
-    @greeting = "Hi"
-    
-    mail to: @user.email, subject => 'Reset password instructions'
-  end
-  
   
 end
