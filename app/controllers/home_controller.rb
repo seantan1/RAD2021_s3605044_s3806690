@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_filter :require_login
+  # skip_before_filter :require_login
   helper_method :filter_products_in_cart, :products_sort_by_popularity
   
   def index

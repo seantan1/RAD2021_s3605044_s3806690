@@ -1,5 +1,5 @@
 class NewsletterEmailsController < ApplicationController
-  skip_before_filter :require_login
+  # skip_before_filter :require_login
   before_action :set_newsletter_email, only: %i[ show edit update destroy ]
 
   # GET /newsletter_emails or /newsletter_emails.json

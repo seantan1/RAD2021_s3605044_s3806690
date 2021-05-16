@@ -1,5 +1,5 @@
 class CartProductsController < ApplicationController
-  skip_before_filter :require_login
+  # skip_before_filter :require_login
   
   before_action :set_cart_product, only: %i[ show edit update destroy ]
   # before_action :session[:user_id]!, except: [:index]

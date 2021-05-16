@@ -5,7 +5,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    
+    <%#= render template: "product_searches/new", product_search: @product_search %>
+    <%= form_tag products_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <% submit_tag "Search" %>
+     <!--<div id="autocomplete_search_results" width:100></div>-->
+    <% end %>
     <!--Search Button-->
   <form class="d-flex ">
     
@@ -19,10 +24,12 @@
     
     <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
     <!--<button class="btn btn-outline-light" type="submit">Search</button>-->
-     <%= form_for products_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search] %>
-    <% submit_tag "Search" %>
-  <% end %>
+     <%#= form_for products_path, :method => 'get' do %>
+    <%#= text_field_tag :search, params[:search] %>
+    <%# submit_tag "Search" %>
+  <%# end %>
+  
+  
      
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <a class="navbar-brand" href="#"></a>
@@ -80,9 +87,6 @@
         </li>
         <li class="nav-item">
           <%= link_to "Newsletter (admin)", newsletter_emails_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Product search", product_searches_path, class:"nav-link" %>
         </li>
         
     </div>

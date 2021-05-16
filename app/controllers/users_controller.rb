@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login
+  # skip_before_filter :require_login
   
   helper_method :get_user, :subscribed_newsletter
   

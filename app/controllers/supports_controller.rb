@@ -1,5 +1,5 @@
 class SupportsController < ApplicationController
-  skip_before_filter :require_login
+  # skip_before_filter :require_login
   before_action :set_support, only: %i[ show edit update destroy ]
 
   # GET /supports or /supports.json

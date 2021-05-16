@@ -1,5 +1,5 @@
 class ProductSearchesController < ApplicationController
-  skip_before_filter :require_login
+  # skip_before_filter :require_login
   before_action :set_product_search, only: %i[ show edit update destroy ]
 
   # GET /product_searches or /product_searches.json
