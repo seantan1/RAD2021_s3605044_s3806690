@@ -4,12 +4,16 @@ class ProductsController < ApplicationController
   
   def index
     @all_products = Product.all
+    
+    session[:savedlist] ||= []
+  end
+  
+  def search
     @all_products = Product.where(["name LIKE ?", "%#{params[:search]}%"])
     .or(Product.where(["category LIKE ?", "%#{params[:search]}%"]))
     .or(Product.where(["size LIKE ?", "%#{params[:search]}%"]))
     .or(Product.where(["color LIKE ?", "%#{params[:search]}%"]))
     .or(Product.where(["description LIKE ?", "%#{params[:search]}%"]))
-    session[:savedlist] ||= []
   end
   
   def new

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   
   resources :newsletter_emails
   get '/products/category/:id', to: 'products#category'
+  get 'products/search', to: 'products#search'
   resources :products
   # get 'products/men'
   # get 'products/women'

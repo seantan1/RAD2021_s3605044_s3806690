@@ -6,7 +6,7 @@
     </button>
     
     <%#= render template: "product_searches/new", product_search: @product_search %>
-    <%= form_tag products_path, :method => 'get' do %>
+    <%= form_tag products_search_path, :method => 'get' do %>
     <%= text_field_tag :search, params[:search] %>
     <% submit_tag "Search" %>
      <!--<div id="autocomplete_search_results" width:100></div>-->
