@@ -104,7 +104,7 @@ class ProductsController < ApplicationController
  private
   #allowed list of params for user model 
   def product_params
-    params.require(:product).permit(:name, :image, :price, :category, :popularity, :size, :color, :stockcount, :arrival, :description)
+    params.require(:product).permit(:name, :image, :price, :category, :popularity, :size, :color, :stockcount, :arrival, :description )
   end
   
   # def search_params
