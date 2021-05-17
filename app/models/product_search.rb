@@ -1,2 +1,0 @@
-class ProductSearch < ApplicationRecord
-end
