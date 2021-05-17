@@ -1,3 +1,8 @@
+<%= form_for products_path, :method => 'get' do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <nav class="navbar navbar-lg navbar-dark bg-dark justify-content-between">
   
   <div class="container-fluid">
@@ -6,8 +11,9 @@
     </button>
     
     
+    
     <!--Search Button-->
-  <form class="d-flex ">
+  <!--<form class="d-flex ">-->
     
     <nav class="navbar navbar-light bg-dark">
       <div class="container  ">
@@ -15,14 +21,12 @@
         <!--<button class="btn btn-dark" style="font-size:30px"> <i class="bi bi-bag"></i></button>-->
         <%= link_to "Cart", cart_products_path, class:"bi bi-bag btn btn-dark btn text-white" %>
       </div>
+      
     </nav>
     
     <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
     <!--<button class="btn btn-outline-light" type="submit">Search</button>-->
-     <%= form_for products_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search] %>
-    <% submit_tag "Search" %>
-  <% end %>
+     
      
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <a class="navbar-brand" href="#"></a>
