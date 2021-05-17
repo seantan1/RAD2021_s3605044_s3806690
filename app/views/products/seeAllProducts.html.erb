@@ -11,12 +11,13 @@
     <div class="card h-75 bg-light">
       <img src=<%= product_first_image(product) %>  class="book-img rounded mx-auto d-block"  alt="">
       <div class="card-body">
-        <h5 class="card-title text-center"><%= link_to product.name, product, class:"stretched-link" %></h5>
+        <h5 class="card-title text-center"><%= link_to product.name, product, class:"" %></h5>
         <p class="card-text text-center">$<%= product.price %></p>
          <% if session[:savedlist].include? product.id.to_s %>
-         <%= link_to 'Remove from Cart', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
+        <%= link_to '', edit_savedlist_path(product), class:"btn btn-secondary btn-circle btn-xl mx-auto d-block bi bi-x-octagon-fill text-white" %>
         <% else %>
-        <%= link_to 'Add to Cart', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto d-block" %>
+        <%= link_to '', edit_savedlist_path(product), class:"btn btn-danger btn-circle btn-xl mx-auto d-block bi bi-heart-fill text-white" %>
+
         <% end %>
       </div>
     </div>
