@@ -99,4 +99,5 @@ Rails.application.configure do
   password: "mbxm ijjs nlaa vrep",
   authentication: "plain",
   enable_starttls_auto: true
+  }
 end
