@@ -85,6 +85,18 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   #mailer
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { host: "https://rad2021-s3605044-s3806690.herokuapp.com/" }
+    # config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.preview_path = "#{Rails.root}/tmp/mailers/previews"
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "https://rad2021-s3605044-s3806690.herokuapp.com/" }
+  config.action_mailer.default_url_options = { :host => "https://rad2021-s3605044-s3806690.herokuapp.com/" }
+  config.action_mailer.smtp_settings = {
+  address: 'smtp.gmail.com',
+  port: 587,
+  user_name: "phamousdetailing@gmail.com",
+  password: "mbxm ijjs nlaa vrep",
+  authentication: "plain",
+  enable_starttls_auto: true
 end

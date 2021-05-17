@@ -57,7 +57,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.preview_path = "#{Rails.root}/tmp/mailers/previews"
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => "https://c6e71a14a92745fda1721f532c492888.vfs.cloud9.us-east-1.amazonaws.com" }
+  config.action_mailer.default_url_options = { :host => "https://rad2021-s3605044-s3806690.herokuapp.com/" }
   config.action_mailer.smtp_settings = {
   address: 'smtp.gmail.com',
   port: 587,
