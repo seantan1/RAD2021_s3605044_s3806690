@@ -6,7 +6,8 @@ class ProductsController < ApplicationController
     @all_products = Product.all
     session[:savedlist] ||= []
     
-    @test = params[:category]
+    @all_products = Product.where(["category LIKE ? AND size LIKE ? AND color LIKE ?", "%#{params[:category]}%", "%#{params[:size]}%", "%#{params[:color]}%"])
+    
   end
   
   def search

@@ -1,11 +1,37 @@
+<h1>Hello, Rails!</h1>
+<button id="greet-user-button">Hello!</button>
+<%= javascript_pack_tag 'hello'%>
+
 <%= form_tag products_path, :method => 'get' do %>
+    <h3>Category</h1>
     <input type="radio" name="category" value="men">
     <label for="men">Men</label><br>
     <input type="radio" name="category" value="women">
     <label for="women">Women</label><br>
     <input type="radio" name="category" value="kids">
     <label for="kids">Kids</label>
-<%= submit_tag "Search" %>
+    <br><br><br>
+    
+    <h3>Color</h3>
+    <input type="radio" name="color" value="red">
+    <label for="red">Red</label><br>
+    <input type="radio" name="color" value="blue">
+    <label for="blue">Blue</label><br>
+    <input type="radio" name="color" value="black">
+    <label for="black">Black</label><br>
+    <br><br><br>
+    
+    <h3>Sizes</h3>
+    <input type="radio" name="size" value="s">
+    <label for="red">S</label><br>
+    <input type="radio" name="size" value="m">
+    <label for="blue">M</label><br>
+    <input type="radio" name="size" value="l">
+    <label for="black">L</label><br>
+    <br><br><br>
+    
+    
+<%= submit_tag "Filter" %>
  <!--<div id="autocomplete_search_results" width:100></div>-->
 <% end %>
 <% if @test %>

@@ -39,3 +39,10 @@ html, body {
    height:70px;   /* Height of the footer */
    /*background:#6cf;*/
 }
+
+label {
+      float: left;
+      clear: none;
+      display: block;
+      padding: 0px 1em 0px 8px;
+    } 
