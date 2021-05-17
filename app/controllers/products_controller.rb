@@ -4,8 +4,9 @@ class ProductsController < ApplicationController
   
   def index
     @all_products = Product.all
-    
     session[:savedlist] ||= []
+    
+    @test = params[:category]
   end
   
   def search

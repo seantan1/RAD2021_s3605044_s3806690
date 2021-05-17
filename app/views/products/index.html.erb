@@ -1,3 +1,16 @@
+<%= form_tag products_path, :method => 'get' do %>
+    <input type="radio" name="category" value="men">
+    <label for="men">Men</label><br>
+    <input type="radio" name="category" value="women">
+    <label for="women">Women</label><br>
+    <input type="radio" name="category" value="kids">
+    <label for="kids">Kids</label>
+<%= submit_tag "Search" %>
+ <!--<div id="autocomplete_search_results" width:100></div>-->
+<% end %>
+<% if @test %>
+<%= @test %>
+<% end %>
 <h1 class="container text-center"> Products</h1>
 <br><br>
 <!--<h3>Men product count: <%= get_product_category_count("Men's") %></h3>-->
