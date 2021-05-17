@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
 # gem "bcrypt-ruby", :require => "bcrypt"
 gem 'omniauth-twitter'
+gem 'sendgrid-ruby'
 
 group :development, :test do
   gem 'byebug', platform: :mri

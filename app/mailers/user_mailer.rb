@@ -7,7 +7,9 @@ class UserMailer < ApplicationMailer
   #
   def newsletter_confirmation(user)
     @user = user
-    mail to: @user.email, subject: "Successfully subscribed to newsletter"
+    # mail to: @user.email, subject: "Successfully subscribed to newsletter"
+    mail( :to => @user.email,
+    :subject => 'Successfully subscribed to newsletter' )
   end
   
   
