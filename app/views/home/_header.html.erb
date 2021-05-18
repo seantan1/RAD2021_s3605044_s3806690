@@ -56,6 +56,9 @@
           <a class="nav-link" href="/products/category/new-ins">New-ins</a>
         </li>
         <li class="nav-item">
+          <%= link_to "My Cart", cart_products_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
           <!--<a class="nav-link" href="#">Saved</a>-->
           <%= link_to "Saved", savedlist_index_path, class:"nav-link" %>
 
@@ -78,21 +81,23 @@
         <!--<li class="nav-item">-->
         <!--  <%= link_to "Register", register_path, class:"nav-link" %>-->
         <!--</li>-->
-        <li class="nav-item">
-          <%= link_to "Users (for testing purposes)", users_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Products (for testing purposes)", products_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Saved List (for testing purposes)", savedlist_index_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Cart (for testing purposes)", cart_products_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Newsletter (admin)", newsletter_emails_path, class:"nav-link" %>
-        </li>
+        <% if isAdmin(logged_in) %>
+          <li class="nav-item">
+            <%= link_to "Users (for testing purposes)", users_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Products (for testing purposes)", products_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Saved List (for testing purposes)", savedlist_index_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Newsletter (admin)", newsletter_emails_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Admin (dev)", admins_path, class:"nav-link" %>
+          </li>
+        <% end %>
         
     </div>
 </nav>

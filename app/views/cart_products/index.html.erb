@@ -166,13 +166,18 @@
                         </div>
                         <!--DISPLAY THIS IF IT'S NOT THEIR FIRST TIME CHECKING OUT-->
                         <!--remove stretched link in class if you want to test both buttons-->
-                        <div class="btn btn-primary  text-start"> <%= link_to 'Checkout', cart_products_checkout_path, class:"text-start text-white stretched-link" %> <span id="check-amt">$<%= cart_price_total_wtax %></span>  </div>
-                       
+                        <% if isRatingShown(logged_in) %>
+                         <div class="btn btn-primary  text-start"> <%= link_to 'Checkout', cart_products_checkout_path, class:"text-start text-white stretched-link" %> <span id="check-amt">$<%= cart_price_total_wtax %></span>  </div>
+                        <% else %>
+                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                             <div class="text-start">Checkout <span id="check-amt">$<%= cart_price_total_wtax %></span>  </div>
+                        </button>
+                       <% end %>
 
             <!--OTHERWISE DISPLAY THIS --- START OF RATE EXPERIENCE DISPLAY -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
- <div class="text-start">Checkout <span id="check-amt">$<%= cart_price_total_wtax %></span>  </div>
-</button>
+             
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

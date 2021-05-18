@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :require_login
   
-  helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, :product_first_image, :get_new_ins_product_category_count, :increase_product_popularity_by_product_id
+  helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, :product_first_image, :get_new_ins_product_category_count, :increase_product_popularity_by_product_id, :addToRatingShown, :isRatingShown, :isAdmin
   
   # def current_user
   #   @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
@@ -68,6 +68,30 @@ class ApplicationController < ActionController::Base
     product = Product.find(input_product_id)
     product.popularity += 1
     product.save
+  end
+  
+  def addToRatingShown(input_user_id)
+    rating_shown = RatingShown.new
+    rating_shown.user_id = input_user_id
+    rating_shown.save
+  end
+  
+  def isRatingShown(input_user_id)
+    RatingShown.all.each do |rating_shown|
+      if rating_shown.user_id.to_s == input_user_id.to_s
+        return true
+      end
+    end
+    return false
+  end
+  
+  def isAdmin(input_user_id)
+    Admin.all.each do |admin|
+      if admin.user_id.to_s == input_user_id.to_s
+        return true
+      end
+    end
+    return false
   end
   
 private

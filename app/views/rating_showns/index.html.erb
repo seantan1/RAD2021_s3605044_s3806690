@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rating Showns</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rating_showns.each do |rating_shown| %>
+      <tr>
+        <td><%= rating_shown.user_id %></td>
+        <td><%= link_to 'Show', rating_shown %></td>
+        <td><%= link_to 'Edit', edit_rating_shown_path(rating_shown) %></td>
+        <td><%= link_to 'Destroy', rating_shown, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rating Shown', new_rating_shown_path %>

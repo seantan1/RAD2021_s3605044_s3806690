@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210518022712) do
+ActiveRecord::Schema.define(version: 20210518114200) do
+
+  create_table "admins", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cart_products", force: :cascade do |t|
     t.integer  "product_id"
@@ -54,6 +60,12 @@ ActiveRecord::Schema.define(version: 20210518022712) do
     t.string   "search_input"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "rating_showns", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "supports", force: :cascade do |t|

@@ -35,7 +35,7 @@ class CartProductsController < ApplicationController
       respond_to do |format|
         if cart_product_params[:quantity].to_i > 0
           if @cart_product.save
-            format.html { redirect_to request.referrer, notice: "Added to Cart!" }
+            format.html { redirect_to request.referrer, notice: "Added to Cart. Please go to your cart to pay for your items!"  }
             format.json { render :show, status: :created, location: @cart_product }
               
             # Then remove from savedlist
@@ -88,6 +88,8 @@ class CartProductsController < ApplicationController
           cart_product.destroy
         end
       end
+      # add user to ratingShown list
+      addToRatingShown(logged_in)
       format.html { redirect_to cart_products_url, notice: "Checkout successful." }
       format.json { head :no_content }
     end

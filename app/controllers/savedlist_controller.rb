@@ -13,15 +13,18 @@ class SavedlistController < ApplicationController
   end
   
   def edit
-    session[:savedlist] ||= []
-    if session[:savedlist].include? params[:id]
-      session[:savedlist].delete(params[:id])
-    else
-      session[:savedlist] << params[:id]
-      # Then update popularity of product
-      increase_product_popularity_by_product_id(params[:id])
+    respond_to do |format|
+      session[:savedlist] ||= []
+      if session[:savedlist].include? params[:id]
+        session[:savedlist].delete(params[:id])
+        format.html { redirect_to request.referrer, notice: "Item removed from Saved list." }
+      else
+        session[:savedlist] << params[:id]
+        # Then update popularity of product
+        increase_product_popularity_by_product_id(params[:id])
+        format.html { redirect_to request.referrer, notice: "Item added from Saved list!" }
+      end
     end
-    redirect_to request.referrer
   end
   
   def destroy

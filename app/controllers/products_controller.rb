@@ -199,5 +199,6 @@ class ProductsController < ApplicationController
     end
     return filtered_products
   end
+ 
   
 end

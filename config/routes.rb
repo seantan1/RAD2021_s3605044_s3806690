@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :admins
+  resources :rating_showns
   resources :password_resets
 
   get '/search' => 'search#autocomplete', as: :search_autocomplete
