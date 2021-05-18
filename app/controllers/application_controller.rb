@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   
   helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, :product_first_image, :get_new_ins_product_category_count, :increase_product_popularity_by_product_id
   
+  # def current_user
+  #   @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
+  # end
   
   def index
     @newsletter_email = NewsletterEmail.new
