@@ -164,18 +164,15 @@
                             <h3 class="mb-1 text-start">Total (tax included)</h3>
                             <h6 class="mb-1 text-end">$<%= cart_price_total_wtax %></h6>
                         </div>
-                        <!--<button class="btn-block btn-blue"> <span> <span id="checkout">Checkout</span> <span id="check-amt">$<#%= cart_price_total_wtax %></span> </span> </button>-->
+                        <!--DISPLAY THIS IF IT'S NOT THEIR FIRST TIME CHECKING OUT-->
+                        <!--remove stretched link in class if you want to test both buttons-->
                         <div class="btn btn-primary  text-start"> <%= link_to 'Checkout', cart_products_checkout_path, class:"text-start text-white stretched-link" %> <span id="check-amt">$<%= cart_price_total_wtax %></span>  </div>
-            </div>
-    </div>
-</div>
+                       
 
-<!--START OF MODAL-->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Rate Experience
+            <!--OTHERWISE DISPLAY THIS --- START OF RATE EXPERIENCE DISPLAY -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+ <div class="text-start">Checkout <span id="check-amt">$<%= cart_price_total_wtax %></span>  </div>
 </button>
-<!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -185,13 +182,44 @@
       </div>
       
       <div class="text-center mb-2">
-        <div class="circle-image"> <img src="https://i.imgur.com/39fcglK.png" width="50"> </div> <span class="help-text mb-1 fw-500">Thankyou [user_name]</span> <small class="text-black-50">Did You Enjoy Your Experience?</small>
+        <div class="circle-image"> <img src="https://i.imgur.com/39fcglK.png" width="50"> </div> <span class="help-text mb-1 fw-500">Thankyou.</span> <small class="text-black-50">Did You Enjoy Your Experience?</small>
         <div class="buttons mb-3 mt-4 px-5"> <button class="btn btn-outline-dark btn-block" data-bs-dismiss="modal">Yes, Absolutely!</button> <button class="btn btn-outline-dark btn-block" data-bs-dismiss="modal">Better Luck Next Time</button> </div>
+        
+        
+        <%= link_to '', cart_products_checkout_path, class:"text-start text-white stretched-link" %>
       </div>
     </div>
   </div>
   <% end %>
 
 </div> 
+            <!--END OF RATE EXPERIENCE-->
+            </div>
+    </div>
+</div>
+
+<!--START OF MODAL-->
+<!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--  <div class="btn btn-primary  text-start"> <%#= link_to 'Checkout', cart_products_checkout_path, class:"text-start text-white stretched-link" %> <span id="check-amt">$<%#= cart_price_total_wtax %></span>  </div>-->
+<!--</button>-->
+<!-- Modal -->
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header text-center">-->
+<!--        <h5 class="modal-title " id="exampleModalLabel"> Rate Your Experience</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+      
+<!--      <div class="text-center mb-2">-->
+<!--        <div class="circle-image"> <img src="https://i.imgur.com/39fcglK.png" width="50"> </div> <span class="help-text mb-1 fw-500">Thankyou [user_name]</span> <small class="text-black-50">Did You Enjoy Your Experience?</small>-->
+<!--        <div class="buttons mb-3 mt-4 px-5"> <button class="btn btn-outline-dark btn-block" data-bs-dismiss="modal">Yes, Absolutely!</button> <button class="btn btn-outline-dark btn-block" data-bs-dismiss="modal">Better Luck Next Time</button> </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <%# end %>-->
+
+<!--</div> -->
 <!--END OF MODAL-->
  
