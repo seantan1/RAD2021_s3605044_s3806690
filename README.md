@@ -1,5 +1,8 @@
 # README
 
+To migrate database to heroku:
+> heroku run rails db:migrate
+
 
 Student Names:
 Clinton Pham (s3605044)

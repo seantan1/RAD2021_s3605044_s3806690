@@ -35,7 +35,7 @@ class CartProductsController < ApplicationController
       respond_to do |format|
         if cart_product_params[:quantity].to_i > 0
           if @cart_product.save
-            format.html { redirect_to request.referrer, notice: "Cart product was successfully created." }
+            format.html { redirect_to request.referrer, notice: "Added to Cart!" }
             format.json { render :show, status: :created, location: @cart_product }
               
             # Then remove from savedlist
@@ -76,7 +76,7 @@ class CartProductsController < ApplicationController
   def destroy
     @cart_product.destroy
     respond_to do |format|
-      format.html { redirect_to cart_products_url, notice: "Cart product was successfully destroyed." }
+      format.html { redirect_to cart_products_url, notice: "Item Removed from Cart" }
       format.json { head :no_content }
     end
   end
@@ -128,7 +128,7 @@ class CartProductsController < ApplicationController
     end
     return count
   end
-  
+   
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart_product
