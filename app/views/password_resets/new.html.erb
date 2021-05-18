@@ -1,7 +1,32 @@
 <%= form_tag password_resets_path, :method => :post do %>
-  <div class="field">
+  <div class="container text-center mt-5"> 
+  <h3>Reset Password</h3><br></br>
+   <h1 class="fw-lighter fs-6">Enter the email address associated with your account <br> and we'll send you a link to reset your password.</h1>
+     </div><br></br>
+   
+   <div class="container form-control-sm col-md-3 mx-auto"> 
+  <div class="mb-3">
     <%= label_tag :email %>
     <%= text_field_tag :email, params[:email] %>
   </div>
-  <div class="actions"><%= submit_tag "Reset Password" %></div>
-<% end %>
+  <div class="actions bg"><%= submit_tag "Reset Password", class:"btn btn-secondary text-dark" %></div>
+      
+ 
+     </div></div>
+      <% end %>
+  <hr></hr>
+ 
+ <div class="text-center">
+      <p><%= link_to "Click Here To Sign In!", login_path %></p>
+
+</div>
+ 
+
+
+<!--<%#= form_tag password_resets_path, :method => :post do %>-->
+<!--  <div class="field">-->
+<!--    <%#= label_tag :email %>-->
+<!--    <%#= text_field_tag :email, params[:email] %>-->
+<!--  </div>-->
+<!--  <div class="actions"><%#= submit_tag "Reset Password" %></div>-->
+<!--<%# end %>-->
