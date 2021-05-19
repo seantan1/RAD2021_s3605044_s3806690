@@ -6,7 +6,8 @@
 <div class="position-absolute top-50 start-50 translate-middle"> 
   <div class="d-grid gap-2">
     <%= link_to "Login", login_path, class:"nav-link btn btn-secondary btn-lg text-white" %>
-    <button type="button" class="nav-link btn btn-primary btn-lg ">Login With Twitter</button>
+    <!--<button type="button" class="nav-link btn btn-primary btn-lg ">Login With Twitter</button>-->
+    <%= link_to "Login With Twitter", "/auth/twitter", class:"nav-link btn btn-primary btn-lg" %>
     <%= link_to "New To Us? Sign Up", register_path, class:"nav-link btn btn-light btn-lg " %>
   </div>
  </div>

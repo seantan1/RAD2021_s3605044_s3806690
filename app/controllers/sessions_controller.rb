@@ -29,14 +29,12 @@ class SessionsController < ApplicationController
   end
   
   def twitter
-    @user = User.find_or_create_from_auth_hash(auth_hash)
-    session[:user_id] = @user.id
-    redirect_to request.referrer
+    puts "TWITTER LOGINNNNNNN"
+    puts auth_hash
+    session[:user_id] = "123"
+    redirect_to root_path, :notice => "Login with Twitter successful"
   end
   
-  def auth_hash
-    request.env['omniauth.auth']
-  end
   
   def destroy
     session[:user_id] = nil
@@ -62,5 +60,9 @@ private
       return true
     end
     return false
+  end
+  
+  def auth_hash
+    request.env['omniauth.auth']
   end
 end
