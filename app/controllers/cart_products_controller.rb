@@ -141,4 +141,8 @@ class CartProductsController < ApplicationController
     def cart_product_params
       params.require(:cart_product).permit(:product_id, :quantity, :size, :color, :user_id)
     end
+    
+    def get_feedback
+      params[:feedback]
+    end
 end

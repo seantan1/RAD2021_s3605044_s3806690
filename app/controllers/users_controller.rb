@@ -3,6 +3,12 @@ class UsersController < ApplicationController
   
   helper_method :get_user, :subscribed_newsletter
   
+  EMAIL_PATTERN = /\A\S+@.+\.\S+\z/
+  
+  # Alphanumeric only, only between 8-20 characters
+  PASSWORD_PATTERN =  /^[a-zA-Z0-9]{8,20}$/
+
+  
   def index 
     @user = User.new #creates a user object for our form
     @users = User.all
@@ -33,6 +39,9 @@ class UsersController < ApplicationController
         elsif email_exist(signup_params[:email])
           format.html{ redirect_to request.referrer, notice: "Email already taken." }
           format.json { head :no_content }
+        elsif !password_valid(signup_params[:password])
+          format.html{ redirect_to request.referrer, notice: "Password must be between 8-20 characters!." }
+          format.json { head :no_content }
         else
           if email_valid(signup_params[:email])
             @user = User.create(signup_params) 
@@ -46,7 +55,7 @@ class UsersController < ApplicationController
               format.json { head :no_content }
             end
           else 
-            format.html{ redirect_to request.referrer, notice: "Email is invalid." }
+            format.html{ redirect_to request.referrer, notice: "Please enter a valid email!" }
             format.json { head :no_content }
           end
         end
@@ -147,8 +156,13 @@ class UsersController < ApplicationController
   end
   
   def email_valid(user_email)
-    return user_email.include? '@'
+    return user_email.match? EMAIL_PATTERN
   end
+  
+  def password_valid(user_password)
+    return user_password.match? PASSWORD_PATTERN
+  end
+   
   
   def show
     @user = User.find(params[:id])

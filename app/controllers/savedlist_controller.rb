@@ -17,9 +17,17 @@ class SavedlistController < ApplicationController
       session[:savedlist] ||= []
       if session[:savedlist].include? params[:id]
         session[:savedlist].delete(params[:id])
+        
+        # update admin stats
+        saved_products_stats(params[:id], -1)
+        
         format.html { redirect_to request.referrer, notice: "Item removed from Saved list." }
       else
         session[:savedlist] << params[:id]
+        
+        # update admin stats
+        saved_products_stats(params[:id], 1)
+        
         # Then update popularity of product
         increase_product_popularity_by_product_id(params[:id])
         format.html { redirect_to request.referrer, notice: "Item added from Saved list!" }

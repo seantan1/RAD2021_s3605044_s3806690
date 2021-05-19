@@ -4,6 +4,8 @@ class AdminsController < ApplicationController
   # GET /admins or /admins.json
   def index
     @admins = Admin.all
+    @saved_products = SavedProduct.all
+    @newsletter_emails = NewsletterEmail.all
   end
 
   # GET /admins/1 or /admins/1.json

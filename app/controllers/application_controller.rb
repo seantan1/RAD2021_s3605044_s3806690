@@ -2,7 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :require_login
   
-  helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, :product_first_image, :get_new_ins_product_category_count, :increase_product_popularity_by_product_id, :addToRatingShown, :isRatingShown, :isAdmin
+  helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, 
+  :product_first_image, :get_new_ins_product_category_count, :increase_product_popularity_by_product_id, :addToRatingShown, :isRatingShown, 
+  :isAdmin, :saved_products_stats
   
   # def current_user
   #   @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
@@ -94,6 +96,22 @@ class ApplicationController < ActionController::Base
     return false
   end
   
+  def saved_products_stats(input_product_id, count_change)
+    if product = getSavedProduct(input_product_id)
+      puts "ONE"
+      puts product
+    else
+      product = SavedProduct.new
+      product.product_id = input_product_id
+      product.count = 0
+      puts "TWO"
+      puts product
+    end
+    product.count += count_change
+    puts "THREE"
+    puts product
+  end
+  
 private
 
   def require_login
@@ -106,5 +124,13 @@ private
     return (DateTime.now - product.arrival.to_datetime).to_i
   end
   
+  def getSavedProduct(input_product_id)
+    SavedProduct.all.each do |product|
+      if product.product_id.to_s == input_product_id.to_s
+        return product
+      end
+    end
+    return false
+  end
   
 end

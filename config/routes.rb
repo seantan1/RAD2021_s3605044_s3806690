@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :saved_products
   resources :admins
   resources :rating_showns
   resources :password_resets

@@ -1,18 +1,28 @@
+<!--NEED TO DISPLAY-->
+<!--- Saved Items-->
+<!--- Purchased Items-->
+<!--- Overall Rating-->
+<!--- Newsletter subscriptions-->
+
 <p id="notice"><%= notice %></p>
 
-<h1>Emails Subscriptions</h1>
+<h3 class="text-center">Emails Subscriptions</h3>
 
-<table>
+
+
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Email</th>
+      <th>#</th>
+      <th>Email Address</th>
       <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @newsletter_emails.each do |newsletter_email| %>
+    <% @newsletter_emails.each_with_index do |newsletter_email, index| %>
       <tr>
+        <td><%= index + 1 %></td>
         <td><%= newsletter_email.email %></td>
         <td><%= link_to 'Delete', newsletter_email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -21,5 +31,5 @@
 </table>
 
 <br>
-<%= link_to 'Home', root_path %> | 
-<%= link_to 'New Newsletter Email', new_newsletter_email_path %>
+<%= link_to 'Home', root_path %> 
+<%#= link_to 'New Newsletter Email', new_newsletter_email_path %>
