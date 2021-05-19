@@ -1,8 +1,9 @@
+<div class="container"> 
 <p id="notice"><%= notice %></p>
 
 <h3 class="text-center ">Customer's Purchased Products Statistics</h3>
 <br>
-<table class="table table-hover text-center">
+<table class="table table-hover table-dark text-center">
   <thead>
     <tr>
       <th>Product Name</th>
@@ -16,7 +17,7 @@
     <% @purchased_products.each do |purchased_product| %>
       <% if product = get_product_by_id(purchased_product.product_id) %>
         <tr>
-          <td><%= link_to product.name, product %></td>
+          <td><%= link_to product.name, product, class:"text-white" %></td>
           <td>
           <%= link_to product do %>    
               <img src=<%= product_first_image(product) %> width="100">
@@ -31,7 +32,7 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <%#= link_to 'New Purchased Product', new_purchased_product_path %>

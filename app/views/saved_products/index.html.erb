@@ -1,11 +1,12 @@
+<div class="container"> 
 <p id="notice"><%= notice %></p>
 
 <h3 class="text-center">Customer's Saved List Statistics</h3>
 
-<table class="table table-hover text-center">
+<table class="table table-hover text-center table-dark">
   <thead>
     <tr>
-      <th>Product Name</th>
+      <th class=>Product Name</th>
       <th>Image</th>
       <th>Popularity</th>
       <th>Customers Saved</th>
@@ -18,7 +19,7 @@
     <% @saved_products.each do |saved_product| %>
       <% if product = get_product_by_id(saved_product.product_id) %>
         <tr>
-          <td><%= link_to product.name, product %></td>
+          <td><%= link_to product.name, product, class:"text-white" %></td>
           <td>
           <%= link_to product do %>    
               <img src=<%= product_first_image(product) %> width="100" class="img-thumbnail">
@@ -34,7 +35,7 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <%#= link_to 'New Saved Product', new_saved_product_path %>

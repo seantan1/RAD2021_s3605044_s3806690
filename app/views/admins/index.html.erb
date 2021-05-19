@@ -1,11 +1,12 @@
+<div class="container text-center"> 
 <p id="notice"><%= notice %></p>
 
 <h1>Admins</h1>
 
-<table>
+<table class="table table-hover text-center">
   <thead>
     <tr>
-      <th>User</th>
+      <th>User ID</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,28 +15,29 @@
     <% @admins.each do |admin| %>
       <tr>
         <td><%= admin.user_id %></td>
-        <td><%= link_to 'Show', admin %></td>
-        <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
-        <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= link_to 'Show', admin %></td>
+        <td><%#= link_to 'Edit', edit_admin_path(admin) %></td>
+        <td><%= link_to 'Remove Admin', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= link_to 'Add New Admin', new_admin_path, class:"btn btn-primary text-white"%>
 
+</div>
 <br>
+<hr>
 
-
-
-<%= link_to 'New Admin', new_admin_path %>
-
-<%= render template:'saved_products/index' %>
-
-<%= render template:'purchased_products/index' %>
-
-<%= render template: 'customer_ratings/index' %>
  
-
-<%= link_to 'View entire Customer Rating table here', customer_ratings_path %>
+<%= render template:'saved_products/index' %>
+<hr></hr>
+<%= render template:'purchased_products/index' %>
+<hr></hr>
+<%= render template: 'customer_ratings/index' %>
+   
+<hr></hr>
+<%#= link_to 'View entire Customer Rating table here', customer_ratings_path %>
 
 
 <%= render template:'newsletter_emails/index' %>
+
