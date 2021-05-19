@@ -1,2 +1,0 @@
-class RatingShown < ApplicationRecord
-end

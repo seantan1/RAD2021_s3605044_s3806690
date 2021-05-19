@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   before_filter :require_login
   
   helper_method :get_product_category_count, :get_product_by_id, :edit_cart, :logged_in, :get_cart_product_by_product_id, :product_images, 
-  :product_first_image, :get_new_ins_product_category_count, :increase_product_popularity_by_product_id, :addToRatingShown, :isRatingShown, 
-  :isAdmin, :saved_products_stats
+  :product_first_image, :get_new_ins_product_category_count, :increase_product_popularity_by_product_id, :addToCustomerRatings, :isRatingShown, 
+  :isAdmin, :saved_products_stats, :purchased_products_stats, :getCustomerRatingStat
   
   # def current_user
   #   @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
@@ -72,15 +72,27 @@ class ApplicationController < ActionController::Base
     product.save
   end
   
-  def addToRatingShown(input_user_id)
-    rating_shown = RatingShown.new
-    rating_shown.user_id = input_user_id
-    rating_shown.save
+  def addToCustomerRatings(input_user_id, input_rating)
+    customer_rating = CustomerRating.new
+    customer_rating.user_id = input_user_id
+    customer_rating.rating = input_rating
+    customer_rating.save
   end
   
+  def getCustomerRatingStat(input_rating)
+    count = 0
+    CustomerRating.all.each do |customer_rating|
+      if customer_rating.rating == input_rating.to_i
+        count += 1
+      end
+    end
+    return count
+  end
+    
+  
   def isRatingShown(input_user_id)
-    RatingShown.all.each do |rating_shown|
-      if rating_shown.user_id.to_s == input_user_id.to_s
+    CustomerRating.all.each do |customer_rating|
+      if customer_rating.user_id.to_s == input_user_id.to_s
         return true
       end
     end
@@ -98,18 +110,24 @@ class ApplicationController < ActionController::Base
   
   def saved_products_stats(input_product_id, count_change)
     if product = getSavedProduct(input_product_id)
-      puts "ONE"
-      puts product
     else
       product = SavedProduct.new
       product.product_id = input_product_id
       product.count = 0
-      puts "TWO"
-      puts product
     end
     product.count += count_change
-    puts "THREE"
-    puts product
+    product.save
+  end
+  
+  def purchased_products_stats(input_product_id, count_change)
+    if product = getPurchasedProduct(input_product_id)
+    else
+      product = PurchasedProduct.new
+      product.product_id = input_product_id
+      product.count = 0
+    end
+    product.count += count_change
+    product.save
   end
   
 private
@@ -126,6 +144,15 @@ private
   
   def getSavedProduct(input_product_id)
     SavedProduct.all.each do |product|
+      if product.product_id.to_s == input_product_id.to_s
+        return product
+      end
+    end
+    return false
+  end
+  
+  def getPurchasedProduct(input_product_id)
+    PurchasedProduct.all.each do |product|
       if product.product_id.to_s == input_product_id.to_s
         return product
       end

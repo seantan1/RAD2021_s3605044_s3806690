@@ -25,7 +25,7 @@ class SavedProductsController < ApplicationController
 
     respond_to do |format|
       if @saved_product.save
-        format.html { redirect_to @saved_product, notice: "Saved product was successfully created." }
+        format.html { redirect_to request.referrer, notice: "Saved product was successfully created." }
         format.json { render :show, status: :created, location: @saved_product }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class SavedProductsController < ApplicationController
   def update
     respond_to do |format|
       if @saved_product.update(saved_product_params)
-        format.html { redirect_to @saved_product, notice: "Saved product was successfully updated." }
+        format.html { redirect_to request.referrer, notice: "Saved product was successfully updated." }
         format.json { render :show, status: :ok, location: @saved_product }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class SavedProductsController < ApplicationController
   def destroy
     @saved_product.destroy
     respond_to do |format|
-      format.html { redirect_to saved_products_url, notice: "Saved product was successfully destroyed." }
+      format.html { redirect_to request.referrer, notice: "Saved product was successfully destroyed." }
       format.json { head :no_content }
     end
   end

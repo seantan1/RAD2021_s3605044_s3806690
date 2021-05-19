@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  resources :customer_ratings
+  resources :purchased_products
   resources :saved_products
   resources :admins
-  resources :rating_showns
   resources :password_resets
 
   get '/search' => 'search#autocomplete', as: :search_autocomplete

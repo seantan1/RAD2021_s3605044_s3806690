@@ -5,6 +5,8 @@ class AdminsController < ApplicationController
   def index
     @admins = Admin.all
     @saved_products = SavedProduct.all
+    @purchased_products = PurchasedProduct.all
+    @customer_ratings = CustomerRating.all
     @newsletter_emails = NewsletterEmail.all
   end
 

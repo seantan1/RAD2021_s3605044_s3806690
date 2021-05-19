@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   helper_method :filter_products_in_cart, :products_sort_by_popularity
   
   def index
-    @all_products = Product.all
+    @all_products = Product.all.order('random()')
     session[:savedlist] ||= []
     
     

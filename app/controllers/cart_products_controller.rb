@@ -85,11 +85,17 @@ class CartProductsController < ApplicationController
     respond_to do |format|
       CartProduct.all.each do |cart_product|
         if cart_product.user_id == logged_in
+          # add admin statistics
+          purchased_products_stats(cart_product.product_id, cart_product.quantity)
+          
+          # then destroy
           cart_product.destroy
         end
       end
-      # add user to ratingShown list
-      addToRatingShown(logged_in)
+      
+      # add user feedback statistics for admin panel
+      addToCustomerRatings(logged_in, params[:rating].to_i)
+      
       format.html { redirect_to cart_products_url, notice: "Checkout successful." }
       format.json { head :no_content }
     end

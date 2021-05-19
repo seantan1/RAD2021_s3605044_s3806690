@@ -172,7 +172,7 @@
                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                              <div class="text-start">Checkout <span id="check-amt">$<%= cart_price_total_wtax %></span>  </div>
                         </button>
-                       <% end %>
+                       <!--<% end %>-->
 
             <!--OTHERWISE DISPLAY THIS --- START OF RATE EXPERIENCE DISPLAY -->
              
@@ -187,11 +187,13 @@
       </div>
       
        <div class="text-center mb-2">
-        <div class="circle-image"> <img src="https://i.imgur.com/39fcglK.png" width="50"> </div> <span class="help-text mb-1 fw-500">Thankyou.</span> 
+        <div class="circle-image"> <img src="https://i.imgur.com/39fcglK.png" width="50"> </div> <span class="help-text mb-1 fw-500">Thank you.</span> 
         <small class="text-black-50">Did You Enjoy Your Experience?</small>
-        <div class="buttons mb-3 mt-4 px-5"> 
-        <button class="btn btn-outline-dark btn-block" ><%= link_to 'Yes Absolutely!', cart_products_checkout_path(feedback: "positive"), class:"" %></button> 
-        <button class="btn btn-outline-dark btn-block"><%= link_to 'Better Luck Next Time', cart_products_checkout_path(feedback: "negative"), class:"" %></button> 
+        <div class="buttons mb-3 mt-5 px-4"> 
+        <button class="btn btn-outline-dark btn-block bi bi-emoji-frown" ><%= link_to ' SO BAD', cart_products_checkout_path(rating: "0"), class:"" %></button> 
+        <button class="btn btn-outline-dark btn-block bi bi-emoji-neutral"><%= link_to ' OKAY', cart_products_checkout_path(rating: "1"), class:"" %></button> 
+        <button class="btn btn-outline-dark btn-block bi bi-emoji-smile"><%= link_to ' GOOD', cart_products_checkout_path(rating: "2"), class:"" %></button> 
+        <button class="btn btn-outline-dark btn-block bi bi-emoji-heart-eyes"><%= link_to ' AMAZING', cart_products_checkout_path(rating: "3"), class:"" %></button> 
         </div>
         
          <%#= link_to '', cart_products_checkout_path, class:"text-start text-white " %>

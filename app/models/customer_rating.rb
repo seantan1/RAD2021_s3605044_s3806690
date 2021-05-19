@@ -1,0 +1,2 @@
+class CustomerRating < ApplicationRecord
+end

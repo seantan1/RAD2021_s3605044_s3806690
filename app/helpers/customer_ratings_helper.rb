@@ -1,0 +1,2 @@
+module CustomerRatingsHelper
+end
