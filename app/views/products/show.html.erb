@@ -40,7 +40,7 @@
 			<h3 class="product-title text-center"><%= @product.name %></h3>
 			<p class="product-description text-center"><%= @product.description %></p>
 			<hr></hr>
-			<h4 class="price text-center ">current price: <span> $<%= @product.price %></span></h4>
+			<h4 class="price text-center ">current price: <span> $<%= number_with_precision(@product.price, :precision => 2) %></span></h4>
     <hr></hr>
 
         <!-- START OF FORM -->

@@ -28,6 +28,7 @@ class AdminsController < ApplicationController
     @admin = Admin.new(admin_params)
 
     respond_to do |format|
+      # Create new admin
       if @admin.save
         format.html { redirect_to @admin, notice: "Admin was successfully created." }
         format.json { render :show, status: :created, location: @admin }
@@ -40,6 +41,7 @@ class AdminsController < ApplicationController
 
   # PATCH/PUT /admins/1 or /admins/1.json
   def update
+    # Update current admin
     respond_to do |format|
       if @admin.update(admin_params)
         format.html { redirect_to @admin, notice: "Admin was successfully updated." }

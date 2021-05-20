@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
     session[:savedlist] ||= []
   end
   
+  # Increase counter if the product is in the category
   def get_product_category_count(input_category)
     count = 0
     Product.all.each do |product|
@@ -25,6 +26,7 @@ class ApplicationController < ActionController::Base
     return count
   end
   
+  # increase the counter if the product was added less than 30 days ago
   def get_new_ins_product_category_count
     count = 0
     Product.all.each do |product|
@@ -35,6 +37,7 @@ class ApplicationController < ActionController::Base
     return count
   end
   
+  # retrieve product by id
   def get_product_by_id(input_id)
     Product.all.each do |product|
       if product.id.to_s == input_id.to_s
@@ -44,6 +47,7 @@ class ApplicationController < ActionController::Base
     return nil
   end
   
+  # 
   def get_cart_product_by_product_id(input_product_id)
     CartProduct.all.each do |cart_product|
       if cart_product.product_id.to_s == input_product_id.to_s && cart_product.user_id == logged_in
@@ -52,6 +56,7 @@ class ApplicationController < ActionController::Base
     end
     return CartProduct.new
   end
+  
   
   def logged_in
     return session[:user_id] unless nil

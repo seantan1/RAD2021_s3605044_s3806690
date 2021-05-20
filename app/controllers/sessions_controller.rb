@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
   # end
   
   def create
+    env["omniauth.auth"]
     user = User.authenticate(params[:log_in_email], params[:log_in_password])
     if user
       session[:user_id] = user.id

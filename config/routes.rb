@@ -32,7 +32,8 @@ Rails.application.routes.draw do
   # get 'profile' => 'profile#index'
   # get 'cart_login', to: 'sessions#cart_login'
   get 'seeAllProducts' => 'products#seeAllProducts'
-  get '/auth/:provider/callback', to: 'sessions#twitter'
+  get 'auth/:provider/callback', to: 'sessions#twitter'
+  
   get 'login_main' => 'sessions#login'
   get 'login' => 'sessions#index'
   get 'logout' => 'sessions#destroy'

@@ -1,13 +1,3 @@
- 
-    <!--<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/product/">-->
-    <!--<link href="index.css" rel="stylesheet">-->
-  
-<%#= form_tag( search_autocomplete_path, method: "get" ) do %>
-  <%#= text_field_tag( :search, params[:search], placeholder: 'Enter a search term...', :id => 'autocomplete_search' ) %>
-  <%#= submit_tag( "Go" ) %>
-  <!--<div id="autocomplete_search_results" width:100></div>-->
-<%# end %>
-
 <!--<main>-->
   <!--Top Banner-->
   <div id="carouselExampleCaptions" class="carousel slide bg-light" data-bs-ride="carousel">
@@ -18,23 +8,21 @@
       <%= link_to product do %>
       <img src=<%= product_first_image(product)%> class="d-block w-100" alt="...">
       <% end %>
-      
-      <div class="carousel-caption d-none d-md-block ">
+      <!--mx-auto d-block - this was causing errors, it wasn't showing the buttons after resizing the browser-->
+      <div class="carousel-caption">
         <h5><%= link_to product.name, product, class:"bg-dark text-white" %></h5>
-        <p>$<%= product.price %></p>
+        <p >$<%= number_with_precision(product.price, :precision => 2) %></p>
         <% if session[:savedlist].include? product.id.to_s %>
         <%= link_to 'Remove', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto  " %>
         <% else %>
-        <div class="container"> 
         <%= link_to '', edit_savedlist_path(product), class:"btn btn-danger btn-circle btn-xl mx-auto d-block bi bi-heart-fill text-white" %>
-        </div>
         <% end %>
       </div>
     </div>       
         <% end %>
   </div>
 </div>
-
+<!--END OF TOP BANNER-->
 
   <!--START POPULAR--> 
   <div class="container-fluid bg-light shadow-sm ">
