@@ -1,17 +1,15 @@
 <%= form_tag seeAllProducts_path, :method => 'get' do %>
+  
+ <h3 class="text-center">Filter Page</h3> 
     
 <div class="container">
 <div class="row justify-content-center">   
 <div class="col-sm-6 ">     
-    <h3>Collections</h1>
+    <h5>Collections</h5>
     
 <div class="row justify-content-center">   
  
      <input type="checkbox" class="btn-check" value="selectAll" id="check_all" onclick="selectAll()">
-      
- <!--= check_box_tag "", nil, nil, class: "selectall-checkbox"-->
-    <!--<a href="#" onclick="selectAll()">Select All</a>-->
-    <!--<input type="checkbox" onclick="selectAll()">Select All</input><br></br>-->
      <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
       <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="category[]" value="men">
       <label class="btn btn-outline-secondary" for="btncheck1">Men</label>
@@ -23,13 +21,8 @@
       <label class="btn btn-outline-secondary" for="btncheck3" >Kids</label>
     
      </div>
-    
-    <%#= params[:category].inspect %>
-
-
-    <br><br><br>
-    
-    <h3>Color</h3>
+     
+    <h5>Color</h5>
       <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
           <input type="checkbox" class="btn-check" id="redbtn" autocomplete="off" name="color[]" value="red">
           <label class="btn btn-outline-danger" for="redbtn">Red</label>
@@ -40,11 +33,8 @@
           <input type="checkbox" class="btn-check" id="blackbtn" autocomplete="off" name="color[]" value="black">
           <label class="btn btn-outline-dark" for="blackbtn" >Black</label>
      </div> 
-     <%#= params[:color].inspect %>
      
-    <br><br><br>
-    
-    <h3>Sizes</h3>
+    <h5>Sizes</h5>
     
          <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
       <input type="radio" class="btn-check" id="smallSize" autocomplete="off" name="size" value="S">
@@ -56,16 +46,14 @@
       <input type="radio" class="btn-check" id="largeSize" autocomplete="off" name="size" value="L">
       <label class="btn btn-outline-secondary" for="largeSize" >Large</label>
      </div>
-     <%#= params[:size].inspect %>
-    <!--<input type="radio" name="size" value="s">-->
-    <!--<label for="red">S</label><br>-->
-    <!--<input type="radio" name="size" value="m">-->
-    <!--<label for="blue">M</label><br>-->
-    <!--<input type="radio" name="size" value="l">-->
-    <!--<label for="black">L</label><br>-->
-    <br><br><br>
-            <label class="btn btn-outline-primary" for="check_all">Select All</label>
 </div>
+
+<br></br>
+
+  <div class="text-end"> 
+   <label class="btn btn-primary btn-lg" for="check_all">Select All</label>
+  </div>
+ 
  <br></br><br></br>
  
  
