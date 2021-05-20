@@ -1,6 +1,8 @@
 <% provide(:title, "Edit user") %>
 
 <div class="container text-center mt-5">
+  <%= gravatar_for @user %>
+  
   <h1>Update your profile</h1>
   
   
@@ -25,6 +27,9 @@
       <br>
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
+     <br> 
+    <a class="btn btn-primary text-white" href="http://gravatar.com/emails" target="_blank">Change Gravatar Photo</a> 
+    
   </div>
 </div>
 </div>
