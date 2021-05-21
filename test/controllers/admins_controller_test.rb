@@ -15,13 +15,13 @@ class AdminsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create admin" do
-    assert_difference('Admin.count') do
-      post admins_url, params: { admin: { user_id: @admin.user_id } }
-    end
+  # test "should create admin" do
+  #   assert_difference('Admin.count') do
+  #     post admins_url, params: { admin: { user_id: @admin.user_id } }
+  #   end
 
-    assert_redirected_to admin_url(Admin.last)
-  end
+  #   assert_redirected_to admin_url(Admin.last)
+  # end
 
   test "should show admin" do
     get admin_url(@admin)

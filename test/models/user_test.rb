@@ -16,6 +16,8 @@ class UserTest < ActiveSupport::TestCase
     @user.name = "x" * 26
     assert_not @user.valid?
   end
+  
+  
    
   # test "should be valid" do
   #   @user.name = "test"

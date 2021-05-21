@@ -1,10 +1,12 @@
 class User < ApplicationRecord
   # validates:name, presence:true
-  EMAIL_PATTERN = /\A\S+@.+\.\S+\z/
-  validates :email, presence: true, format: { with: EMAIL_PATTERN}
-  validates:name,presence:true,length:{maximum:25}
+  # EMAIL_PATTERN = /\A\S+@.+\.\S+\z/
+  
+  # validates :email, presence: true, format: { with: EMAIL_PATTERN}
+  # validates:name,presence:true,length:{maximum:25}
   
   before_create { generate_token(:auth_token) }
+  before_save{self.email=email.downcase }
   
   has_secure_password
   

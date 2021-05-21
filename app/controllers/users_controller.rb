@@ -3,7 +3,10 @@ class UsersController < ApplicationController
   
   helper_method :get_user, :subscribed_newsletter
   
-  EMAIL_PATTERN = /\A\S+@.+\.\S+\z/
+  # REGEX PATTERN FROM TUT 7
+  EMAIL_PATTERN = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  # /\A\S+@.+\.\S+\z/
+   
   
   # validates :email, presence: true, format: { with: EMAIL_PATTERN}
   # validates :password, presence: true, format: { with: PASSWORD_PATTERN}, allow_blank: true
