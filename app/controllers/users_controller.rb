@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   
   EMAIL_PATTERN = /\A\S+@.+\.\S+\z/
   
+  validates :email, presence: true, format: { with: EMAIL_PATTERN}
+  validates :password, presence: true, format: { with: PASSWORD_PATTERN}
   # Alphanumeric only, only between 8-20 characters
   PASSWORD_PATTERN =  /^[a-zA-Z0-9]{8,20}$/
 

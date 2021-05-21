@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  # validates:name, presence:true
+  
   before_create { generate_token(:auth_token) }
   
   has_secure_password
@@ -23,6 +25,10 @@ class User < ApplicationRecord
   #   )
   #   user
   # end
+  
+  def send_newsletter_email
+    UserMailer.newsletter_confirmation(self).deliver_later
+  end
   
   def send_password_reset
     generate_token(:password_reset_token)

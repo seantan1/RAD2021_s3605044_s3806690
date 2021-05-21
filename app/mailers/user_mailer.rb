@@ -10,8 +10,4 @@ class UserMailer < ApplicationMailer
     # mail to: @user.email, subject: "Successfully subscribed to newsletter"
     mail( :to => @user.email, :subject => 'Successfully subscribed to newsletter' )
   end
-  
-  
-  
-  
 end

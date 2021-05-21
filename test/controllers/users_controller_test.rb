@@ -1,19 +1,15 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
   
-  # def setup
-  #   @user = users(:one)
-  # end
+  def setup
+    # @user = users(:one)
+    @user = User.new(name: "Clinton", email: "Clintonjob@hotmail.co.uk", password: "1", password_confirmation: "1")
+  end
   
-  # test "edit" do
-  #   get edit_user_path(@user)
-  #   render_template 'users/edit'
-  #   path user_path(@user), params: {user: {name: "", email: "error@wrong", password: "too", password_confirmation: "short"}}
-  #   render_template 'users/edit'
-  # end
+  test "Password Constraint" do
+    @user.password = "123"
+    assert_not @user.valid?
+  end 
   
 end
