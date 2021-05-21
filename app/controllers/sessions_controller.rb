@@ -9,11 +9,10 @@ class SessionsController < ApplicationController
   
   # special login for users to login and have a product directly added into their cart
   # def cart_login
-    
   # end
   
   def create
-    env["omniauth.auth"]
+    # env["omniauth.auth"]
     user = User.authenticate(params[:log_in_email], params[:log_in_password])
     if user
       session[:user_id] = user.id
