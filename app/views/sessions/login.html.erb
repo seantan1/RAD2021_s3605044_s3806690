@@ -7,7 +7,11 @@
   <div class="d-grid gap-2">
     <%= link_to "Login", login_path, class:"nav-link btn btn-secondary btn-lg text-white" %>
     <!--<button type="button" class="nav-link btn btn-primary btn-lg ">Login With Twitter</button>-->
-    <%= link_to "Login With Twitter", "/auth/twitter", class:"nav-link btn btn-primary btn-lg" %>
+    <%#= link_to "Login With Twitter", "/auth/twitter", class:"nav-link btn btn-primary btn-lg" %>
+    <form action="/auth/twitter" method="post" accept-charset="UTF-8" >
+        
+        <input name="Login with Twitter" type="submit" value="Search" data-disable-with="Search" />
+    </form>
     <%= link_to "New To Us? Sign Up", register_path, class:"nav-link btn btn-light btn-lg " %>
   </div>
  </div>
