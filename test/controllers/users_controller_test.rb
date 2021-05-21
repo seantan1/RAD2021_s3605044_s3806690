@@ -4,12 +4,18 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   
   def setup
     # @user = users(:one)
-    @user = User.new(name: "Clinton", email: "Clintonjob@hotmail.co.uk", password: "1", password_confirmation: "1")
+    @user = User.new(name: "Clinton", email: "Clintonjobhotmail.co.uk", password: "1", password_confirmation: "1")
   end
   
   test "Password Constraint" do
-    @user.password = "123"
-    assert_not @user.valid?
+    @user.password = ""
+    
+    assert @user.valid?
   end 
+  
+  test "Name should be present" do
+    @user.name = "Clinton"
+    assert @user.valid?
+  end
   
 end
