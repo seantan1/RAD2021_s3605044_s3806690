@@ -3,7 +3,7 @@
 <div class="container">
 <div class="row justify-content-center">   
 <div class="col-sm-6 ">     
-    <h3>Collections</h1>
+    
     
 <div class="row justify-content-center">   
  
@@ -12,6 +12,24 @@
  <!--= check_box_tag "", nil, nil, class: "selectall-checkbox"-->
     <!--<a href="#" onclick="selectAll()">Select All</a>-->
     <!--<input type="checkbox" onclick="selectAll()">Select All</input><br></br>-->
+    <h3>Collections</h1>
+    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+     <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="name[]" value="all">
+      <label class="btn btn-outline-secondary" for="btncheck1">All</label>
+     <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="name[]" value="shirt">
+      <label class="btn btn-outline-secondary" for="btncheck3" >Shirt</label>
+    
+      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="name[]" value="pants">
+      <label class="btn btn-outline-secondary" for="btncheck3" >Pants</label>
+      
+      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="name[]" value="shoe">
+      <label class="btn btn-outline-secondary" for="btncheck3" >Shoes</label>
+      
+      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="name[]" value="hoddie">
+      <label class="btn btn-outline-secondary" for="btncheck3" >Hoddie</label>
+    </div>
+      
+     <h3>Category</h1>
      <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
       <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="category[]" value="all">
       <label class="btn btn-outline-secondary" for="btncheck1">All</label>
@@ -24,14 +42,7 @@
       <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="category[]" value="kids">
       <label class="btn btn-outline-secondary" for="btncheck3" >Kids</label>
       
-      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="category[]" value="shirt">
-      <label class="btn btn-outline-secondary" for="btncheck3" >Shirt</label>
-    
-      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="category[]" value="pants">
-      <label class="btn btn-outline-secondary" for="btncheck3" >Pants</label>
       
-      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="category[]" value="shoes">
-      <label class="btn btn-outline-secondary" for="btncheck3" >Shoes</label>
      </div>
     <%#= params[:category].inspect %>
 
