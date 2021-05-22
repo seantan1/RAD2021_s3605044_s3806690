@@ -13,6 +13,8 @@
     <!--<a href="#" onclick="selectAll()">Select All</a>-->
     <!--<input type="checkbox" onclick="selectAll()">Select All</input><br></br>-->
      <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+      <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="category[]" value="all">
+      <label class="btn btn-outline-secondary" for="btncheck1">All</label>
       <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="category[]" value="men">
       <label class="btn btn-outline-secondary" for="btncheck1">Men</label>
  
@@ -21,7 +23,15 @@
     
       <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="category[]" value="kids">
       <label class="btn btn-outline-secondary" for="btncheck3" >Kids</label>
+      
+      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="category[]" value="shirt">
+      <label class="btn btn-outline-secondary" for="btncheck3" >Shirt</label>
     
+      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="category[]" value="pants">
+      <label class="btn btn-outline-secondary" for="btncheck3" >Pants</label>
+      
+      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="category[]" value="shoes">
+      <label class="btn btn-outline-secondary" for="btncheck3" >Shoes</label>
      </div>
     <%#= params[:category].inspect %>
 
@@ -38,6 +48,15 @@
         
           <input type="checkbox" class="btn-check" id="blackbtn" autocomplete="off" name="color[]" value="black">
           <label class="btn btn-outline-dark" for="blackbtn" >Black</label>
+          
+          <input type="checkbox" class="btn-check" id="blackbtn" autocomplete="off" name="color[]" value="white">
+          <label class="btn btn-outline-dark" for="blackbtn" >White</label>
+          
+          <input type="checkbox" class="btn-check" id="blackbtn" autocomplete="off" name="color[]" value="purple">
+          <label class="btn btn-outline-dark" for="blackbtn" >Purple</label>
+          
+          <input type="checkbox" class="btn-check" id="blackbtn" autocomplete="off" name="color[]" value="purple">
+          <label class="btn btn-outline-dark" for="blackbtn" >Green</label>
      </div> 
      <%#= params[:color].inspect %>
      
@@ -47,13 +66,19 @@
     
          <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
       <input type="radio" class="btn-check" id="smallSize" autocomplete="off" name="size" value="S">
-      <label class="btn btn-outline-secondary" for="smallSize">Small</label>
+      <label class="btn btn-outline-secondary" for="smallSize">S</label>
     
       <input type="radio" class="btn-check" id="mediumSize" autocomplete="off" name="size" value="M">
-      <label class="btn btn-outline-secondary" for="mediumSize">Medium</label>
+      <label class="btn btn-outline-secondary" for="mediumSize">M</label>
     
       <input type="radio" class="btn-check" id="largeSize" autocomplete="off" name="size" value="L">
-      <label class="btn btn-outline-secondary" for="largeSize" >Large</label>
+      <label class="btn btn-outline-secondary" for="largeSize" >L</label>
+      
+      <input type="radio" class="btn-check" id="largeSize" autocomplete="off" name="size" value="XL">
+      <label class="btn btn-outline-secondary" for="largeSize" >XL</label>
+      
+      <input type="radio" class="btn-check" id="largeSize" autocomplete="off" name="size" value="XXL">
+      <label class="btn btn-outline-secondary" for="largeSize" >XXL</label>
      </div>
      <%#= params[:size].inspect %>
     <!--<input type="radio" name="size" value="s">-->
