@@ -31,8 +31,8 @@ class HomeController < ApplicationController
     return filtered_products
   end
   
-  # helper funciton - sort products in home page by popularity
+  # helper funciton - sort products in home page by popularity, limited to 6 products
   def products_sort_by_popularity
-    return Product.order(popularity: :desc)
+    return Product.order(popularity: :desc).limit(6)
   end
 end

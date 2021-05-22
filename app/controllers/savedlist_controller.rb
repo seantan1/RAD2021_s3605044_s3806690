@@ -32,7 +32,7 @@ class SavedlistController < ApplicationController
         
         # Then update popularity of product
         increase_product_popularity_by_product_id(params[:id])
-        format.html { redirect_to request.referrer, notice: "Item added from Saved list!" }
+        format.html { redirect_to request.referrer, notice: "Item added to Saved list!" }
       end
     end
   end

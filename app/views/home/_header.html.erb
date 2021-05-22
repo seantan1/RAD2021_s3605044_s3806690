@@ -83,18 +83,6 @@
         <!--</li>-->
         <% if isAdmin(logged_in) %>
           <li class="nav-item">
-            <%= link_to "Users (for testing purposes)", users_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Products (for testing purposes)", products_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Saved List (for testing purposes)", savedlist_index_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Newsletter (admin)", newsletter_emails_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
             <%= link_to "Admin Portal", admins_path, class:"nav-link" %>
           </li>
         <% end %>
