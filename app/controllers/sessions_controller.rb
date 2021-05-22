@@ -1,16 +1,14 @@
 class SessionsController < ApplicationController
   skip_before_filter :require_login
   
+  # GET /login - login page
   def index
     if logged_in
       redirect_to profile_path
     end
   end
   
-  # special login for users to login and have a product directly added into their cart
-  # def cart_login
-  # end
-  
+  # POST method of logging in, attempt to authenticate user and add user to session
   def create
     # env["omniauth.auth"]
     user = User.authenticate(params[:log_in_email], params[:log_in_password])
@@ -28,20 +26,14 @@ class SessionsController < ApplicationController
     end
   end
   
-  def twitter
-    puts "TWITTER LOGINNNNNNN"
-    puts auth_hash
-    session[:user_id] = "123"
-    redirect_to root_path, :notice => "Login with Twitter successful"
-  end
-  
-  
+  # DELETE method - removes user from session
   def destroy
     session[:user_id] = nil
     redirect_to login_path, :notice => "Successfully logged out"
   end
   
 private
+  # if user has a product in the temporary cart waiting to be added to cart after login, add it  
   def add_to_cart_if_temp_cart
     if session[:temp_cart]
       
@@ -62,6 +54,7 @@ private
     return false
   end
   
+  # twitter login omniauth function
   def auth_hash
     request.env['omniauth.auth']
   end

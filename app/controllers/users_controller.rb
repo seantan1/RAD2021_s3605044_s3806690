@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   helper_method :get_user, :subscribed_newsletter
   
-  # REGEX PATTERN FROM TUT 7
+  # REGEX PATTERN FROM TUT 7 - verify validity of email
   EMAIL_PATTERN = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   # /\A\S+@.+\.\S+\z/
    
@@ -15,48 +15,58 @@ class UsersController < ApplicationController
   # Alphanumeric only, only between 8-20 characters
   PASSWORD_PATTERN =  /^[a-zA-Z0-9]{8,20}$/
 
-  
   def index 
     @user = User.new #creates a user object for our form
     @users = User.all
   end
   
+  # GET /register - registration page
   def register
     @user = User.new
   end
   
+  # GET /profile - user profile page
   def show
     @user = get_user
   end
   
+  # GET /user/edit - edit user details page
   def edit
     @user = User.find(params[:id])
   end
 
-  
+  # POST create user method
   def create
     respond_to do |format|
+      # Check if user ticked T&C
       if (signup_params[:tos].to_i == 0)
         format.html{ redirect_to request.referrer, notice: "You must accept the Terms & Conditions to register." }
         format.json { head :no_content }
       else
+        # Check if username taken
         if username_exist(signup_params[:name])
           format.html{ redirect_to request.referrer, notice: "Username already taken." }
           format.json { head :no_content }
+        # check if email taken
         elsif email_exist(signup_params[:email])
           format.html{ redirect_to request.referrer, notice: "Email already taken." }
           format.json { head :no_content }
+        # check if password valid
         elsif !password_valid(signup_params[:password])
           format.html{ redirect_to request.referrer, notice: "Password must be between 8-20 characters!." }
           format.json { head :no_content }
         else
+          # check if email valid
           if email_valid(signup_params[:email])
             @user = User.create(signup_params) 
             session[:user_id] = @user.id
+            
+            # User successfully creates account if save is called
             if @user.save
              UserMailer.newsletter_confirmation(@user).deliver_now
              format.html{ redirect_to request.referrer, notice: "Account created!" }
              format.json { head :no_content }
+            # if save failed means the password and confirm password params are not the same
             else
               format.html{ redirect_to request.referrer, notice: "Password not the same!" }
               format.json { head :no_content }
@@ -70,6 +80,7 @@ class UsersController < ApplicationController
     end
   end
   
+  # POST method to update user details
   def update
     respond_to do |format|
       @user = User.find(params[:id])
@@ -84,6 +95,7 @@ class UsersController < ApplicationController
     end
   end
   
+  # DELETE method for deleting user
   def destroy
     User.find(params[:id]).destroy
     respond_to do |format|
@@ -92,6 +104,7 @@ class UsersController < ApplicationController
     end
   end
   
+  # subscribe/unsuscribe to newsletter like a toggle
   def newsletter_subscription_switch
     respond_to do |format|
       if subscribed_newsletter(get_user)
@@ -115,11 +128,12 @@ class UsersController < ApplicationController
     
       
   end
-  
+  # helper - getter
   def get_user
     return User.find(session[:user_id])
   end
   
+  # helper - boolean if user subscribed to newsletter
   def subscribed_newsletter(user)
     NewsletterEmail.all.each do |newsletter|
       if newsletter.email == user.email

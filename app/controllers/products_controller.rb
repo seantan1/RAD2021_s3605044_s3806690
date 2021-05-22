@@ -2,14 +2,12 @@ class ProductsController < ApplicationController
   skip_before_filter :require_login
   helper_method :calculate_days_ago, :is_new_in
   
+  # GET /products
   def index
     @all_products = Product.all
     session[:savedlist] ||= []
     
-    # @all_products = Product.where(["category LIKE ? AND size LIKE ? AND color LIKE ?", "%#{params[:category]}%", "%#{params[:size]}%", "%#{params[:color]}%"])
-    
-    # params[:category].each do |category|
-    # @all_products = Product.where(["category LIKE '%men%'"])
+    # filter functions for product page filter
     if params[:category]
       if params[:category].length == 3
         @all_products = Product.where(["category LIKE ?", "%#{params[:category][0]}%"])
@@ -41,6 +39,7 @@ class ProductsController < ApplicationController
     end
   end
   
+  # POST /search - search function for the search bar on nav
   def search
     @all_products = Product.where(["name LIKE ?", "%#{params[:search]}%"])
     .or(Product.where(["category LIKE ?", "%#{params[:search]}%"]))
@@ -49,15 +48,18 @@ class ProductsController < ApplicationController
     .or(Product.where(["description LIKE ?", "%#{params[:search]}%"]))
   end
   
+  # GET /products/new
   def new
     @product = Product.new
     # @categories = Product.uniq.pluck(:category)
   end
   
+  # GET /products/:id
   def show
     @product = Product.find(params[:id])
   end
   
+  # GET /products/category/:id
   def category
     men_category = "men"
     women_category = "women"
@@ -78,15 +80,16 @@ class ProductsController < ApplicationController
     end
   end
   
-
-  
+  # GET /products/:id/edit
   def edit
     @product = Product.find(params[:id])
   end
   
+  # GET /products/seeAllProducts
   def seeAllProducts
     @all_products = Product.all
     
+    # filter function
     if params[:category]
       if params[:category].length == 3
         @all_products = Product.where(["category LIKE ?", "%#{params[:category][0]}%"])
@@ -118,6 +121,7 @@ class ProductsController < ApplicationController
     end
   end
   
+  # POST method of creating product
   def create
     respond_to do |format|
       @product = Product.create(product_params)
@@ -131,6 +135,7 @@ class ProductsController < ApplicationController
     end
   end
   
+  # POST method of updating product
   def update
     respond_to do |format|
       @product = Product.find(params[:id])
@@ -145,6 +150,7 @@ class ProductsController < ApplicationController
     end
   end
   
+  # DELETE method
   def destroy
     Product.find(params[:id]).destroy
     respond_to do |format|
@@ -153,10 +159,12 @@ class ProductsController < ApplicationController
     end
   end
   
+  # helper function - calculate the number of days since arrival
   def calculate_days_ago(product)
     return (DateTime.now - product.arrival.to_datetime).to_i
   end
     
+  # helper function - boolean if product arrival is > 30 days
   def is_new_in(product)
     return true unless calculate_days_ago(product) >= 30
   end
@@ -179,6 +187,7 @@ class ProductsController < ApplicationController
   #     end
   # end
     
+  # filter products to a specific category keyword
   def filter_products(products, target_category)
     filtered_products = []
     
@@ -190,6 +199,7 @@ class ProductsController < ApplicationController
     return filtered_products
   end
   
+  # filter new produts (<30 days arrival)
   def filter_new_ins(products)
     filtered_products = []
     products.each do |product|

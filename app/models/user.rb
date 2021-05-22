@@ -12,6 +12,7 @@ class User < ApplicationRecord
   
   has_many :cart_products
   
+  # authenticate user email and password if it matches the hash password in active record
   def self.authenticate(input_email, input_password)
     user = find_by_email(input_email)
     if user && user.password_digest == BCrypt::Engine.hash_secret(input_password, user.password_digest)
@@ -31,10 +32,12 @@ class User < ApplicationRecord
   #   user
   # end
   
+  # send user newsletter through email
   def send_newsletter_email
     UserMailer.newsletter_confirmation(self).deliver_later
   end
   
+  # send user reset password email
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now

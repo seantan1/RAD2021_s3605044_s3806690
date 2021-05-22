@@ -81,11 +81,12 @@ class CartProductsController < ApplicationController
     end
   end
   
+  # User checkout, destroy all specified user's products in their cart & update admin statistics
   def checkout
     respond_to do |format|
       CartProduct.all.each do |cart_product|
         if cart_product.user_id == logged_in
-          # add admin statistics
+          # update admin statistics
           purchased_products_stats(cart_product.product_id, cart_product.quantity)
           
           # then destroy
@@ -101,6 +102,7 @@ class CartProductsController < ApplicationController
     end
   end
   
+  # helper method - calculates the total price of all products in a user's cart
   def cart_price_total
     price = 0
     CartProduct.all.each do |cart_product|
@@ -113,7 +115,7 @@ class CartProductsController < ApplicationController
     return price
   end
 
-
+  # helper method - calculates the tax a user is required to pay
   def cart_price_total_wtax
     price = 0
     tax = 2.99
@@ -127,6 +129,7 @@ class CartProductsController < ApplicationController
     return price + tax
   end
   
+  # helper method - calculates the total count of products in a user's cart
   def cart_products_count
     count = 0
     CartProduct.all.each do |product|
