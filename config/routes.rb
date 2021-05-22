@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get '/search' => 'search#autocomplete', as: :search_autocomplete
   
   get 'cart_products/checkout', to: 'cart_products#checkout'
+  get 'cart_products/delete', to: 'cart_products#delete'
+  
   resources :cart_products
   get 'support' => 'supports#new'
   resources :supports
