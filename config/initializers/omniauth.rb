@@ -11,5 +11,5 @@
 OmniAuth.config.logger = Rails.logger
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :twitter, 'GaO7vvPTuc8DPN5wgUxaQGXPn', 'jfR65KAM9zenfmIEbKRh1qwYhlTbcXrjG0nyOwYVG2MRdsTctC'
+  provider :twitter, 'MrX2K4KZRhwfxefMN3J7eBMYB', 'DXd95CDG7IGfJ6fjMIfCCsLW0sLpRG1u3RCVOM5zcKMrnllieZ'
 end
