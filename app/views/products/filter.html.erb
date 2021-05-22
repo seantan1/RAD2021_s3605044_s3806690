@@ -12,35 +12,35 @@
  <!--= check_box_tag "", nil, nil, class: "selectall-checkbox"-->
     <!--<a href="#" onclick="selectAll()">Select All</a>-->
     <!--<input type="checkbox" onclick="selectAll()">Select All</input><br></br>-->
-    <h3>Collections</h1>
+    <h3>Category</h1>
     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-     <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="name[]" value="all">
-      <label class="btn btn-outline-secondary" for="btncheck1">All</label>
-     <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="name[]" value="shirt">
-      <label class="btn btn-outline-secondary" for="btncheck3" >Shirt</label>
+     <!--<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="name[]" value="all">-->
+     <!-- <label class="btn btn-outline-secondary" for="btncheck1">All</label>-->
+     <input type="checkbox" class="btn-check" id="shirt" autocomplete="off" name="name[]" value="shirt">
+      <label class="btn btn-outline-secondary" for="shirt" >Shirt</label>
     
-      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="name[]" value="pants">
-      <label class="btn btn-outline-secondary" for="btncheck3" >Pants</label>
+      <input type="checkbox" class="btn-check" id="pants" autocomplete="off" name="name[]" value="pants">
+      <label class="btn btn-outline-secondary" for="pants" >Pants</label>
       
-      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="name[]" value="shoe">
-      <label class="btn btn-outline-secondary" for="btncheck3" >Shoes</label>
+      <input type="checkbox" class="btn-check" id="shoe" autocomplete="off" name="name[]" value="shoe">
+      <label class="btn btn-outline-secondary" for="shoe" >Shoes</label>
       
-      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="name[]" value="hoddie">
-      <label class="btn btn-outline-secondary" for="btncheck3" >Hoddie</label>
+      <input type="checkbox" class="btn-check" id="hoodie" autocomplete="off" name="name[]" value="hoodie">
+      <label class="btn btn-outline-secondary" for="hoodie" >Hoodie</label>
     </div>
       
-     <h3>Category</h1>
+     <h3>Collections</h1>
      <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-      <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="category[]" value="all">
-      <label class="btn btn-outline-secondary" for="btncheck1">All</label>
-      <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="category[]" value="men">
-      <label class="btn btn-outline-secondary" for="btncheck1">Men</label>
+      <!--<input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="category[]" value="all">-->
+      <!--<label class="btn btn-outline-secondary" for="btncheck1">All</label>-->
+      <input type="checkbox" class="btn-check" id="men" autocomplete="off" name="category[]" value="men">
+      <label class="btn btn-outline-secondary" for="men">Men</label>
  
-      <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" name="category[]" value="women">
-      <label class="btn btn-outline-secondary" for="btncheck2">Women</label>
+      <input type="checkbox" class="btn-check" id="women" autocomplete="off" name="category[]" value="women">
+      <label class="btn btn-outline-secondary" for="women">Women</label>
     
-      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="category[]" value="kids">
-      <label class="btn btn-outline-secondary" for="btncheck3" >Kids</label>
+      <input type="checkbox" class="btn-check" id="kids" autocomplete="off" name="category[]" value="kids">
+      <label class="btn btn-outline-secondary" for="kids" >Kids</label>
       
       
      </div>
@@ -60,14 +60,14 @@
           <input type="checkbox" class="btn-check" id="blackbtn" autocomplete="off" name="color[]" value="black">
           <label class="btn btn-outline-dark" for="blackbtn" >Black</label>
           
-          <input type="checkbox" class="btn-check" id="blackbtn" autocomplete="off" name="color[]" value="white">
-          <label class="btn btn-outline-dark" for="blackbtn" >White</label>
+          <input type="checkbox" class="btn-check" id="whiteBtn" autocomplete="off" name="color[]" value="white">
+          <label class="btn btn-outline-light text-dark " for="whiteBtn" >White</label>
           
-          <input type="checkbox" class="btn-check" id="blackbtn" autocomplete="off" name="color[]" value="purple">
-          <label class="btn btn-outline-dark" for="blackbtn" >Purple</label>
+          <input type="checkbox" class="btn-check" id="orangeBtn" autocomplete="off" name="color[]" value="orange">
+          <label class="btn btn-outline-warning" for="orangeBtn" >Orange</label>
           
-          <input type="checkbox" class="btn-check" id="blackbtn" autocomplete="off" name="color[]" value="purple">
-          <label class="btn btn-outline-dark" for="blackbtn" >Green</label>
+          <input type="checkbox" class="btn-check" id="greenBtn" autocomplete="off" name="color[]" value="green">
+          <label class="btn btn-outline-success" for="greenBtn" >Green</label>
      </div> 
      <%#= params[:color].inspect %>
      
@@ -85,11 +85,11 @@
       <input type="radio" class="btn-check" id="largeSize" autocomplete="off" name="size" value="L">
       <label class="btn btn-outline-secondary" for="largeSize" >L</label>
       
-      <input type="radio" class="btn-check" id="largeSize" autocomplete="off" name="size" value="XL">
-      <label class="btn btn-outline-secondary" for="largeSize" >XL</label>
+      <input type="radio" class="btn-check" id="xl" autocomplete="off" name="size" value="XL">
+      <label class="btn btn-outline-secondary" for="xl" >XL</label>
       
-      <input type="radio" class="btn-check" id="largeSize" autocomplete="off" name="size" value="XXL">
-      <label class="btn btn-outline-secondary" for="largeSize" >XXL</label>
+      <input type="radio" class="btn-check" id="xxl" autocomplete="off" name="size" value="XXL">
+      <label class="btn btn-outline-secondary" for="xxl" >XXL</label>
      </div>
      <%#= params[:size].inspect %>
     <!--<input type="radio" name="size" value="s">-->
