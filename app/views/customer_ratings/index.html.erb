@@ -15,10 +15,10 @@
   </thead>
   <tbody class="text-center">
       <tr>
-        <td><%= getCustomerRatingStat(0) %></td>
-        <td><%= getCustomerRatingStat(1) %></td>
-        <td><%= getCustomerRatingStat(2) %></td>
-        <td><%= getCustomerRatingStat(3) %></td>
+        <td><%= getCustomerRatingStat(0) unless !getCustomerRatingStat(0) %></td>
+        <td><%= getCustomerRatingStat(1) unless !getCustomerRatingStat(1) %></td>
+        <td><%= getCustomerRatingStat(2) unless !getCustomerRatingStat(2) %></td>
+        <td><%= getCustomerRatingStat(3) unless !getCustomerRatingStat(3) %></td>
       </tr>
   </tbody>
 </table>

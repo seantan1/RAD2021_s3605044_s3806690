@@ -14,20 +14,22 @@
   </thead>
 
   <tbody>
-    <% @purchased_products.each do |purchased_product| %>
-      <% if product = get_product_by_id(purchased_product.product_id) %>
-        <tr>
-          <td><%= link_to product.name, product, class:"text-white" %></td>
-          <td>
-          <%= link_to product do %>    
-              <img src=<%= product_first_image(product) %> width="100">
-          <% end %>    
-          </td>
-          <td><%= purchased_product.count %></td>
-          <td><%#= link_to 'Show', purchased_product %></td>
-          <td><%#= link_to 'Edit', edit_purchased_product_path(purchased_product) %></td>
-          <td><%#= link_to 'Destroy', purchased_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+    <% if @purchased_products %>
+      <% @purchased_products.each do |purchased_product| %>
+        <% if product = get_product_by_id(purchased_product.product_id) %>
+          <tr>
+            <td><%= link_to product.name, product, class:"text-white" %></td>
+            <td>
+            <%= link_to product do %>    
+                <img src=<%= product_first_image(product) %> width="100">
+            <% end %>    
+            </td>
+            <td><%= purchased_product.count %></td>
+            <td><%#= link_to 'Show', purchased_product %></td>
+            <td><%#= link_to 'Edit', edit_purchased_product_path(purchased_product) %></td>
+            <td><%#= link_to 'Destroy', purchased_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>

@@ -17,21 +17,23 @@
 <br>
 
   <tbody>
-    <% @saved_products.each do |saved_product| %>
-      <% if product = get_product_by_id(saved_product.product_id) %>
-        <tr>
-          <td><%= link_to product.name, product, class:"text-white" %></td>
-          <td>
-          <%= link_to product do %>    
-              <img src=<%= product_first_image(product) %> width="100" class="img-thumbnail">
-          <% end %>    
-          </td>
-          <td><%= product.popularity %></td>
-          <td><%= saved_product.count %></td>
-          <!--<td><%#= link_to 'Show', saved_product %></td>-->
-          <td><%#= link_to 'Edit', edit_saved_product_path(saved_product) %></td>
-          <td><%#= link_to 'Destroy', saved_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+    <% if @saved_products %>
+      <% @saved_products.each do |saved_product| %>
+        <% if product = get_product_by_id(saved_product.product_id) %>
+          <tr>
+            <td><%= link_to product.name, product, class:"text-white" %></td>
+            <td>
+            <%= link_to product do %>    
+                <img src=<%= product_first_image(product) %> width="100" class="img-thumbnail">
+            <% end %>    
+            </td>
+            <td><%= product.popularity %></td>
+            <td><%= saved_product.count %></td>
+            <!--<td><%#= link_to 'Show', saved_product %></td>-->
+            <td><%#= link_to 'Edit', edit_saved_product_path(saved_product) %></td>
+            <td><%#= link_to 'Destroy', saved_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
       <% end %>
     <% end %>
   </tbody>
