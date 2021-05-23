@@ -64,7 +64,7 @@ class UsersController < ApplicationController
             # User successfully creates account if save is called
             if @user.save
              UserMailer.newsletter_confirmation(@user).deliver_now
-             format.html{ redirect_to request.referrer, notice: "Account created!" }
+             format.html{ redirect_to root_path, notice: "Account created!" }
              format.json { head :no_content }
             # if save failed means the password and confirm password params are not the same
             else
@@ -169,7 +169,7 @@ class UsersController < ApplicationController
   def email_exist(user_email)
     @users = User.all
     @users.each do |user|
-      if user.email == user_email
+      if user.email.to_s == user_email.to_s
         return true
       end
     end
