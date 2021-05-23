@@ -1,8 +1,5 @@
 # README
 
-To migrate database to heroku:
-> heroku run rails db:migrate
-
 # Submission Details #
 * Student Names: Clinton Pham (s3605044), Sean Tan (s3806690). 
 * Contribution: 50/50
