@@ -42,6 +42,9 @@ class CartProductsController < ApplicationController
             session[:savedlist] ||= []
             session[:savedlist].delete(cart_product_params[:product_id])
             
+            # update admin stats
+            saved_products_stats(cart_product_params[:product_id], -1)
+            
             # Then update popularity of product
             increase_product_popularity_by_product_id(cart_product_params[:product_id])
           else
