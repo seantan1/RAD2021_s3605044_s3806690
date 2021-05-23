@@ -67,7 +67,10 @@ class AdminsController < ApplicationController
   
   # helper funciton to get user name
   def get_username(user_id)
-    return User.find(user_id).name
+    if User.find_by_id(user_id)
+      return User.find(user_id).name 
+    end
+    return nil
   end
 
   private
