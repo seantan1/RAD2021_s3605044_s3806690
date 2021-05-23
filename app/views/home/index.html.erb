@@ -12,7 +12,7 @@
       <div class="carousel-caption">
         <h5><%= link_to product.name, product, class:"bg-dark text-white" %></h5>
         <!--<p >$<#%= number_with_precision(product.price, :precision => 2) %></p>-->
-        <text class="bg-dark text-white">$</text><%= link_to product.price, product, class:"bg-dark text-white" %>
+        <text class="bg-dark text-white">$</text><%= link_to number_with_precision(product.price, :precision => 2), product, class:"bg-dark text-white" %>
         <% if session[:savedlist].include? product.id.to_s %>
         <%= link_to 'Remove', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto  " %>
         <% else %>
@@ -68,7 +68,7 @@
       <div class="my-3 py-3">
         <h2 class="display-5">Women</h2>
         <!--<p class="lead">Code to retrieve total product count</p>-->
-          <small class="text-muted"><p> <%= get_product_category_count("women") %> ITEMS</p></small>
+          <small class="text-muted"><p> <%= get_product_category_count(" women") %> ITEMS</p></small>
         <a class="btn btn-primary text-white" aria-current="page" href="/products/category/women">Explore</a>
       </div>    
       <div class="bg-light shadow-sm mx-auto" style="width: 50%; height: 300px; border-radius: 21px 21px 0 0;">
@@ -82,7 +82,7 @@
       <div class="bg-light me-md-2 pt-4 px-2 pt-md-5 px-md-5 text-center overflow-hidden" style="border-radius: 21px 21px 0 0;">
       <div class="my-3 p-3">
         <h2 class="display-5">Men</h2>
-          <small class="text-muted"><p> <%= get_product_category_count("men") %> ITEMS</p></small>
+          <small class="text-muted"><p> <%= get_product_category_count(" men") %> ITEMS</p></small>
         <a class="btn btn-primary text-white" aria-current="page" href="/products/category/men">Explore</a>
       </div>
       <div class="bg-dark shadow-sm mx-auto" style="width: 50%; height: 300px; border-radius: 21px 21px 0 0;">
@@ -97,7 +97,7 @@
     <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center  overflow-hidden" style="border-radius: 21px 21px 0 0;">
       <div class="my-3 py-3">
           <h2 class="display-5">Kids</h2>
-          <small class="text-muted"><p><%= get_product_category_count("kids") %> ITEMS </p></small>
+          <small class="text-muted"><p><%= get_product_category_count(" kids") %> ITEMS </p></small>
         <a class="btn btn-primary text-white" aria-current="page" href="/products/category/kids">Explore</a>
       </div>    
       <div class="bg-dark shadow-sm mx-auto" style="width: 50%; height: 300px; border-radius: 21px 21px 0 0;">

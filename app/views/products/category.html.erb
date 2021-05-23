@@ -51,23 +51,25 @@
 <div class="container-fluid bg-light">
      
 <div class="row row-cols-2 row-cols-md-4 g-4 ">
- <% @category_products.each do |product| %>
-  <div class="col col-md-4">
-    <div class="card h-75 bg-light">
-    <%= link_to product do %>
-      <img src=<%= product_first_image(product) %>  class="book-img rounded mx-auto d-block"  alt="">
-      <div class="card-body">
-        <h5 class="card-title text-center"><%= link_to product.name %></h5>
-        <p class="card-text text-center">$<%= product.price %></p>
-         <% if session[:savedlist].include? product.id.to_s %>
-        <%= link_to '', edit_savedlist_path(product), class:"btn btn-secondary btn-circle btn-xl mx-auto d-block bi bi-x-octagon-fill text-white" %>
-        <% else %>
-        <%= link_to '', edit_savedlist_path(product), class:"btn btn-danger btn-circle btn-xl mx-auto d-block bi bi-heart-fill text-white" %>
-        <% end %>
-        <% end %>
+ <% if @category_products %>  
+     <% @category_products.each do |product| %>
+      <div class="col col-md-4">
+        <div class="card h-75 bg-light">
+        <%= link_to product do %>
+          <img src=<%= product_first_image(product) %>  class="book-img rounded mx-auto d-block"  alt="">
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= link_to product.name %></h5>
+            <p class="card-text text-center">$<%= product.price %></p>
+             <% if session[:savedlist].include? product.id.to_s %>
+            <%= link_to '', edit_savedlist_path(product), class:"btn btn-secondary btn-circle btn-xl mx-auto d-block bi bi-x-octagon-fill text-white" %>
+            <% else %>
+            <%= link_to '', edit_savedlist_path(product), class:"btn btn-danger btn-circle btn-xl mx-auto d-block bi bi-heart-fill text-white" %>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+      <% end %>
   <% end %>
 </div>
 </div>

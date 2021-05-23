@@ -1,5 +1,7 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: %i[ show edit update destroy ]
+  
+  helper_method :get_username
 
   # GET /admins or /admins.json
   def index
@@ -8,6 +10,7 @@ class AdminsController < ApplicationController
     @purchased_products = PurchasedProduct.all
     @customer_ratings = CustomerRating.all
     @newsletter_emails = NewsletterEmail.all
+    # @products_controller = ProductsController.all
   end
 
   # GET /admins/1 or /admins/1.json
@@ -60,6 +63,11 @@ class AdminsController < ApplicationController
       format.html { redirect_to admins_url, notice: "Admin was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+  
+  # helper funciton to get user name
+  def get_username(user_id)
+    return User.find(user_id).name
   end
 
   private

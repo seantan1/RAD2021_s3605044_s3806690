@@ -11,8 +11,8 @@ class ProductsController < ApplicationController
   # POST /search - search function for the search bar on nav
   def search
     @all_products = Product.where(["name LIKE ?", "%#{params[:search]}%"])
-    .or(Product.where(["category LIKE ?", "%#{params[:search]}%"]))
-    .or(Product.where(["size LIKE ?", "%#{params[:search]}%"]))
+    .or(Product.where(["size LIKE ?", "% #{params[:search]}%"]))
+    .or(Product.where(["category LIKE ?", "% #{params[:search]}%"]))
     .or(Product.where(["color LIKE ?", "%#{params[:search]}%"]))
     .or(Product.where(["description LIKE ?", "%#{params[:search]}%"]))
   end
@@ -61,32 +61,32 @@ class ProductsController < ApplicationController
     # filter functions for product page filter
     if params[:name]
       if params[:name].length == 4
-        @all_products = Product.where(["name LIKE ?", "%#{params[:name][0]}%"])
-        .or(Product.where(["name LIKE ?", "%#{params[:name][1]}%"]))
-        .or(Product.where(["name LIKE ?", "%#{params[:name][2]}%"]))
-        .or(Product.where(["name LIKE ?", "%#{params[:name][3]}%"]))
+        @all_products = Product.where(["lower(name) LIKE ?", "%#{params[:name][0]}%"])
+        .or(Product.where(["lower(name) LIKE ?", "%#{params[:name][1]}%"]))
+        .or(Product.where(["lower(name) LIKE ?", "%#{params[:name][2]}%"]))
+        .or(Product.where(["lower(name) LIKE ?", "%#{params[:name][3]}%"]))
       elsif params[:name].length == 3
-        @all_products = Product.where(["name LIKE ?", "%#{params[:name][0]}%"])
-        .or(Product.where(["name LIKE ?", "%#{params[:name][1]}%"]))
-        .or(Product.where(["name LIKE ?", "%#{params[:name][2]}%"]))
+        @all_products = Product.where(["lower(name) LIKE ?", "%#{params[:name][0]}%"])
+        .or(Product.where(["lower(name) LIKE ?", "%#{params[:name][1]}%"]))
+        .or(Product.where(["lower(name) LIKE ?", "%#{params[:name][2]}%"]))
       elsif params[:name].length == 2
-        @all_products = Product.where(["name LIKE ?", "%#{params[:name][0]}%"])
-        .or(Product.where(["name LIKE ?", "%#{params[:name][1]}%"]))
+        @all_products = Product.where(["lower(name) LIKE ?", "%#{params[:name][0]}%"])
+        .or(Product.where(["lower(name) LIKE ?", "%#{params[:name][1]}%"]))
       else
-        @all_products = Product.where(["name LIKE ?", "%#{params[:name][0]}%"])
+        @all_products = Product.where(["lower(name) LIKE ?", "%#{params[:name][0]}%"])
       end
     end
     
     if params[:category]
       if params[:category].length == 3
-        @all_products = Product.where(["category = ?", "#{params[:category][0]}"])
-        .or(Product.where(["category = ?", "#{params[:category][1]}"]))
-        .or(Product.where(["category = ?", "#{params[:category][2]}"]))
+        @all_products = Product.where(["category LIKE ?", "% #{params[:category][0]}%"])
+        .or(Product.where(["category LIKE ?", "% #{params[:category][1]}%"]))
+        .or(Product.where(["category LIKE ?", "% #{params[:category][2]}%"]))
       elsif params[:category].length == 2
-        @all_products = Product.where(["category = ?", "#{params[:category][0]}"])
-        .or(Product.where(["category = ?", "#{params[:category][1]}"]))
+        @all_products = Product.where(["category LIKE ?", "% #{params[:category][0]}%"])
+        .or(Product.where(["category LIKE ?", "% #{params[:category][1]}%"]))
       else
-        @all_products = Product.where(["category = ?", "#{params[:category][0]}"])
+        @all_products = Product.where(["category LIKE ?", "% #{params[:category][0]}%"])
       end
     end
     
@@ -122,7 +122,7 @@ class ProductsController < ApplicationController
     end
     
     if params[:size]
-      @all_products = @all_products.where(["size LIKE ?", "%#{params[:size]}%"])
+      @all_products = @all_products.where(["size LIKE ?", "% #{params[:size]}%"])
     end
     # end filter functions
   end
@@ -198,7 +198,7 @@ class ProductsController < ApplicationController
     filtered_products = []
     
     products.each do |product|
-      if product.category.to_s == target_category
+      if product.category.to_s.include? (" "+target_category)
         filtered_products.push(product)
       end
     end

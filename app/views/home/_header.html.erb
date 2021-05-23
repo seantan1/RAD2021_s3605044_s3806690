@@ -82,9 +82,17 @@
         <!--<li class="nav-item">-->
         <!--  <%= link_to "Register", register_path, class:"nav-link" %>-->
         <!--</li>-->
+        
+         
         <% if isAdmin(logged_in) %>
+        <hr class="text-white">
+        <h6 class="text-white text-center">ADMIN ACCESS ONLY</h6>
+         
           <li class="nav-item">
             <%= link_to "Admin Portal", admins_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Add | Edit | Delete Products", products_path, class:"nav-link" %>
           </li>
         <% end %>
         

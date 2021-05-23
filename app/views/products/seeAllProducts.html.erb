@@ -15,7 +15,7 @@
     <%= link_to product do %>
       <img src=<%= product_first_image(product) %>  class="book-img rounded mx-auto d-block"  alt="">
       <div class="card-body">
-        <h5 class="card-title text-center"><%= link_to product.name %></h5>
+        <h5 class="card-title text-center"><%= product.name %></h5>
         <p class="card-text text-center">$<%= number_with_precision(product.price, :precision => 2) %></p>
          <% if session[:savedlist].include? product.id.to_s %>
         <%= link_to '', edit_savedlist_path(product), class:"btn btn-secondary btn-circle btn-xl mx-auto d-block bi bi-x-octagon-fill text-white" %>

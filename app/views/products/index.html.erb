@@ -1,86 +1,10 @@
- <%= form_tag products_path, :method => 'get' do %>
-    
-<div class="container">
-<div class="row justify-content-center">   
-<div class="col-sm-6 ">     
-    <h3>Collections</h1>
-    
-<div class="row justify-content-center">   
- 
-     <input type="checkbox" class="btn-check" value="selectAll" id="check_all" onclick="selectAll()">
-     <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-      <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="category[]" value="men">
-      <label class="btn btn-outline-secondary" for="btncheck1">Men</label>
- 
-      <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" name="category[]" value="women">
-      <label class="btn btn-outline-secondary" for="btncheck2">Women</label>
-    
-      <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="category[]" value="kids">
-      <label class="btn btn-outline-secondary" for="btncheck3" >Kids</label>
-    
-     </div>
-    
-    <%= params[:category].inspect %>
-
-
-    <br><br><br>
-    
-    <h3>Color</h3>
-      <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-          <input type="checkbox" class="btn-check" id="redbtn" autocomplete="off" name="color[]" value="red">
-          <label class="btn btn-outline-danger" for="redbtn">Red</label>
-        
-          <input type="checkbox" class="btn-check" id="bluebtn" autocomplete="off" name="color[]" value="blue">
-          <label class="btn btn-outline-primary" for="bluebtn">Blue</label>
-        
-          <input type="checkbox" class="btn-check" id="blackbtn" autocomplete="off" name="color[]" value="black">
-          <label class="btn btn-outline-dark" for="blackbtn" >Black</label>
-     </div> 
-     <%= params[:color].inspect %>
-     
-    <br><br><br>
-    
-    <h3>Sizes</h3>
-    
-         <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-      <input type="radio" class="btn-check" id="smallSize" autocomplete="off" name="size" value="s">
-      <label class="btn btn-outline-secondary" for="smallSize">Small</label>
-    
-      <input type="radio" class="btn-check" id="mediumSize" autocomplete="off" name="size" value="m">
-      <label class="btn btn-outline-secondary" for="mediumSize">Medium</label>
-    
-      <input type="radio" class="btn-check" id="largeSize" autocomplete="off" name="size" value="l">
-      <label class="btn btn-outline-secondary" for="largeSize" >Large</label>
-     </div>
-     <%= params[:size].inspect %>
-    
-    <br><br><br>
-            <label class="btn btn-outline-primary" for="check_all">Select All</label>
-</div>
- <br></br><br></br>
- 
- 
-<%= submit_tag "Filter", class:"btn btn-primary btn-sm" %>
-
-
-
- <div id="autocomplete_search_results" width:100></div>
- </div>
- </div> 
- </div> 
-<% end %>
-<% if @test %>
-<%= @test %>
-<% end %>
-
-
-<h1 class="container text-center"> Products</h1>
+<h1 class="container text-center">Products (Admin)</h1>
 <br><br>
 <!--<h3>Men product count: <%= get_product_category_count("Men's") %></h3>-->
-<table class="table table-hover">
+<table class="table table-hover table-striped table-bordered">
 <thead class="table-dark">
     <tr>
-    <th>ID</th>
+    <!--<th>ID</th>-->
     <th>Name</th>
     <th>Image</th>
     <th>Price</th>
@@ -88,12 +12,12 @@
     <th>Popularity</th>
     <th>Size</th>
     <th>Color</th>
-    <th>Stock count</th>
-    <th>Arrival date</th>
+    <th>Stock</th>
+    <!--<th>Arrival date</th>-->
     <th>Description</th>
-    <th>Days ago</th>
-    <th>Is New Ins</th>
-    <th colspan="4"></th>
+    <!--<th>Days ago</th>-->
+    <!--<th>Is New Ins</th>-->
+    <th colspan="5"></th>
     </tr>
 </thead>
 
@@ -101,12 +25,12 @@
     <% @all_products.each do |product| %>
         <tr>
               
-            <td><%= product.id %></td>
+            <!--<td><%#= product.id %></td>-->
             <td><%= link_to product.name, product %></td>
            
             <td>
             <%= link_to product do %>    
-                <img src=<%= product_first_image(product) %> width="200">
+                <img src=<%= product_first_image(product) %> width="100">
             <% end %>    
             </td>
           
@@ -116,12 +40,12 @@
             <td><%= product.size %></td>
             <td><%= product.color %></td>
             <td><%= product.stockcount %></td>
-            <td><%= product.arrival %></td>
-            <td><%= product.description %></td>
-            <td><%= calculate_days_ago(product) %></td>
-            <td><%= is_new_in(product) %></td>
+            <!--<td><%#= product.arrival %></td>-->
+            <td><%== product.description %></td>
+            <!--<td><%#= calculate_days_ago(product) %></td>-->
+            <!--<td><%#= is_new_in(product) %></td>-->
             <% if session[:savedlist].include? product.id.to_s %>
-                <td><%= link_to 'Remove from Saved list', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white" %></td>
+                <td><%= link_to 'Remove from Saved list', edit_savedlist_path(product), class:"btn btn-secondary btn-sm text-white" %></td>
             <% else %>
                 <td><%= link_to 'Add to Saved List', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white" %></td>
             <% end %>
@@ -133,4 +57,7 @@
 </tbody>
 </table>
 <br>
-<%= link_to 'Add a product', new_product_path %>
+<div class="text-center"> 
+<%= link_to 'Add a product', new_product_path, class:"btn btn-primary text-white btn-lg" %>
+<br></br><br></br>
+</div>
