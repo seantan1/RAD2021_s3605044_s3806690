@@ -11,7 +11,8 @@
       <!--mx-auto d-block - this was causing errors, it wasn't showing the buttons after resizing the browser-->
       <div class="carousel-caption">
         <h5><%= link_to product.name, product, class:"bg-dark text-white" %></h5>
-        <p >$<%= number_with_precision(product.price, :precision => 2) %></p>
+        <!--<p >$<#%= number_with_precision(product.price, :precision => 2) %></p>-->
+        <text class="bg-dark text-white">$</text><%= link_to product.price, product, class:"bg-dark text-white" %>
         <% if session[:savedlist].include? product.id.to_s %>
         <%= link_to 'Remove', edit_savedlist_path(product), class:"btn btn-primary btn-sm text-white rounded mx-auto  " %>
         <% else %>
@@ -130,6 +131,5 @@
 
 </div>
 <!--END FOOTER-->
-
  
        

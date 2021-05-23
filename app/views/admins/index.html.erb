@@ -1,3 +1,5 @@
+<!--ADMIN PORTAL PAGE-->
+
 <h1 class="text-center h1">ADMIN PORTAL</h1>
 <br></br><br></br>
 <div class="container text-center"> 
@@ -19,8 +21,6 @@
       <tr>
         <td><%= admin.user_id %></td>
         <td><%= admin.user_id %></td>
-        <td><%#= link_to 'Show', admin %></td>
-        <td><%#= link_to 'Edit', edit_admin_path(admin) %></td>
         <td><%= link_to 'Remove Admin', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

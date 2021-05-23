@@ -6,73 +6,6 @@ class ProductsController < ApplicationController
   def index
     @all_products = Product.all
     session[:savedlist] ||= []
-    
-    # filter functions for product page filter
-    if params[:name]
-      if params[:name].length == 4
-        @all_products = Product.where(["category LIKE ?", "%#{params[:name][0]}%"])
-        .or(Product.where(["category LIKE ?", "%#{params[:name][1]}%"]))
-        .or(Product.where(["category LIKE ?", "%#{params[:name][2]}%"]))
-        .or(Product.where(["category LIKE ?", "%#{params[:name][3]}%"]))
-      elsif params[:category].length == 3
-        @all_products = Product.where(["category LIKE ?", "%#{params[:name][0]}%"])
-        .or(Product.where(["category LIKE ?", "%#{params[:name][1]}%"]))
-        .or(Product.where(["category LIKE ?", "%#{params[:name][2]}%"]))
-      elsif params[:category].length == 2
-        @all_products = Product.where(["category LIKE ?", "%#{params[:name][0]}%"])
-        .or(Product.where(["category LIKE ?", "%#{params[:name][1]}%"]))
-      else
-        @all_products = Product.where(["category LIKE ?", "%#{params[:name][0]}%"]) unless params[:name][0] == 'all'
-      end
-    end
-    
-    if params[:category]
-      if params[:category].length == 3
-        @all_products = Product.where(["category LIKE ?", "%#{params[:category][0]}%"])
-        .or(Product.where(["category LIKE ?", "%#{params[:category][1]}%"]))
-        .or(Product.where(["category LIKE ?", "%#{params[:category][2]}%"]))
-      elsif params[:category].length == 2
-        @all_products = Product.where(["category LIKE ?", "%#{params[:category][0]}%"])
-        .or(Product.where(["category LIKE ?", "%#{params[:category][1]}%"]))
-      else
-        @all_products = Product.where(["category LIKE ?", "%#{params[:category][0]}%"]) unless params[:category][0] == 'all'
-      end
-    end
-    
-    if params[:color]
-      if params[:color].length == 6
-        @all_products = @all_products.where(["color LIKE ?", "%#{params[:color][0]}%"])
-        .or(Product.where(["color LIKE ?", "%#{params[:color][1]}%"]))
-        .or(Product.where(["color LIKE ?", "%#{params[:color][2]}%"]))
-        .or(Product.where(["color LIKE ?", "%#{params[:color][3]}%"]))
-        .or(Product.where(["color LIKE ?", "%#{params[:color][4]}%"]))
-        .or(Product.where(["color LIKE ?", "%#{params[:color][5]}%"]))
-      elsif params[:color].length == 5
-        @all_products = @all_products.where(["color LIKE ?", "%#{params[:color][0]}%"])
-        .or(Product.where(["color LIKE ?", "%#{params[:color][1]}%"]))
-        .or(Product.where(["color LIKE ?", "%#{params[:color][2]}%"]))
-        .or(Product.where(["color LIKE ?", "%#{params[:color][3]}%"]))
-        .or(Product.where(["color LIKE ?", "%#{params[:color][4]}%"]))
-      elsif params[:color].length == 4
-        @all_products = @all_products.where(["color LIKE ?", "%#{params[:color][0]}%"])
-        .or(Product.where(["color LIKE ?", "%#{params[:color][1]}%"]))
-        .or(Product.where(["color LIKE ?", "%#{params[:color][2]}%"]))
-        .or(Product.where(["color LIKE ?", "%#{params[:color][3]}%"]))
-      elsif params[:color].length == 3
-        @all_products = @all_products.where(["color LIKE ?", "%#{params[:color][0]}%"])
-        .or(Product.where(["color LIKE ?", "%#{params[:color][1]}%"]))
-        .or(Product.where(["color LIKE ?", "%#{params[:color][2]}%"]))
-      elsif params[:color].length == 2
-        @all_products = @all_products.where(["color LIKE ?", "%#{params[:color][0]}%"])
-        .or(Product.where(["color LIKE ?", "%#{params[:color][1]}%"]))
-      else
-        @all_products = @all_products.where(["color LIKE ?", "%#{params[:color][0]}%"])
-      end
-    end
-    
-    if params[:size]
-      @all_products = @all_products.where(["size LIKE ?", "%#{params[:size]}%"])
-    end
   end
   
   # POST /search - search function for the search bar on nav
@@ -125,22 +58,58 @@ class ProductsController < ApplicationController
   def seeAllProducts
     @all_products = Product.all
     
-    # filter function
+    # filter functions for product page filter
+    if params[:name]
+      if params[:name].length == 4
+        @all_products = Product.where(["name LIKE ?", "%#{params[:name][0]}%"])
+        .or(Product.where(["name LIKE ?", "%#{params[:name][1]}%"]))
+        .or(Product.where(["name LIKE ?", "%#{params[:name][2]}%"]))
+        .or(Product.where(["name LIKE ?", "%#{params[:name][3]}%"]))
+      elsif params[:name].length == 3
+        @all_products = Product.where(["name LIKE ?", "%#{params[:name][0]}%"])
+        .or(Product.where(["name LIKE ?", "%#{params[:name][1]}%"]))
+        .or(Product.where(["name LIKE ?", "%#{params[:name][2]}%"]))
+      elsif params[:name].length == 2
+        @all_products = Product.where(["name LIKE ?", "%#{params[:name][0]}%"])
+        .or(Product.where(["name LIKE ?", "%#{params[:name][1]}%"]))
+      else
+        @all_products = Product.where(["name LIKE ?", "%#{params[:name][0]}%"])
+      end
+    end
+    
     if params[:category]
       if params[:category].length == 3
-        @all_products = Product.where(["category LIKE ?", "%#{params[:category][0]}%"])
-        .or(Product.where(["category LIKE ?", "%#{params[:category][1]}%"]))
-        .or(Product.where(["category LIKE ?", "%#{params[:category][2]}%"]))
+        @all_products = Product.where(["category = ?", "#{params[:category][0]}"])
+        .or(Product.where(["category = ?", "#{params[:category][1]}"]))
+        .or(Product.where(["category = ?", "#{params[:category][2]}"]))
       elsif params[:category].length == 2
-        @all_products = Product.where(["category LIKE ?", "%#{params[:category][0]}%"])
-        .or(Product.where(["category LIKE ?", "%#{params[:category][1]}%"]))
+        @all_products = Product.where(["category = ?", "#{params[:category][0]}"])
+        .or(Product.where(["category = ?", "#{params[:category][1]}"]))
       else
-        @all_products = Product.where(["category LIKE ?", "%#{params[:category][0]}%"])
+        @all_products = Product.where(["category = ?", "#{params[:category][0]}"])
       end
     end
     
     if params[:color]
-      if params[:color].length == 3
+      if params[:color].length == 6
+        @all_products = @all_products.where(["color LIKE ?", "%#{params[:color][0]}%"])
+        .or(Product.where(["color LIKE ?", "%#{params[:color][1]}%"]))
+        .or(Product.where(["color LIKE ?", "%#{params[:color][2]}%"]))
+        .or(Product.where(["color LIKE ?", "%#{params[:color][3]}%"]))
+        .or(Product.where(["color LIKE ?", "%#{params[:color][4]}%"]))
+        .or(Product.where(["color LIKE ?", "%#{params[:color][5]}%"]))
+      elsif params[:color].length == 5
+        @all_products = @all_products.where(["color LIKE ?", "%#{params[:color][0]}%"])
+        .or(Product.where(["color LIKE ?", "%#{params[:color][1]}%"]))
+        .or(Product.where(["color LIKE ?", "%#{params[:color][2]}%"]))
+        .or(Product.where(["color LIKE ?", "%#{params[:color][3]}%"]))
+        .or(Product.where(["color LIKE ?", "%#{params[:color][4]}%"]))
+      elsif params[:color].length == 4
+        @all_products = @all_products.where(["color LIKE ?", "%#{params[:color][0]}%"])
+        .or(Product.where(["color LIKE ?", "%#{params[:color][1]}%"]))
+        .or(Product.where(["color LIKE ?", "%#{params[:color][2]}%"]))
+        .or(Product.where(["color LIKE ?", "%#{params[:color][3]}%"]))
+      elsif params[:color].length == 3
         @all_products = @all_products.where(["color LIKE ?", "%#{params[:color][0]}%"])
         .or(Product.where(["color LIKE ?", "%#{params[:color][1]}%"]))
         .or(Product.where(["color LIKE ?", "%#{params[:color][2]}%"]))
@@ -155,6 +124,7 @@ class ProductsController < ApplicationController
     if params[:size]
       @all_products = @all_products.where(["size LIKE ?", "%#{params[:size]}%"])
     end
+    # end filter functions
   end
   
   # POST method of creating product

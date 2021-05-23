@@ -2,14 +2,6 @@
 <p id="notice"><%= notice %></p>
 
 <h3 class="text-center display-6">Customer Ratings</h3>
-
-
-<!--<h1>Customer Rating Statistics</h1>-->
-<!--<p>Bad: <%#= getCustomerRatingStat(0) %></p>-->
-<!--<p>Okay: <%#= getCustomerRatingStat(1) %></p>-->
-<!--<p>Good: <%#= getCustomerRatingStat(2) %></p>-->
-<!--<p>Amazing: <%#= getCustomerRatingStat(3) %></p>-->
-
 <table class="table table-hover text-center">
   <thead>
     <tr class="table-dark">
@@ -21,21 +13,13 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody class="text-center">
-    <%# @customer_ratings.each do |customer_rating| %>
       <tr>
-        <!--<td><%#= customer_rating.user_id %></td>-->
         <td><%= getCustomerRatingStat(0) %></td>
         <td><%= getCustomerRatingStat(1) %></td>
         <td><%= getCustomerRatingStat(2) %></td>
         <td><%= getCustomerRatingStat(3) %></td>
-        
-        <!--<td><%#= link_to 'Show', customer_rating %></td>-->
-        <!--<td><%#= link_to 'Edit', edit_customer_rating_path(customer_rating) %></td>-->
-        <!--<td><%#= link_to 'Destroy', customer_rating, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
-    <%# end %>
   </tbody>
 </table>
 
